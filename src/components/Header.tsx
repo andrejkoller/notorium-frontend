@@ -1,5 +1,6 @@
 import { Input, InputGroup, Link } from "@chakra-ui/react";
 import { Search } from "lucide-react";
+import { ThemeSwitcher } from "./theme/ThemeSwitcher";
 
 export const Header = () => {
   return (
@@ -42,6 +43,9 @@ export const Header = () => {
               <Link href="/login" className="header-link">
                 <span className="header-link-text">Login</span>
               </Link>
+            </li>
+            <li>
+              <ThemeSwitcher />
             </li>
           </ul>
         </div>
