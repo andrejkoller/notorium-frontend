@@ -1,6 +1,6 @@
 import { createListCollection, Portal, Select } from "@chakra-ui/react";
 
-export const HomeFilter = () => {
+export const SelectFilter = () => {
   const filterItems = createListCollection({
     items: [
       { label: "Rating", value: "rating" },

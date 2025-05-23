@@ -5,7 +5,6 @@ import { Provider } from "./components/ui/provider";
 import Home from "./components/Home";
 import Login from "./components/authentication/Login";
 import Register from "./components/authentication/Register";
-import FilterSidebar from "./components/FilterSidebar";
 import { UserProvider } from "./contexts/UserContext";
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
           {!isLoginPage && !isRegisterPage && <Header />}
         </nav>
         <main className="main">
-          {!isLoginPage && !isRegisterPage && <FilterSidebar />}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
