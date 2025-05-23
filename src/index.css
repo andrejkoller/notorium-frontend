@@ -1,3 +1,13 @@
+.light {
+  --background-color: #f9f7fa;
+  --text-color: #333333;
+}
+
+.dark {
+  --background-color: #333333;
+  --text-color: #f9f7fa;
+}
+
 body {
   margin: 0;
   padding: 0;

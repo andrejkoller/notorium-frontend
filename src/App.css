@@ -113,3 +113,317 @@
 .header-container .header-content .header-right ul li a:hover {
   text-decoration: underline;
 }
+
+/* Login */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 64px);
+  width: 100%;
+  padding: 0 24px;
+}
+
+.login-container .login-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.login-container .login-content .login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.login-container .login-content .login-form .login-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 16px;
+  width: 100%;
+  max-width: 520px;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-container .login-content .login-form .login-card .login-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.login-container .login-content .login-form .login-card .login-card-header h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.login-container .login-content .login-form .login-card .login-card-header p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.login-container .login-content .login-form .login-card .login-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.login-container .login-content .login-form .login-card .login-card-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.login-container
+  .login-content
+  .login-form
+  .login-card
+  .login-card-footer
+  .button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.login-container
+  .login-content
+  .login-form
+  .login-card
+  .login-card-footer
+  .button-container
+  button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #e31b5e;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-container
+  .login-content
+  .login-form
+  .login-card
+  .login-card-footer
+  .button-container
+  button:hover {
+  background-color: #d81b5e;
+}
+
+.login-container
+  .login-content
+  .login-form
+  .login-card
+  .login-card-footer
+  .button-container
+  button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.login-container
+  .login-content
+  .login-form
+  .login-card
+  .login-card-footer
+  .login-footer-links
+  a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+.login-container
+  .login-content
+  .login-form
+  .login-card
+  .login-card-footer
+  .login-footer-links
+  a:hover {
+  text-decoration: none;
+}
+
+/* Register */
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 64px);
+  width: 100%;
+  padding: 0 24px;
+}
+
+.register-container .register-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.register-container .register-content .register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.register-container .register-content .register-form .register-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 16px;
+  width: 100%;
+  max-width: 520px;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.register-container
+  .register-content
+  .register-form
+  .register-card
+  .register-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.register-container
+  .register-content
+  .register-form
+  .register-card
+  .register-card-header
+  h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.register-container
+  .register-content
+  .register-form
+  .register-card
+  .register-card-header
+  p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.register-container
+  .register-content
+  .register-form
+  .register-card
+  .register-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.register-container
+  .register-content
+  .register-form
+  .register-card
+  .register-card-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.register-container
+  .register-content
+  .register-form
+  .register-card
+  .register-card-footer
+  .button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.register-container
+  .register-content
+  .register-form
+  .register-card
+  .register-card-footer
+  .button-container
+  button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #e31b5e;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.register-container
+  .register-content
+  .register-form
+  .register-card
+  .register-card-footer
+  .button-container
+  button:hover {
+  background-color: #d81b5e;
+}
+
+.register-container
+  .register-content
+  .register-form
+  .register-card
+  .register-card-footer
+  .button-container
+  button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.register-container
+  .register-content
+  .register-form
+  .register-card
+  .register-card-footer
+  .register-footer-links
+  a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+.register-container
+  .register-content
+  .register-form
+  .register-card
+  .register-card-footer
+  .register-footer-links
+  a:hover {
+  text-decoration: none;
+}
