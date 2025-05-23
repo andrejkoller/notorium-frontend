@@ -5,6 +5,7 @@ import { Provider } from "./components/ui/provider";
 import Home from "./components/Home";
 import Login from "./components/authentication/Login";
 import Register from "./components/authentication/Register";
+import FilterSidebar from "./components/FilterSidebar";
 
 function App() {
   const location = useLocation();
@@ -17,6 +18,7 @@ function App() {
         {!isLoginPage && !isRegisterPage && <Header />}
       </nav>
       <main className="main">
+        <FilterSidebar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
