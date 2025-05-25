@@ -1,4 +1,5 @@
 import { SelectFilter } from "./SelectFilter";
+import { SelectOrder } from "./SelectOrder";
 
 export default function Home() {
   return (
@@ -9,8 +10,11 @@ export default function Home() {
             <h1>Explore sheet music</h1>
           </div>
           <div className="home-header-filter">
-            <div className="home-header-drop-filter">
+            <div className="home-header-select-filter">
               <SelectFilter />
+            </div>
+            <div className="home-header-select-order">
+              <SelectOrder />
             </div>
           </div>
         </div>

@@ -7,7 +7,6 @@ import Login from "./components/authentication/Login";
 import Register from "./components/authentication/Register";
 import { UserProvider } from "./contexts/UserContext";
 import Upload from "./components/Upload";
-import FilterSidebar from "./components/FilterSidebar";
 
 function App() {
   const location = useLocation();
@@ -22,11 +21,6 @@ function App() {
           {!isLoginPage && !isRegisterPage && !isUploadPage && <Header />}
         </nav>
         <main className="main">
-          {!isLoginPage && !isRegisterPage && !isUploadPage && (
-            <div className="filter-sidebar">
-              <FilterSidebar />
-            </div>
-          )}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />

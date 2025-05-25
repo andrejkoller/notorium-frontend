@@ -1,24 +1,10 @@
-import {
-  Button,
-  Input,
-  InputGroup,
-  Link,
-  Menu,
-  Portal,
-} from "@chakra-ui/react";
-import {
-  ChevronDown,
-  LogOut,
-  Music,
-  Search,
-  Settings,
-  Upload,
-  User as UserIcon,
-} from "lucide-react";
+import { Button, Input, InputGroup, Menu, Portal } from "@chakra-ui/react";
+import { ChevronDown, Search, Upload } from "lucide-react";
 import { getCurrentUser } from "../services/UserService";
 import { useEffect, useState } from "react";
 import type { User } from "../models/User";
 import { ThemeSwitcher } from "./theme/ThemeSwitcher";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -41,7 +27,7 @@ export const Header = () => {
       <div className="header-content">
         <div className="header-first-part">
           <div className="header-logo">
-            <Link href="/" className="header-link">
+            <Link to={"/"} className="header-link">
               <h1 className="header-link-text">Notorium</h1>
             </Link>
           </div>
@@ -58,7 +44,7 @@ export const Header = () => {
             <ThemeSwitcher />
           </div>
           <div className="header-upload-button">
-            <Link href="/upload" className="header-link">
+            <Link to={"/upload"} className="header-link">
               <Button variant={"solid"} className="header-upload-button-text">
                 <Upload />
               </Button>
@@ -76,28 +62,30 @@ export const Header = () => {
                 <Portal>
                   <Menu.Positioner>
                     <Menu.Content>
-                      <Menu.Item value="settings">
-                        <Settings />
-                        Settings
-                      </Menu.Item>
-                      <Menu.Item value="sheet-music">
-                        <Music />
-                        Music
-                      </Menu.Item>
-                      <Menu.Item value="logout">
-                        <LogOut />
-                        Logout
-                      </Menu.Item>
+                      <Menu.Item value="settings">Settings</Menu.Item>
+                      <Menu.Item value="sheet-music">Music</Menu.Item>
+                      <Menu.Item value="logout">Logout</Menu.Item>
                     </Menu.Content>
                   </Menu.Positioner>
                 </Portal>
               </Menu.Root>
             </div>
           ) : (
-            <div className="header-login-button">
-              <Link href="/login" className="header-link">
-                <Button variant={"solid"} className="header-login-button-text">
-                  <UserIcon />
+            <div className="button-container">
+              <Link to={"/login"} className="header-link">
+                <Button
+                  variant={"outline"}
+                  className="header-login-button-text"
+                >
+                  Log in
+                </Button>
+              </Link>
+              <Link to={"/register"} className="header-link">
+                <Button
+                  variant={"solid"}
+                  className="header-register-button-text"
+                >
+                  Register
                 </Button>
               </Link>
             </div>

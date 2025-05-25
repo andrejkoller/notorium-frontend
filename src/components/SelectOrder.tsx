@@ -1,20 +1,19 @@
 import { createListCollection, Portal, Select } from "@chakra-ui/react";
 
-export const SelectFilter = () => {
-  const filterItems = createListCollection({
+export const SelectOrder = () => {
+  const orderItems = createListCollection({
     items: [
-      { label: "Genre", value: "genre" },
-      { label: "Instrument", value: "instrument" },
-      { label: "Difficulty", value: "difficulty" },
+      { label: "Rating", value: "rating" },
+      { label: "Upload date", value: "upload-date" },
     ],
   });
 
   return (
-    <Select.Root size="lg" collection={filterItems}>
+    <Select.Root size="lg" collection={orderItems}>
       <Select.HiddenSelect />
       <Select.Control>
         <Select.Trigger>
-          <Select.ValueText placeholder="Genre" />
+          <Select.ValueText placeholder="Rating" />
         </Select.Trigger>
         <Select.IndicatorGroup>
           <Select.Indicator />
@@ -23,9 +22,9 @@ export const SelectFilter = () => {
       <Portal>
         <Select.Positioner>
           <Select.Content>
-            {filterItems.items.map((filterItem) => (
-              <Select.Item item={filterItem} key={filterItem.value}>
-                {filterItem.label}
+            {orderItems.items.map((orderItem) => (
+              <Select.Item item={orderItem} key={orderItem.value}>
+                {orderItem.label}
                 <Select.ItemIndicator />
               </Select.Item>
             ))}
