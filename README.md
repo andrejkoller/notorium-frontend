@@ -37,9 +37,15 @@ npm run dev
     <img src="https://github.com/user-attachments/assets/bca478ac-13e0-43c0-b05d-41192815e844">
   </div>
   <div>
+    <img src="https://github.com/user-attachments/assets/ee780ddb-a275-4063-b68d-dc728686f9a2">
+  </div>
+  <div>
     <img src="https://github.com/user-attachments/assets/0fb5e6b0-a877-4fbc-a2cc-bca49a38e2ce">
   </div>
   <div>
     <img src="https://github.com/user-attachments/assets/a126c0cd-a1fe-4077-a39b-e035b3e89b21">
+  </div>
+  <div>
+    <img src="https://github.com/user-attachments/assets/bd45a1d8-6386-468d-962d-c84d00802014">
   </div>
 </div>
