@@ -3,6 +3,8 @@
   --foreground: #000000;
   --border: #dcdcdc;
   --primary: #4097f5;
+  --primary-hover: #3a8ce0;
+  --disabled: #b0b0b0;
   --secondary: #6c757d;
   --success: #28a745;
   --danger: #dc3545;
@@ -15,6 +17,8 @@
   --foreground: #ffffff;
   --border: #3c3c3c;
   --primary: #4097f5;
+  --primary-hover: #3a8ce0;
+  --disabled: #b0b0b0;
   --secondary: #6c757d;
   --success: #28a745;
   --danger: #dc3545;

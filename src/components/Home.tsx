@@ -1,4 +1,3 @@
-import FilterDialog from "./dialogs/FilterDialog";
 import { SelectFilter } from "./SelectFilter";
 
 export default function Home() {
@@ -10,9 +9,6 @@ export default function Home() {
             <h1>Explore sheet music</h1>
           </div>
           <div className="home-header-filter">
-            <div className="home-header-dialog-filter">
-              <FilterDialog />
-            </div>
             <div className="home-header-drop-filter">
               <SelectFilter />
             </div>
