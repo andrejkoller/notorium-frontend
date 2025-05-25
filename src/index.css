@@ -1,13 +1,13 @@
 .light {
-  --background: #f5f5f5;
-  --foreground: #121212;
-  --border: #e8e8e8;
+  --background: #f7f9fa;
+  --foreground: #000000;
+  --border: #dcdcdc;
 }
 
 .dark {
-  --background: #080808;
+  --background: #1e1e1e;
   --foreground: #ffffff;
-  --border: #2c2c2c;
+  --border: #3c3c3c;
 }
 
 body {
@@ -19,4 +19,8 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   transition: background-color 0.3s ease, color 0.3s ease !important;
+}
+
+.css-9agyu5 {
+  max-width: unset !important;
 }
