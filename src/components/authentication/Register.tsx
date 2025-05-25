@@ -1,9 +1,10 @@
-import { Button, Card, Field, Input, Link } from "@chakra-ui/react";
+import { Button, Input } from "@chakra-ui/react";
 import { useState } from "react";
 import { PasswordInput } from "../ui/password-input";
 import { register } from "../../services/AuthService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toaster } from "../ui/toaster";
+import { ComponentHeader } from "../ComponentHeader";
 
 export default function Register() {
   const MIN_PASSWORD_LENGTH = 8;
@@ -18,6 +19,13 @@ export default function Register() {
     confirmPassword: "",
   });
   const [loading, setLoading] = useState(false);
+
+  const isFormValid =
+    formData.name.trim() !== "" &&
+    formData.email.trim() !== "" &&
+    formData.username.trim() !== "" &&
+    formData.password.trim() !== "" &&
+    formData.confirmPassword.trim() !== "";
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prevData) => ({
@@ -87,115 +95,148 @@ export default function Register() {
 
   return (
     <div className="register-container">
+      <ComponentHeader />
       <div className="register-content">
         {loading ? (
           <div className="loading">Loading...</div>
         ) : (
           <form className="register-form" onSubmit={handleSubmit}>
-            <Card.Root className="register-card">
-              <Card.Header className="register-card-header">
-                <h2 className="register-card-title">Register</h2>
-                <p className="register-card-description">
-                  Create a new account to get started.
-                </p>
-              </Card.Header>
-              <Card.Body className="register-card-body">
-                <div className="register-form-group">
-                  <Field.Root required>
-                    <Field.Label>
-                      Name <Field.RequiredIndicator />
-                    </Field.Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder="Enter your full name"
-                    />
-                  </Field.Root>
-                </div>
-                <div className="register-form-group">
-                  <Field.Root required>
-                    <Field.Label>
-                      Email <Field.RequiredIndicator />
-                    </Field.Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="Enter your email"
-                    />
-                  </Field.Root>
-                </div>
-                <div className="register-form-group">
-                  <Field.Root required>
-                    <Field.Label>
-                      Username <Field.RequiredIndicator />
-                    </Field.Label>
-                    <Input
-                      id="username"
-                      name="username"
-                      type="text"
-                      value={formData.username}
-                      onChange={handleInputChange}
-                      placeholder="Enter a username"
-                    />
-                  </Field.Root>
-                </div>
-                <div className="register-form-group">
-                  <Field.Root required>
-                    <Field.Label>
-                      Password <Field.RequiredIndicator />
-                    </Field.Label>
-                    <PasswordInput
-                      id="password"
-                      name="password"
-                      type="password"
-                      value={formData.password}
-                      onChange={handleInputChange}
-                      placeholder="Enter your password"
-                    />
-                  </Field.Root>
-                </div>
-                <div className="register-form-group">
-                  <Field.Root required>
-                    <Field.Label>
-                      Confirm Password <Field.RequiredIndicator />
-                    </Field.Label>
-                    <PasswordInput
-                      id="confirmPassword"
-                      name="confirmPassword"
-                      type="password"
-                      value={formData.confirmPassword}
-                      onChange={handleInputChange}
-                      placeholder="Confirm your password"
-                    />
-                  </Field.Root>
-                </div>
-              </Card.Body>
-              <Card.Footer className="register-card-footer">
-                <div className="button-container">
-                  <Button
-                    variant={"solid"}
-                    type="submit"
-                    className="register-form-button"
-                  >
-                    Register
-                  </Button>
-                </div>
-                <div className="register-footer-links">
-                  <p>
-                    Already have an account?{" "}
-                    <Link href="/login" className="register-link">
-                      Login here
-                    </Link>
-                  </p>
-                </div>
-              </Card.Footer>
-            </Card.Root>
+            <div className="register-instructions-title">
+              <h2 className="register-instructions-text">Register</h2>
+              <p>Create a new account to get started.</p>
+            </div>
+            <div className="register-name-container">
+              <div className="register-name-label">
+                <label htmlFor="name" className="register-name-label-text">
+                  Name
+                </label>
+              </div>
+              <div className="register-name-input-container">
+                <Input
+                  placeholder="e. g. Andrej Koller"
+                  variant={"outline"}
+                  size={"lg"}
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  className="login-name-input"
+                />
+              </div>
+            </div>
+            <div className="register-email-container">
+              <div className="register-email-label">
+                <label htmlFor="email" className="register-email-label-text">
+                  Email
+                </label>
+              </div>
+              <div className="register-email-input-container">
+                <Input
+                  placeholder="e. g. andrejkoller@outlook.com"
+                  variant={"outline"}
+                  size={"lg"}
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="register-email-input"
+                />
+              </div>
+            </div>
+            <div className="register-username-container">
+              <div className="register-username-label">
+                <label
+                  htmlFor="username"
+                  className="register-username-label-text"
+                >
+                  Username
+                </label>
+              </div>
+              <div className="register-username-input-container">
+                <Input
+                  placeholder="e. g. andrejkoller"
+                  variant={"outline"}
+                  size={"lg"}
+                  type="text"
+                  id="username"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleInputChange}
+                  required
+                  className="register-username-input"
+                />
+              </div>
+            </div>
+            <div className="register-password-container">
+              <div className="register-password-label">
+                <label
+                  htmlFor="password"
+                  className="register-password-label-text"
+                >
+                  Password
+                </label>
+              </div>
+              <div className="register-password-input-container">
+                <PasswordInput
+                  placeholder="Enter your password"
+                  variant={"outline"}
+                  size={"lg"}
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  required
+                  className="register-password-input"
+                />
+              </div>
+            </div>
+            <div className="register-confirm-password-container">
+              <div className="register-confirm-password-label">
+                <label
+                  htmlFor="confirmPassword"
+                  className="register-confirm-password-label-text"
+                >
+                  Confirm Password
+                </label>
+              </div>
+              <div className="register-confirm-password-input-container">
+                <PasswordInput
+                  placeholder="Confirm your password"
+                  variant={"outline"}
+                  size={"lg"}
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleInputChange}
+                  required
+                  className="register-confirm-password-input"
+                />
+              </div>
+            </div>
+            <div className="button-container">
+              <Button
+                type="submit"
+                variant={"solid"}
+                size={"lg"}
+                className="register-button"
+                loadingText="Registering"
+                disabled={!isFormValid || loading}
+              >
+                Register
+              </Button>
+            </div>
+            <div className="register-footer">
+              <p className="register-footer-text">
+                Already have an account?{" "}
+                <Link to={"/login"} className="register-footer-link">
+                  Login here
+                </Link>
+              </p>
+            </div>
           </form>
         )}
       </div>

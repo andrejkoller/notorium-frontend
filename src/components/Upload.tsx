@@ -11,9 +11,8 @@ import {
   Select,
   Textarea,
 } from "@chakra-ui/react";
-import { ArrowLeft } from "lucide-react";
 import { LuUpload } from "react-icons/lu";
-import { Link } from "react-router-dom";
+import { ComponentHeader } from "./ComponentHeader";
 
 export default function Upload() {
   const genres = createListCollection({
@@ -65,14 +64,7 @@ export default function Upload() {
 
   return (
     <div className="upload-container">
-      <div className="upload-header">
-        <div className="upload-link">
-          <Link to={"/"} className="upload-link-text">
-            <ArrowLeft className="upload-icon" />
-          </Link>
-          <h2 className="upload-title">Back to dashboard</h2>
-        </div>
-      </div>
+      <ComponentHeader />
       <div className="upload-content">
         <form className="upload-form" onSubmit={handleUpload}>
           <div className="upload-instructions-title">

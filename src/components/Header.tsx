@@ -28,7 +28,6 @@ export const Header = () => {
       try {
         const user = await getCurrentUser();
         setUser(user);
-        console.log("Current user:", user);
       } catch (error) {
         console.error("Error fetching user:", error);
       }
