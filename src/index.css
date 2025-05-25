@@ -2,12 +2,24 @@
   --background: #f7f9fa;
   --foreground: #000000;
   --border: #dcdcdc;
+  --primary: #4097f5;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --info: #17a2b8;
 }
 
 .dark {
   --background: #1e1e1e;
   --foreground: #ffffff;
   --border: #3c3c3c;
+  --primary: #4097f5;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --info: #17a2b8;
 }
 
 body {

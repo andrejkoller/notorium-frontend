@@ -1,4 +1,4 @@
-import { Icon, Switch } from "@chakra-ui/react";
+import { Button, Icon } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useColorMode } from "../ui/color-mode";
 import { Moon, Sun } from "lucide-react";
@@ -30,21 +30,12 @@ export const ThemeSwitcher = () => {
   }, [setColorMode]);
 
   return (
-    <Switch.Root
-      size="lg"
-      checked={isChecked}
-      onChange={(e) =>
-        handleThemeChange((e.target as HTMLInputElement).checked)
-      }
+    <Button
+      className="theme-switcher-button"
+      variant={"solid"}
+      onClick={() => handleThemeChange(!isChecked)}
     >
-      <Switch.HiddenInput />
-      <Switch.Control>
-        <Switch.Thumb />
-        <Switch.Indicator fallback={<Icon as={Moon} color="gray.400" />}>
-          <Icon as={Sun} color="yellow.400" />
-        </Switch.Indicator>
-      </Switch.Control>
-      <Switch.Label />
-    </Switch.Root>
+      <Icon as={isChecked ? Moon : Sun} />
+    </Button>
   );
 };
