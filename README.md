@@ -1,54 +1,45 @@
-# React + TypeScript + Vite
+## Short description
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Notorium is a modern web application for reading and managing music sheets. It allows users to register, log in, upload and categorize music sheets, and manage their personal library. The intuitive interface supports light and dark themes, secure authentication, and responsive design for a seamless user experience.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- React Router
+- Chakra UI (Component Library)
+- Axios
+- Vite (development & build tool)
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 1. Clone the repository
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+git clone https://github.com/andrejkoller/notorium-frontend.git
+cd notorium-frontend
 ```
+### 2. Install dependencies
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+### 3. Run the development server
+
+```bash
+npm run dev
+```
+## Screenshots
+<div align="center">
+  <div>
+    <img src="https://github.com/user-attachments/assets/75cf559a-3052-4c7b-979c-201ba7c4e13e">
+  </div>
+  <div>
+    <img src="https://github.com/user-attachments/assets/bca478ac-13e0-43c0-b05d-41192815e844">
+  </div>
+  <div>
+    <img src="https://github.com/user-attachments/assets/0fb5e6b0-a877-4fbc-a2cc-bca49a38e2ce">
+  </div>
+  <div>
+    <img src="https://github.com/user-attachments/assets/a126c0cd-a1fe-4077-a39b-e035b3e89b21">
+  </div>
+</div>
