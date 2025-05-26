@@ -19,7 +19,7 @@ function App() {
     <UserProvider>
       <Provider>
         <nav className="header">
-          {!isLoginPage && !isRegisterPage && !isUploadPage && <Header />}
+          <Header />
         </nav>
         <main className="main">
           {!isLoginPage && !isRegisterPage && !isUploadPage && (
@@ -27,7 +27,14 @@ function App() {
               <Sidebar />
             </div>
           )}
-          <div className="content">
+          <div
+            className="content"
+            style={
+              isLoginPage || isRegisterPage || isUploadPage
+                ? { width: "100%" }
+                : { width: "80vw" }
+            }
+          >
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />

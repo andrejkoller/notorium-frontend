@@ -1,9 +1,8 @@
-import { Button, Input } from "@chakra-ui/react";
+import { Button, Card, Input } from "@chakra-ui/react";
 import { useState } from "react";
 import { login } from "../../services/AuthService";
 import { Link, useNavigate } from "react-router-dom";
 import { toaster } from "../ui/toaster";
-import { ComponentHeader } from "../ComponentHeader";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -52,81 +51,41 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container">
-      <ComponentHeader />
-      <div className="login-content">
-        {loading ? (
-          <div className="loading">Loading...</div>
-        ) : (
-          <form className="login-form" onSubmit={handleSubmit}>
-            <div className="login-instructions-title">
-              <h2 className="login-instructions-text">Login</h2>
-              <p>Welcome back! Please enter your credentials.</p>
-            </div>
-            <div className="login-email-container">
-              <div className="login-email-label">
-                <label htmlFor="email" className="login-email-label-text">
-                  Email
-                </label>
-              </div>
-              <div className="login-email-input-container">
-                <Input
-                  placeholder="e. g. andrejkoller@outlook.com"
-                  variant={"outline"}
-                  size={"lg"}
-                  type="text"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="login-email-input"
-                />
-              </div>
-            </div>
-            <div className="login-password-container">
-              <div className="login-password-label">
-                <label htmlFor="password" className="login-password-label-text">
-                  Password
-                </label>
-              </div>
-              <div className="login-password-input-container">
-                <Input
-                  placeholder="Enter your password"
-                  variant={"outline"}
-                  size={"lg"}
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  required
-                  className="login-password-input"
-                />
-              </div>
-            </div>
-            <div className="button-container">
-              <Button
-                type="submit"
-                variant={"solid"}
-                size={"lg"}
-                className="login-button"
-                disabled={!isFormValid || loading}
-              >
-                Login
-              </Button>
-            </div>
-            <div className="login-footer">
-              <p className="login-footer-text">
-                Don't have an account?{" "}
-                <Link to={"/register"} className="login-footer-link">
-                  Register here
-                </Link>
-              </p>
-            </div>
-          </form>
-        )}
-      </div>
-    </div>
+    <Card.Root className="login-card">
+      <Card.Header className="login-header">
+        <h1 className="login-title">Login</h1>
+      </Card.Header>
+      <Card.Body className="login-body">
+        <form onSubmit={handleSubmit} className="login-form">
+          <Input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleInputChange}
+            required
+          />
+          <Input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleInputChange}
+            required
+          />
+          <Button type="submit" disabled={!isFormValid || loading}>
+            Login
+          </Button>
+        </form>
+        <p className="login-register-link">
+          Don't have an account?{" "}
+          <Link to="/register" className="login-link">
+            Register here
+          </Link>
+        </p>
+      </Card.Body>
+    </Card.Root>
   );
 }

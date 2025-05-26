@@ -76,18 +76,12 @@ export const Header = () => {
           ) : (
             <div className="button-container">
               <Link to={"/login"} className="header-link">
-                <Button
-                  variant={"outline"}
-                  className="header-login-button-text"
-                >
+                <Button variant={"outline"} className="header-login-button">
                   Log in
                 </Button>
               </Link>
               <Link to={"/register"} className="header-link">
-                <Button
-                  variant={"solid"}
-                  className="header-register-button-text"
-                >
+                <Button variant={"solid"} className="header-register-button">
                   Register
                 </Button>
               </Link>

@@ -1,10 +1,9 @@
-import { Button, Input } from "@chakra-ui/react";
+import { Button, Card, Input } from "@chakra-ui/react";
 import { useState } from "react";
 import { PasswordInput } from "../ui/password-input";
 import { register } from "../../services/AuthService";
 import { Link, useNavigate } from "react-router-dom";
 import { toaster } from "../ui/toaster";
-import { ComponentHeader } from "../ComponentHeader";
 
 export default function Register() {
   const MIN_PASSWORD_LENGTH = 8;
@@ -18,7 +17,7 @@ export default function Register() {
     password: "",
     confirmPassword: "",
   });
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
 
   const isFormValid =
     formData.name.trim() !== "" &&
@@ -94,152 +93,66 @@ export default function Register() {
   };
 
   return (
-    <div className="register-container">
-      <ComponentHeader />
-      <div className="register-content">
-        {loading ? (
-          <div className="loading">Loading...</div>
-        ) : (
-          <form className="register-form" onSubmit={handleSubmit}>
-            <div className="register-instructions-title">
-              <h2 className="register-instructions-text">Register</h2>
-              <p>Create a new account to get started.</p>
-            </div>
-            <div className="register-name-container">
-              <div className="register-name-label">
-                <label htmlFor="name" className="register-name-label-text">
-                  Name
-                </label>
-              </div>
-              <div className="register-name-input-container">
-                <Input
-                  placeholder="e. g. Andrej Koller"
-                  variant={"outline"}
-                  size={"lg"}
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="login-name-input"
-                />
-              </div>
-            </div>
-            <div className="register-email-container">
-              <div className="register-email-label">
-                <label htmlFor="email" className="register-email-label-text">
-                  Email
-                </label>
-              </div>
-              <div className="register-email-input-container">
-                <Input
-                  placeholder="e. g. andrejkoller@outlook.com"
-                  variant={"outline"}
-                  size={"lg"}
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="register-email-input"
-                />
-              </div>
-            </div>
-            <div className="register-username-container">
-              <div className="register-username-label">
-                <label
-                  htmlFor="username"
-                  className="register-username-label-text"
-                >
-                  Username
-                </label>
-              </div>
-              <div className="register-username-input-container">
-                <Input
-                  placeholder="e. g. andrejkoller"
-                  variant={"outline"}
-                  size={"lg"}
-                  type="text"
-                  id="username"
-                  name="username"
-                  value={formData.username}
-                  onChange={handleInputChange}
-                  required
-                  className="register-username-input"
-                />
-              </div>
-            </div>
-            <div className="register-password-container">
-              <div className="register-password-label">
-                <label
-                  htmlFor="password"
-                  className="register-password-label-text"
-                >
-                  Password
-                </label>
-              </div>
-              <div className="register-password-input-container">
-                <PasswordInput
-                  placeholder="Enter your password"
-                  variant={"outline"}
-                  size={"lg"}
-                  id="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  required
-                  className="register-password-input"
-                />
-              </div>
-            </div>
-            <div className="register-confirm-password-container">
-              <div className="register-confirm-password-label">
-                <label
-                  htmlFor="confirmPassword"
-                  className="register-confirm-password-label-text"
-                >
-                  Confirm Password
-                </label>
-              </div>
-              <div className="register-confirm-password-input-container">
-                <PasswordInput
-                  placeholder="Confirm your password"
-                  variant={"outline"}
-                  size={"lg"}
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  value={formData.confirmPassword}
-                  onChange={handleInputChange}
-                  required
-                  className="register-confirm-password-input"
-                />
-              </div>
-            </div>
-            <div className="button-container">
-              <Button
-                type="submit"
-                variant={"solid"}
-                size={"lg"}
-                className="register-button"
-                loadingText="Registering"
-                disabled={!isFormValid || loading}
-              >
-                Register
-              </Button>
-            </div>
-            <div className="register-footer">
-              <p className="register-footer-text">
-                Already have an account?{" "}
-                <Link to={"/login"} className="register-footer-link">
-                  Login here
-                </Link>
-              </p>
-            </div>
-          </form>
-        )}
-      </div>
-    </div>
+    <Card.Root className="register-card">
+      <Card.Header className="register-header">
+        <h1 className="register-title">Register</h1>
+      </Card.Header>
+      <Card.Body className="register-body">
+        <form onSubmit={handleSubmit} className="register-form">
+          <Input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Name"
+            value={formData.name}
+            onChange={handleInputChange}
+            required
+          />
+          <Input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleInputChange}
+            required
+          />
+          <Input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Username"
+            value={formData.username}
+            onChange={handleInputChange}
+            required
+          />
+          <PasswordInput
+            id="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleInputChange}
+            required
+          />
+          <PasswordInput
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            value={formData.confirmPassword}
+            onChange={handleInputChange}
+            required
+          />
+          <Button type="submit" disabled={!isFormValid}>
+            Register
+          </Button>
+        </form>
+        <p className="register-login-link">
+          Already have an account?{" "}
+          <Link to="/login" className="register-link">
+            Login here
+          </Link>
+        </p>
+      </Card.Body>
+    </Card.Root>
   );
 }

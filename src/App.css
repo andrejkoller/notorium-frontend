@@ -27,7 +27,6 @@
   align-items: center;
   justify-content: center;
   height: calc(100vh - 64px);
-  width: 80vw;
   margin-top: 64px;
   margin-left: auto;
 }
@@ -48,7 +47,7 @@
   justify-content: center;
   height: 64px;
   width: 100%;
-  padding: 0 24px;
+  padding: 0 8px;
   position: fixed;
   top: 0;
   left: 0;
@@ -161,6 +160,22 @@
   gap: 16px;
 }
 
+.header-container .header-content .header-third-part .button-container button {
+  padding: 20px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.header-container
+  .header-content
+  .header-third-part
+  .button-container
+  .header-register-button {
+  border-radius: 999px;
+}
+
 /* Sidebar */
 .sidebar .sidebar-card {
   display: flex;
@@ -201,7 +216,7 @@
 }
 
 /* Login */
-.login-container {
+.login-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -210,7 +225,7 @@
   width: 100%;
 }
 
-.login-container .login-content {
+.login-card .login-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -219,91 +234,91 @@
   margin-top: 120px;
 }
 
-.login-container .login-content .login-instructions-title {
+.login-card .login-header .login-title {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   margin-bottom: 16px;
 }
 
-.login-container .login-content .login-instructions-title h2 {
+.login-card .login-header h1 {
   font-size: 24px;
   margin: 0;
 }
 
-.login-container .login-content .login-form {
+.login-card .login-body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
-  height: 100%;
-  width: 750px;
+  justify-content: flex-start;
+  width: 100%;
 }
 
-.login-container .login-content .login-form .login-email-container,
-.login-container .login-content .login-form .login-password-container {
+.login-card .login-body .login-form {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: flex-start;
+  gap: 16px;
+  width: 750px;
   margin-bottom: 16px;
 }
 
-.login-email-container > :last-child,
-.login-password-container > :last-child {
-  width: 75%;
-}
-
-.login-container .login-content .login-form .button-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  box-shadow: 0px -1px 0px var(--border);
-  padding-top: 16px;
-}
-
-.login-container .login-content .login-form .button-container button {
-  width: 100%;
-  padding: 12px;
+.login-card .login-body .login-form input {
+  padding: 24px;
   border-radius: 8px;
+}
+
+.login-card .login-body .login-form button {
+  width: 100%;
+  padding: 24px;
+  border-radius: 999px;
   border: none;
   background-color: var(--primary);
-  color: #fff;
+  color: #ffffff;
   font-size: 16px;
   cursor: pointer;
+  margin-top: 16px;
 }
 
-.login-container .login-content .login-form .button-container button:hover {
+.login-card .login-body .login-form button:hover {
   background-color: var(--primary-hover);
 }
 
-.login-container .login-content .login-form .button-container button:disabled {
+.login-card .login-body .login-form button:disabled {
   background-color: var(--disabled);
   cursor: not-allowed;
 }
 
-.login-container .login-content .login-form .login-footer a {
+.login-card .login-body .login-register-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.login-card .login-body .login-register-link a {
   text-decoration: underline;
   color: inherit;
+  font-size: 16px;
 }
 
 /* Register */
-.register-container {
+.register-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   height: 100%;
   width: 100%;
 }
 
-.register-container .register-content {
+.register-card .register-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -312,119 +327,61 @@
   margin-top: 120px;
 }
 
-.register-container .register-content .register-instructions-title {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 100%;
-  margin-bottom: 16px;
-}
-
-.register-container .register-content .register-instructions-title h2 {
+.register-card .register-header h1 {
   font-size: 24px;
   margin: 0;
 }
 
-.register-container .register-content .register-form {
+.register-card .register-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 16px;
-  height: 100%;
   width: 750px;
-}
-
-.register-container .register-content .register-form .register-name-container,
-.register-container .register-content .register-form .register-email-container,
-.register-container
-  .register-content
-  .register-form
-  .register-username-container,
-.register-container
-  .register-content
-  .register-form
-  .register-password-container,
-.register-container
-  .register-content
-  .register-form
-  .register-confirm-password-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
   margin-bottom: 16px;
 }
 
-.register-name-container > :last-child,
-.register-email-container > :last-child,
-.register-username-container > :last-child,
-.register-password-container > :last-child,
-.register-confirm-password-container > :last-child {
-  width: 75%;
-}
-
-.register-container .register-content .register-form .button-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  box-shadow: 0px -1px 0px var(--border);
-  padding-top: 16px;
-}
-
-.register-container .register-content .register-form .button-container button {
-  width: 100%;
-  padding: 12px;
+.register-card .register-form input {
+  padding: 24px;
   border-radius: 8px;
+  width: 100%;
+}
+
+.register-card .register-form button {
+  width: 100%;
+  padding: 24px;
+  border-radius: 999px;
   border: none;
   background-color: var(--primary);
-  color: #fff;
+  color: #ffffff;
   font-size: 16px;
   cursor: pointer;
 }
 
-.register-container
-  .register-content
-  .register-form
-  .button-container
-  button:hover {
+.register-card .register-form button:hover {
   background-color: var(--primary-hover);
 }
 
-.register-container
-  .register-content
-  .register-form
-  .button-container
-  button:disabled {
+.register-card .register-form button:disabled {
   background-color: var(--disabled);
   cursor: not-allowed;
 }
 
-.register-container .register-content .register-form .register-footer a {
-  text-decoration: underline;
-  color: inherit;
-}
-
-/* Component Header */
-.component-header {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  height: 64px;
-  width: 100%;
-  padding: 0 24px;
-  box-shadow: 0px 1px 0px var(--border);
-}
-
-.component-header .component-link {
+.register-card .register-login-link {
   display: flex;
   flex-direction: row;
-  gap: 1em;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.register-card .register-login-link a {
+  text-decoration: underline;
+  color: inherit;
+  font-size: 16px;
 }
 
 /* Home */

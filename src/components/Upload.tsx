@@ -12,7 +12,6 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { LuUpload } from "react-icons/lu";
-import { ComponentHeader } from "./ComponentHeader";
 
 export default function Upload() {
   const genres = createListCollection({
@@ -64,7 +63,6 @@ export default function Upload() {
 
   return (
     <div className="upload-container">
-      <ComponentHeader />
       <div className="upload-content">
         <form className="upload-form" onSubmit={handleUpload}>
           <div className="upload-instructions-title">
