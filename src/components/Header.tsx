@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import type { User } from "../models/User";
 import { ThemeSwitcher } from "./theme/ThemeSwitcher";
 import { Link } from "react-router-dom";
+import { Tooltip } from "./ui/tooltip";
 
 export const Header = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -44,11 +45,16 @@ export const Header = () => {
             <ThemeSwitcher />
           </div>
           <div className="header-upload-button">
-            <Link to={"/upload"} className="header-link">
-              <Button variant={"solid"} className="header-upload-button-text">
-                <Upload />
-              </Button>
-            </Link>
+            <Tooltip
+              content="Upload sheet music"
+              aria-label="Upload sheet music tooltip"
+            >
+              <Link to={"/upload"} className="header-link">
+                <Button variant={"solid"} className="header-upload-button-text">
+                  <Upload />
+                </Button>
+              </Link>
+            </Tooltip>
           </div>
           {user ? (
             <div className="header-menu-container">

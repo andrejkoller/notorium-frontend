@@ -1,7 +1,25 @@
+import { useEffect, useState } from "react";
 import { SelectFilter } from "./SelectFilter";
 import { SelectOrder } from "./SelectOrder";
+import { getAllSheetMusic } from "../services/SheetMusicService";
+import type { SheetMusic } from "../models/SheetMusic";
 
 export default function Home() {
+  const [sheetMusic, setSheetMusic] = useState<SheetMusic[]>([]);
+
+  useEffect(() => {
+    const fetchSheetMusic = async () => {
+      try {
+        const music = await getAllSheetMusic();
+        setSheetMusic(music);
+      } catch (error) {
+        console.error("Error fetching sheet music:", error);
+      }
+    };
+
+    fetchSheetMusic();
+  }, []);
+
   return (
     <div className="home-container">
       <div className="home-content">
@@ -18,7 +36,20 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="home-body"></div>
+        <div className="home-body">
+          {sheetMusic.length > 0 ? (
+            <div className="sheet-music-list">
+              {sheetMusic.map((music) => (
+                <div key={music.id} className="sheet-music-item">
+                  <h2>{music.title}</h2>
+                  <p>{music.composer}</p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>No sheet music available. Please try again later.</p>
+          )}
+        </div>
       </div>
     </div>
   );
