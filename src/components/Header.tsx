@@ -65,9 +65,12 @@ export const Header = () => {
                 <Portal>
                   <Menu.Positioner>
                     <Menu.Content>
+                      <Menu.Item value="profile">Profile</Menu.Item>
+                      <Menu.Item value="scores">Scores</Menu.Item>
                       <Menu.Item value="settings">Settings</Menu.Item>
-                      <Menu.Item value="sheet-music">Music</Menu.Item>
-                      <Menu.Item value="logout">Logout</Menu.Item>
+                      <Menu.Item value="logout" className="logout-item">
+                        Logout
+                      </Menu.Item>
                     </Menu.Content>
                   </Menu.Positioner>
                 </Portal>

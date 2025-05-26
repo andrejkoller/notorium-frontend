@@ -6,6 +6,8 @@ export interface SheetMusic {
   instrument: Instrument;
   difficulty: Difficulty;
   description: string;
+  previewImage: string;
+  file: File;
   fileName: string;
   filePath: string;
   uploadedAt: Date;
@@ -26,7 +28,7 @@ export type Genre =
   | "Reggae"
   | "Metal"
   | "Soundtrack"
-  | "Modern Classical";
+  | "ModernClassical";
 
 export type Instrument =
   | "Piano"

@@ -1,4 +1,4 @@
-import { Button, Card, Input } from "@chakra-ui/react";
+import { Button, Card, Input, Spinner, Text, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 import { PasswordInput } from "../ui/password-input";
 import { register } from "../../services/AuthService";
@@ -17,7 +17,7 @@ export default function Register() {
     password: "",
     confirmPassword: "",
   });
-  const [, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const isFormValid =
     formData.name.trim() !== "" &&
@@ -93,66 +93,75 @@ export default function Register() {
   };
 
   return (
-    <Card.Root className="register-card">
-      <Card.Header className="register-header">
-        <h1 className="register-title">Register</h1>
-      </Card.Header>
-      <Card.Body className="register-body">
-        <form onSubmit={handleSubmit} className="register-form">
-          <Input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Name"
-            value={formData.name}
-            onChange={handleInputChange}
-            required
-          />
-          <Input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleInputChange}
-            required
-          />
-          <Input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Username"
-            value={formData.username}
-            onChange={handleInputChange}
-            required
-          />
-          <PasswordInput
-            id="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleInputChange}
-            required
-          />
-          <PasswordInput
-            id="confirmPassword"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-            value={formData.confirmPassword}
-            onChange={handleInputChange}
-            required
-          />
-          <Button type="submit" disabled={!isFormValid}>
-            Register
-          </Button>
-        </form>
-        <p className="register-login-link">
-          Already have an account?{" "}
-          <Link to="/login" className="register-link">
-            Login here
-          </Link>
-        </p>
-      </Card.Body>
-    </Card.Root>
+    <>
+      {loading ? (
+        <VStack colorPalette="teal">
+          <Spinner color="colorPalette.600" />
+          <Text>Loading...</Text>
+        </VStack>
+      ) : (
+        <Card.Root className="register-card">
+          <Card.Header className="register-header">
+            <h1 className="register-title">Register</h1>
+          </Card.Header>
+          <Card.Body className="register-body">
+            <form onSubmit={handleSubmit} className="register-form">
+              <Input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Name"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+              />
+              <Input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+              />
+              <Input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Username"
+                value={formData.username}
+                onChange={handleInputChange}
+                required
+              />
+              <PasswordInput
+                id="password"
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleInputChange}
+                required
+              />
+              <PasswordInput
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                value={formData.confirmPassword}
+                onChange={handleInputChange}
+                required
+              />
+              <Button type="submit" disabled={!isFormValid}>
+                Register
+              </Button>
+            </form>
+            <p className="register-login-link">
+              Already have an account?{" "}
+              <Link to="/login" className="register-link">
+                Login here
+              </Link>
+            </p>
+          </Card.Body>
+        </Card.Root>
+      )}
+    </>
   );
 }

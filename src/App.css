@@ -136,12 +136,16 @@
   justify-content: center;
 }
 
+.logout-item {
+  box-shadow: 0 -1px 0 0 var(--border-color);
+}
+
 .header-container
   .header-content
   .header-third-part
   .header-menu-container
   button {
-  padding: 20px 16px;
+  padding: 20px 15px;
   border-radius: 8px;
   background-color: var(--primary);
   color: #ffffff;
@@ -161,7 +165,7 @@
 }
 
 .header-container .header-content .header-third-part .button-container button {
-  padding: 20px 16px;
+  padding: 20px 15px;
   border-radius: 8px;
   font-size: 16px;
   font-weight: bold;
@@ -409,17 +413,25 @@
   margin: 0;
 }
 
-/* Upload */
-.upload-container {
+.home-card .home-body {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  align-items: flex-start;
+  justify-content: flex-start;
   width: 100%;
+  padding: 0;
 }
 
-.upload-container .upload-content {
+.home-card .home-body .sheet-music-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+/* Upload */
+.upload-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -428,93 +440,52 @@
   width: 100%;
 }
 
-.upload-container .upload-content .upload-instructions-title {
+.upload-card .upload-header {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
-  margin-bottom: 16px;
 }
 
-.upload-container .upload-content .upload-instructions-title h2 {
+.upload-card .upload-header h1 {
   font-size: 24px;
   margin: 0;
 }
 
-.upload-container .upload-content .upload-form {
+.upload-card .upload-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 16px;
   height: 100%;
   width: 750px;
-}
-
-.upload-container .upload-content .upload-form .upload-title-container,
-.upload-container .upload-content .upload-form .upload-composer-container,
-.upload-container .upload-content .upload-form .upload-genre-container,
-.upload-container .upload-content .upload-form .upload-instrument-container,
-.upload-container .upload-content .upload-form .upload-difficulty-container,
-.upload-container .upload-content .upload-form .upload-description-container,
-.upload-container .upload-content .upload-form .upload-visibility-container,
-.upload-container .upload-content .upload-form .upload-file-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
   margin-bottom: 16px;
 }
 
-.upload-title-container > :last-child,
-.upload-composer-container > :last-child,
-.upload-genre-container > :last-child,
-.upload-instrument-container > :last-child,
-.upload-difficulty-container > :last-child,
-.upload-description-container > :last-child,
-.upload-visibility-container > :last-child {
-  width: 75%;
-}
-
-.upload-container
-  .upload-content
-  .upload-form
-  .upload-file-container
-  .upload-file-input-container {
+.upload-card .upload-form input {
   width: 100%;
-}
-
-.upload-container .upload-content .upload-form .button-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  box-shadow: 0px -1px 0px var(--border);
-  padding-top: 16px;
-}
-
-.upload-container .upload-content .upload-form .button-container button {
-  width: 100%;
-  padding: 12px;
+  padding: 24px;
   border-radius: 8px;
+}
+
+.upload-card .upload-form button.upload-button {
+  width: 100%;
+  padding: 24px;
+  border-radius: 999px;
   border: none;
-  color: var(--primary);
-  color: #fff;
+  background-color: var(--primary);
+  color: #ffffff;
   font-size: 16px;
   cursor: pointer;
 }
 
-.upload-container .upload-content .upload-form .button-container button:hover {
+.upload-card .upload-form button.upload-button:hover {
   background-color: var(--primary-hover);
 }
 
-.upload-container
-  .upload-content
-  .upload-form
-  .button-container
-  button:disabled {
+.upload-card .upload-form button.upload-button:disabled {
   background-color: var(--disabled);
   cursor: not-allowed;
 }

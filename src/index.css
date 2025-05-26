@@ -6,7 +6,7 @@
   --primary: #e61c5f;
   --primary-hover: #d61a5b;
   --disabled: #b0b0b0;
-  --secondary: #6c757d;
+  --border-color: #ced4da;
 }
 
 .dark {
@@ -17,6 +17,7 @@
   --primary: #e61c5f;
   --primary-hover: #d61a5b;
   --disabled: #b0b0b0;
+  --border-color: #666666;
 }
 
 body {
@@ -35,4 +36,9 @@ body {
 
 .css-14yuqlv {
   background-color: transparent !important;
+}
+
+.css-u03wm8 {
+  font-size: 16px !important;
+  padding: 12px 16px 12px 8px !important;
 }

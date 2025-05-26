@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getAllSheetMusic } from "../services/SheetMusicService";
 import type { SheetMusic } from "../models/SheetMusic";
 import { Card } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [sheetMusic, setSheetMusic] = useState<SheetMusic[]>([]);
@@ -27,12 +28,32 @@ export default function Home() {
       <Card.Body className="home-body">
         {sheetMusic.length > 0 ? (
           <ul className="sheet-music-list">
-            {sheetMusic.map((music) => (
-              <li key={music.id} className="sheet-music-item">
-                <h2 className="sheet-music-title">{music.title}</h2>
-                <p className="sheet-music-composer">{music.composer}</p>
-              </li>
-            ))}
+            {sheetMusic.map(
+              (music) =>
+                music.isPublic && (
+                  <li key={music.id} className="sheet-music-item">
+                    <Link
+                      to={`/scores/${music.id}`}
+                      className="sheet-music-link"
+                    >
+                      <img
+                        src={`/${music.previewImage}`}
+                        alt={music.title}
+                        className="sheet-music-image"
+                      />
+                    </Link>
+                    <Link
+                      to={`/scores/${music.id}`}
+                      className="sheet-music-title"
+                    >
+                      <h2 className="sheet-music-title">{music.title}</h2>
+                    </Link>
+                    <p className="sheet-music-composer">{music.composer}</p>
+                    <p className="sheet-music-genre">{music.genre}</p>
+                    <p className="sheet-music-instrument">{music.instrument}</p>
+                  </li>
+                )
+            )}
           </ul>
         ) : (
           <p>No sheet music available.</p>
