@@ -31,21 +31,21 @@ npm run dev
 ## Screenshots
 <div align="center">
   <div>
-    <img src="https://github.com/user-attachments/assets/75cf559a-3052-4c7b-979c-201ba7c4e13e">
+    <img src="https://github.com/user-attachments/assets/cc47b80c-7afa-4d80-b770-a75aa9e8b6fc">
   </div>
   <div>
-    <img src="https://github.com/user-attachments/assets/bca478ac-13e0-43c0-b05d-41192815e844">
+    <img src="https://github.com/user-attachments/assets/e86110a1-46c1-477c-8ff7-d8161346a720">
   </div>
   <div>
-    <img src="https://github.com/user-attachments/assets/ee780ddb-a275-4063-b68d-dc728686f9a2">
+    <img src="https://github.com/user-attachments/assets/9253bd8e-096c-4368-9f53-c24a272a2488">
   </div>
   <div>
-    <img src="https://github.com/user-attachments/assets/0fb5e6b0-a877-4fbc-a2cc-bca49a38e2ce">
+    <img src="https://github.com/user-attachments/assets/edebb6de-6ff7-4172-b1df-8655d0a2ff31">
   </div>
   <div>
-    <img src="https://github.com/user-attachments/assets/a126c0cd-a1fe-4077-a39b-e035b3e89b21">
+    <img src="https://github.com/user-attachments/assets/259feccc-fa0d-4738-be24-c46b20b7cab8">
   </div>
   <div>
-    <img src="https://github.com/user-attachments/assets/bd45a1d8-6386-468d-962d-c84d00802014">
+    <img src="https://github.com/user-attachments/assets/1b5d64c7-e7b4-411f-922f-7fa4503a1d37">
   </div>
 </div>
