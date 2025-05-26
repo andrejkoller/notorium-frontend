@@ -1,7 +1,6 @@
-import { Button, Icon } from "@chakra-ui/react";
+import { Switch } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useColorMode } from "../ui/color-mode";
-import { Moon, Sun } from "lucide-react";
 import { Tooltip } from "../ui/tooltip";
 
 export const ThemeSwitcher = () => {
@@ -32,13 +31,17 @@ export const ThemeSwitcher = () => {
 
   return (
     <Tooltip content="Switch theme" aria-label="Switch theme tooltip">
-      <Button
-        className="theme-switcher-button"
-        variant={"solid"}
-        onClick={() => handleThemeChange(!isChecked)}
+      <Switch.Root
+        className="theme-switcher"
+        checked={isChecked}
+        onCheckedChange={() => handleThemeChange(!isChecked)}
+        size="lg"
+        colorScheme="primary"
       >
-        <Icon as={isChecked ? Moon : Sun} />
-      </Button>
+        <Switch.HiddenInput />
+        <Switch.Control />
+        <Switch.Label />
+      </Switch.Root>
     </Tooltip>
   );
 };

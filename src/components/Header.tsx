@@ -65,9 +65,27 @@ export const Header = () => {
                 <Portal>
                   <Menu.Positioner>
                     <Menu.Content>
-                      <Menu.Item value="profile">Profile</Menu.Item>
-                      <Menu.Item value="scores">Scores</Menu.Item>
-                      <Menu.Item value="settings">Settings</Menu.Item>
+                      <Menu.Item value="profile">
+                        <Link
+                          to={`/users/${user.username}`}
+                          className="header-link"
+                        >
+                          My Profile
+                        </Link>
+                      </Menu.Item>
+                      <Menu.Item value="scores">
+                        <Link
+                          to={`/users/${user.username}/scores`}
+                          className="header-link"
+                        >
+                          My Scores
+                        </Link>
+                      </Menu.Item>
+                      <Menu.Item value="settings">
+                        <Link to={"/settings"} className="header-link">
+                          Settings
+                        </Link>
+                      </Menu.Item>
                       <Menu.Item value="logout" className="logout-item">
                         Logout
                       </Menu.Item>

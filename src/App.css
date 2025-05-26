@@ -489,3 +489,72 @@
   background-color: var(--disabled);
   cursor: not-allowed;
 }
+
+/* Settings */
+.settings-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.settings-card .settings-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.settings-card .settings-header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.settings-card .settings-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.settings-card .settings-body .settings-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 750px;
+  margin-bottom: 16px;
+}
+
+.settings-card .settings-body .settings-form .settings-field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.settings-card .settings-body .settings-form .settings-field .settings-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.settings-card .settings-body .settings-form .settings-field .settings-info label {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.settings-card .settings-body .settings-form .settings-field .settings-info p {
+  font-size: 16px;
+  color: var(--secondary);
+  margin: 0;
+}

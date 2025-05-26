@@ -8,6 +8,9 @@ import Register from "./components/authentication/Register";
 import { UserProvider } from "./contexts/UserContext";
 import Upload from "./components/Upload";
 import Sidebar from "./components/Sidebar";
+import Settings from "./components/Settings";
+import MyScores from "./components/MyScores";
+import MyProfile from "./components/MyProfile";
 
 function App() {
   const location = useLocation();
@@ -40,6 +43,9 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/upload" element={<Upload />} />
+              <Route path="/users/:username" element={<MyProfile />} />
+              <Route path="/users/:username/scores" element={<MyScores />} />
+              <Route path="/settings" element={<Settings />} />
             </Routes>
           </div>
         </main>

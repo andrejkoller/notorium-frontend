@@ -2,7 +2,7 @@ import { Button, Card, Input, Spinner, Text, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 import { login } from "../../services/AuthService";
 import { Link, useNavigate } from "react-router-dom";
-import { toaster } from "../ui/toaster";
+import { Toaster, toaster } from "../ui/toaster";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -32,12 +32,13 @@ export default function Login() {
 
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
-      navigate("/");
       toaster.success({
         title: "Login successful",
-        description: "Welcome back!",
-        duration: 5000,
+        description: "You are now logged in.",
+        duration: 2000,
       });
+      setLoading(false);
+      setTimeout(() => navigate("/"), 1000);
     } catch (err) {
       if (err instanceof Error) {
         setLoading(false);
@@ -95,6 +96,7 @@ export default function Login() {
           </Card.Body>
         </Card.Root>
       )}
+      <Toaster />
     </>
   );
 }

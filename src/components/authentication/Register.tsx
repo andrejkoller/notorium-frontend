@@ -3,7 +3,7 @@ import { useState } from "react";
 import { PasswordInput } from "../ui/password-input";
 import { register } from "../../services/AuthService";
 import { Link, useNavigate } from "react-router-dom";
-import { toaster } from "../ui/toaster";
+import { Toaster, toaster } from "../ui/toaster";
 
 export default function Register() {
   const MIN_PASSWORD_LENGTH = 8;
@@ -65,13 +65,13 @@ export default function Register() {
         formData.password,
         formData.confirmPassword
       );
-
-      navigate("/login");
       toaster.success({
         title: "Registration successful",
         description: "You can now log in.",
         duration: 5000,
       });
+      setLoading(false);
+      setTimeout(() => navigate("/login"), 1000);
     } catch (err) {
       setLoading(false);
       if (err instanceof Error) {
@@ -162,6 +162,7 @@ export default function Register() {
           </Card.Body>
         </Card.Root>
       )}
+      <Toaster />
     </>
   );
 }

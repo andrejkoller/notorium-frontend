@@ -1,10 +1,11 @@
 .light {
   --background: #ffffff;
-  --background-elevated: #6c757d;
+  --background-elevated: #f1f1f1;
   --background-card: #f8f9fa;
   --foreground: #000000;
   --primary: #e61c5f;
   --primary-hover: #d61a5b;
+  --secondary: #7e7e7e;
   --disabled: #b0b0b0;
   --border-color: #ced4da;
 }
@@ -16,6 +17,7 @@
   --foreground: #ffffff;
   --primary: #e61c5f;
   --primary-hover: #d61a5b;
+  --secondary: #7e7e7e;
   --disabled: #b0b0b0;
   --border-color: #666666;
 }
