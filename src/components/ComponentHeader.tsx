@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const ComponentHeader = () => {
@@ -6,7 +6,7 @@ export const ComponentHeader = () => {
     <div className="component-header">
       <div className="component-link">
         <Link to={"/"} className="component-link-text">
-          <ArrowLeft className="component-icon" />
+          <ChevronLeft className="component-icon" />
         </Link>
         <h2 className="component-title">Back to home</h2>
       </div>

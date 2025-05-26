@@ -1,9 +1,8 @@
 import { Button, Input, InputGroup, Menu, Portal } from "@chakra-ui/react";
-import { ChevronDown, Search, Upload } from "lucide-react";
+import { Search, Upload } from "lucide-react";
 import { getCurrentUser } from "../services/UserService";
 import { useEffect, useState } from "react";
 import type { User } from "../models/User";
-import { ThemeSwitcher } from "./theme/ThemeSwitcher";
 import { Link } from "react-router-dom";
 import { Tooltip } from "./ui/tooltip";
 
@@ -41,9 +40,6 @@ export const Header = () => {
           </div>
         </div>
         <div className="header-third-part">
-          <div className="header-theme-switcher">
-            <ThemeSwitcher />
-          </div>
           <div className="header-upload-button">
             <Tooltip
               content="Upload sheet music"
@@ -61,8 +57,9 @@ export const Header = () => {
               <Menu.Root>
                 <Menu.Trigger asChild>
                   <Button variant="outline" size="sm">
-                    <span className="header-username">{user.name}</span>
-                    <ChevronDown />
+                    <span className="header-username">
+                      {user.name.charAt(0).toUpperCase()}
+                    </span>
                   </Button>
                 </Menu.Trigger>
                 <Portal>

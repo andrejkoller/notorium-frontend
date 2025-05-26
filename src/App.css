@@ -1,10 +1,35 @@
 .main {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
-  justify-content: stretch;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
   height: 100vh;
   width: 100%;
+}
+
+.main .sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 20vw;
+  height: calc(100vh - 64px);
+  border-radius: 8px;
+  position: sticky;
+  background-color: var(--background-card);
+  margin-top: 64px;
+}
+
+.main .content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 64px);
+  width: 80vw;
+  margin-top: 64px;
+  margin-left: auto;
 }
 
 .theme-switcher-button {
@@ -21,10 +46,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 88px;
+  height: 64px;
   width: 100%;
   padding: 0 24px;
-  box-shadow: 0px 1px 0px var(--border);
   position: fixed;
   top: 0;
   left: 0;
@@ -72,15 +96,15 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 75%;
 }
 
 .header-container .header-content .header-second-part .header-searchbar input {
   width: 100%;
   padding: 24px;
   border-radius: 999px;
-  border: 1px solid var(--border);
   font-size: 16px;
+  background-color: var(--background-elevated);
 }
 
 .header-container .header-content .header-third-part {
@@ -88,7 +112,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  gap: 16px;
+  gap: 32px;
   width: 100%;
 }
 
@@ -118,12 +142,14 @@
   .header-third-part
   .header-menu-container
   button {
-  padding: 24px 0;
+  padding: 20px 16px;
   border-radius: 8px;
-  border: none;
-  background-color: transparent;
-  color: var(--forground);
+  background-color: var(--primary);
+  color: #ffffff;
+  border: 1px solid var(--foreground);
+  border-radius: 999px;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
 }
 
@@ -133,6 +159,45 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
+}
+
+/* Sidebar */
+.sidebar .sidebar-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+}
+
+.sidebar .sidebar-card .sidebar-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+}
+
+.sidebar .sidebar-card .sidebar-header .sidebar-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.sidebar .sidebar-card .sidebar-header .sidebar-title svg {
+  cursor: pointer;
+}
+
+.sidebar .sidebar-card .sidebar-header .sidebar-title h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
 }
 
 /* Login */
@@ -363,77 +428,28 @@
 }
 
 /* Home */
-.home-container {
+.home-card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  height: 100%;
   width: 100%;
   padding: 24px;
-  margin-top: 88px;
 }
 
-.home-container .home-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 100%;
-}
-
-.home-container .home-content .home-header {
+.home-card .home-header {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding-bottom: 16px;
+  padding: 0;
 }
 
-.home-container .home-content .home-header .home-header-title {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-}
-
-.home-container .home-content .home-header .home-header-title h1 {
+.home-card .home-header h1 {
   font-size: 24px;
   margin: 0;
-}
-
-.home-container .home-content .home-header .home-header-filter {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 16px;
-  width: 100%;
-}
-
-.home-container
-  .home-content
-  .home-header
-  .home-header-filter
-  .home-header-select-filter {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 140px;
-}
-
-.home-container
-  .home-content
-  .home-header
-  .home-header-filter
-  .home-header-select-order {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 140px;
 }
 
 /* Upload */

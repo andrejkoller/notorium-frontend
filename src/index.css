@@ -1,29 +1,22 @@
 .light {
   --background: #ffffff;
+  --background-elevated: #6c757d;
+  --background-card: #f8f9fa;
   --foreground: #000000;
-  --border: #dcdcdc;
-  --primary: #4097f5;
-  --primary-hover: #3a8ce0;
+  --primary: #e61c5f;
+  --primary-hover: #d61a5b;
   --disabled: #b0b0b0;
   --secondary: #6c757d;
-  --success: #28a745;
-  --danger: #dc3545;
-  --warning: #ffc107;
-  --info: #17a2b8;
 }
 
 .dark {
   --background: #000000;
+  --background-elevated: #1f1f1f;
+  --background-card: #0f0f0f;
   --foreground: #ffffff;
-  --border: #3c3c3c;
-  --primary: #4097f5;
-  --primary-hover: #3a8ce0;
+  --primary: #e61c5f;
+  --primary-hover: #d61a5b;
   --disabled: #b0b0b0;
-  --secondary: #6c757d;
-  --success: #28a745;
-  --danger: #dc3545;
-  --warning: #ffc107;
-  --info: #17a2b8;
 }
 
 body {
