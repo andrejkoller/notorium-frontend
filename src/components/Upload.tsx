@@ -18,7 +18,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { LuUpload } from "react-icons/lu";
 import { uploadSheetMusic } from "../services/SheetMusicService";
-import { toaster } from "./ui/toaster";
+import { Toaster, toaster } from "./ui/toaster";
 import { getCurrentUser } from "../services/UserService";
 import type { Difficulty, Genre, Instrument } from "../models/SheetMusic";
 import { useCurrentUser } from "../contexts/UserContext";
@@ -167,6 +167,11 @@ export default function Upload() {
     } catch (error) {
       setLoading(false);
       console.error("Error uploading sheet music:", error);
+      toaster.error({
+        title: "Upload failed",
+        description: "There was an error uploading your sheet music.",
+        duration: 5000,
+      });
     }
   };
 
@@ -402,6 +407,7 @@ export default function Upload() {
           </div>
         </Card.Root>
       )}
+      <Toaster />
     </>
   );
 }

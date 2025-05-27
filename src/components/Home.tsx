@@ -7,6 +7,10 @@ import { Link } from "react-router-dom";
 export default function Home() {
   const [sheetMusic, setSheetMusic] = useState<SheetMusic[]>([]);
 
+  function formatGenre(genre: string) {
+    return genre.replace(/([a-z])([A-Z])/g, "$1 $2");
+  }
+
   useEffect(() => {
     const fetchSheetMusic = async () => {
       try {
@@ -54,7 +58,9 @@ export default function Home() {
                         {music.instrument}
                       </p>
                       <span>-</span>
-                      <p className="sheet-music-genre">{music.genre}</p>
+                      <p className="sheet-music-genre">
+                        {formatGenre(music.genre)}
+                      </p>
                     </div>
                     <p className="sheet-music-author">
                       Uploaded by {music?.user?.name}
