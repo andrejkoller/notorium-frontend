@@ -1,13 +1,16 @@
 export interface User {
-    id: number;
-    name: string;
-    email: string;
-    username: string;
-    password: string;
-    token: string;
+  id: number;
+  name: string;
+  email: string;
+  username: string;
+  password: string;
+  role: Role;
+  token: string;
 }
 
 export interface UserResponse {
-    user: User;
-    token: string;
+  user: User;
+  token: string;
 }
+
+export type Role = "User" | "Admin";

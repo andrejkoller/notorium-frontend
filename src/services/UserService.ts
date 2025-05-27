@@ -1,4 +1,5 @@
 import type { User } from "../models/User";
+import type { UserUpdateDTO } from "../models/UserUpdateDTO";
 import axiosInstance from "./AxiosInstance";
 
 const BASE_URL = "https://localhost:7189/api/user";
@@ -14,6 +15,28 @@ export const getCurrentUser = async (): Promise<User> => {
     return response.data;
   } catch (error) {
     console.error("Error fetching current user:", error);
+    throw error;
+  }
+};
+
+export const updateUser = async (
+  userId: number,
+  user: UserUpdateDTO
+): Promise<User> => {
+  try {
+    const response = await axiosInstance.put(
+      `${BASE_URL}/update/${userId}`,
+      user,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error("Error updating user:", error);
     throw error;
   }
 };
