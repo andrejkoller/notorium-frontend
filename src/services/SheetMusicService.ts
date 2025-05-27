@@ -23,6 +23,28 @@ export const getAllSheetMusic = async (): Promise<SheetMusic[]> => {
   }
 };
 
+export const getCurrentUserSheetMusic = async (
+  userId: number
+): Promise<SheetMusic[]> => {
+  try {
+    const response = await axiosInstance.get(`${BASE_URL}/user/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.data || !Array.isArray(response.data)) {
+      throw new Error("Invalid response format");
+    }
+
+    return response.data as SheetMusic[];
+  } catch (error) {
+    console.error(`Error fetching sheet music for user ID ${userId}:`, error);
+    throw error;
+  }
+};
+
 export const getSheetMusicById = async (id: number): Promise<SheetMusic> => {
   try {
     const response = await axiosInstance.get(`${BASE_URL}/${id}`, {

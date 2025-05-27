@@ -14,11 +14,10 @@
   align-items: flex-start;
   justify-content: flex-start;
   width: 5vw;
-  height: calc(100vh - 64px);
+  height: 100%;
   border-radius: 8px;
   position: sticky;
   background-color: var(--background-card);
-  margin-top: 64px;
 }
 
 .sidebar-open {
@@ -35,8 +34,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 64px);
-  margin-top: 64px;
+  height: 100vh;
   margin-left: auto;
   flex: 1 1 100%;
 }
@@ -58,7 +56,6 @@
   height: 64px;
   width: 100%;
   padding: 0 8px;
-  position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -746,7 +743,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 48px;
   width: 100%;
 }
 
@@ -832,6 +828,93 @@
   font-size: 24px;
   font-weight: bold;
   margin: 0;
+}
+
+.profile-card .profile-body .profile-scores-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.profile-card .profile-body .profile-scores-list .profile-scores-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.profile-card
+  .profile-body
+  .profile-scores-list
+  .profile-scores-item
+  .profile-scores-link {
+  margin-bottom: 16px;
+}
+
+.profile-card
+  .profile-body
+  .profile-scores-list
+  .profile-scores-item
+  .profile-scores-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: 1px solid var(--sheet-border-color);
+}
+
+.profile-card
+  .profile-body
+  .profile-scores-list
+  .profile-scores-item
+  .profile-scores-image:hover {
+  border-color: var(--sheet-border-color-hover);
+}
+
+.profile-card
+  .profile-body
+  .profile-scores-list
+  .profile-scores-item
+  .profile-scores-title {
+  color: var(--primary);
+}
+
+.profile-card
+  .profile-body
+  .profile-scores-list
+  .profile-scores-item
+  .profile-scores-title:hover {
+  text-decoration: underline;
+}
+
+.profile-card
+  .profile-body
+  .profile-scores-list
+  .profile-scores-item
+  .profile-scores-title,
+.profile-card
+  .profile-body
+  .profile-scores-list
+  .profile-scores-item
+  .profile-scores-composer {
+  width: fit-content;
+}
+
+.profile-card
+  .profile-body
+  .profile-scores-list
+  .profile-scores-item
+  .profile-scores-genre-instrument {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  width: 100%;
 }
 
 /* Profile Dialog */
