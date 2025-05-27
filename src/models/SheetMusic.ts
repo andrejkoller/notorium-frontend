@@ -1,3 +1,5 @@
+import type { User } from "./User";
+
 export interface SheetMusic {
   id: number;
   title: string;
@@ -14,6 +16,7 @@ export interface SheetMusic {
   isPublic: boolean;
   downloadCount: number;
   userId: number;
+  user: User;
 }
 
 export type Genre =

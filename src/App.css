@@ -483,10 +483,72 @@
 
 .home-card .home-body .sheet-music-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 16px;
   width: 100%;
   margin-top: 16px;
+}
+
+.home-card .home-body .sheet-music-list .sheet-music-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.home-card .home-body .sheet-music-list .sheet-music-item .sheet-music-link {
+  margin-bottom: 16px;
+}
+
+.home-card .home-body .sheet-music-list .sheet-music-item .sheet-music-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: 1px solid var(--sheet-border-color);
+}
+
+.home-card
+  .home-body
+  .sheet-music-list
+  .sheet-music-item
+  .sheet-music-image:hover {
+  border-color: var(--sheet-border-color-hover);
+}
+
+.home-card .home-body .sheet-music-list .sheet-music-item .sheet-music-title {
+  color: var(--primary);
+}
+
+.home-card
+  .home-body
+  .sheet-music-list
+  .sheet-music-item
+  .sheet-music-title:hover {
+  text-decoration: underline;
+}
+
+.home-card .home-body .sheet-music-list .sheet-music-item .sheet-music-title,
+.home-card
+  .home-body
+  .sheet-music-list
+  .sheet-music-item
+  .sheet-music-composer {
+  width: fit-content;
+}
+
+.home-card
+  .home-body
+  .sheet-music-list
+  .sheet-music-item
+  .sheet-music-genre-instrument {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  width: 100%;
 }
 
 /* Upload */
@@ -496,7 +558,7 @@
   align-items: center;
   justify-content: flex-start;
   height: 100%;
-  width: 100%;
+  width: fit-content;
 }
 
 .upload-card .upload-content {
@@ -836,4 +898,43 @@
   button:disabled {
   background-color: var(--disabled);
   cursor: not-allowed;
+}
+
+/* My Scores */
+.my-scores-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.my-scores-card .my-scores-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.my-scores-card .my-scores-header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.my-scores-card .my-scores-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.my-scores-card .my-scores-body .my-scores-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 16px;
 }

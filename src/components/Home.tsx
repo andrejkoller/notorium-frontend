@@ -37,7 +37,7 @@ export default function Home() {
                       className="sheet-music-link"
                     >
                       <img
-                        src={`/${music.previewImage}`}
+                        src={`https://localhost:7189/${music.previewImage}`}
                         alt={music.title}
                         className="sheet-music-image"
                       />
@@ -49,8 +49,23 @@ export default function Home() {
                       <h2 className="sheet-music-title">{music.title}</h2>
                     </Link>
                     <p className="sheet-music-composer">{music.composer}</p>
-                    <p className="sheet-music-genre">{music.genre}</p>
-                    <p className="sheet-music-instrument">{music.instrument}</p>
+                    <div className="sheet-music-genre-instrument">
+                      <p className="sheet-music-instrument">
+                        {music.instrument}
+                      </p>
+                      <span>-</span>
+                      <p className="sheet-music-genre">{music.genre}</p>
+                    </div>
+                    <p className="sheet-music-author">
+                      Uploaded by {music?.user?.name}
+                    </p>
+                    <p className="sheet-music-date">
+                      {new Date(music.uploadedAt).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </p>
                   </li>
                 )
             )}
