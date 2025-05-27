@@ -15,9 +15,15 @@ import { useRef, useState } from "react";
 
 function App() {
   const location = useLocation();
-  const isLoginPage = location.pathname === "/login";
-  const isRegisterPage = location.pathname === "/register";
-  const isUploadPage = location.pathname === "/upload";
+  const sidebarHiddenRoutes = [
+    "/login",
+    "/register",
+    "/upload",
+    "/settings",
+    "/users/",
+    "/users/scores",
+  ];
+  const pathName = location.pathname;
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -30,7 +36,7 @@ function App() {
           <Header />
         </nav>
         <main className="main">
-          {!isLoginPage && !isRegisterPage && !isUploadPage && (
+          {!sidebarHiddenRoutes.some((p) => pathName.startsWith(p)) && (
             <div
               className={`sidebar${sidebarOpen ? " sidebar-open" : ""}`}
               ref={sidebarRef}
@@ -45,7 +51,7 @@ function App() {
           <div
             className="content"
             style={
-              isLoginPage || isRegisterPage || isUploadPage
+              !sidebarHiddenRoutes.some((p) => pathName.startsWith(p))
                 ? { width: "100%" }
                 : sidebarOpen
                 ? { width: "80vw" }

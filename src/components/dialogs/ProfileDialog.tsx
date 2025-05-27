@@ -1,4 +1,12 @@
-import { Button, Card, Input, Spinner, Text, VStack } from "@chakra-ui/react";
+import {
+  Button,
+  Card,
+  Input,
+  Spinner,
+  Text,
+  Textarea,
+  VStack,
+} from "@chakra-ui/react";
 import { useState } from "react";
 import { Toaster, toaster } from "../ui/toaster";
 import { updateUser } from "../../services/UserService";
@@ -10,6 +18,7 @@ type ProfileDialogProps = {
     name: string;
     email: string;
     username: string;
+    description?: string;
   } | null;
   setCurrentUser: (user: User) => void;
 };
@@ -22,18 +31,28 @@ export default function ProfileDialog({
     name: currentUser?.name || "",
     email: currentUser?.email || "",
     username: currentUser?.username || "",
+    description: currentUser?.description || "No description provided.",
   });
   const [loading, setLoading] = useState(false);
 
   const isFormValid =
     formData.name.trim() !== "" &&
     formData.email.trim() !== "" &&
-    formData.username.trim() !== "";
+    formData.username.trim() !== "" &&
+    formData.description.trim() !== "" &&
+    formData.email.includes("@");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      description: e.target.value,
     }));
   };
 
@@ -47,12 +66,7 @@ export default function ProfileDialog({
     }
 
     try {
-      if (
-        currentUser ||
-        (formData.name !== "" &&
-          formData.email !== "" &&
-          formData.username !== "")
-      ) {
+      if (currentUser && isFormValid) {
         if (!currentUser) {
           setLoading(false);
           toaster.error({
@@ -66,6 +80,7 @@ export default function ProfileDialog({
           name: formData.name,
           email: formData.email,
           username: formData.username,
+          description: formData.description,
         };
         await updateUser(currentUser.id, userUpdateDto);
         setCurrentUser({
@@ -84,6 +99,7 @@ export default function ProfileDialog({
           name: userUpdateDto.name,
           email: userUpdateDto.email,
           username: userUpdateDto.username,
+          description: currentUser.description || "",
         });
       }
     } catch (error) {
@@ -140,6 +156,14 @@ export default function ProfileDialog({
                   value={formData.username}
                   onChange={handleInputChange}
                   required
+                />
+                <Textarea
+                  id="description"
+                  name="description"
+                  placeholder="Description"
+                  value={formData.description}
+                  onChange={handleTextareaChange}
+                  rows={4}
                 />
               </Card.Body>
               <Card.Footer className="profile-dialog-footer">

@@ -1,26 +1,42 @@
 import { Button, Input, InputGroup, Menu, Portal } from "@chakra-ui/react";
 import { Search, Upload } from "lucide-react";
 import { getCurrentUser } from "../services/UserService";
-import { useEffect, useState } from "react";
-import type { User } from "../models/User";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Tooltip } from "./ui/tooltip";
+import { useCurrentUser } from "../contexts/UserContext";
 
 export const Header = () => {
-  const [user, setUser] = useState<User | null>(null);
+  const { currentUser, setCurrentUser } = useCurrentUser();
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    if (currentUser) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      setCurrentUser(null);
+      navigate("/login");
+    } else {
+      console.error("No user is currently logged in.");
+    }
+  };
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const user = await getCurrentUser();
-        setUser(user);
+        setCurrentUser({
+          ...user,
+          name: user.name || "Guest",
+        });
       } catch (error) {
         console.error("Error fetching user:", error);
       }
     };
 
     fetchUser();
-  }, []);
+  }, [setCurrentUser]);
 
   return (
     <div className="header-container">
@@ -52,13 +68,15 @@ export const Header = () => {
               </Link>
             </Tooltip>
           </div>
-          {user ? (
+          {currentUser ? (
             <div className="header-menu-container">
               <Menu.Root>
                 <Menu.Trigger asChild>
                   <Button variant="outline" size="sm">
                     <span className="header-username">
-                      {user.name.charAt(0).toUpperCase()}
+                      {currentUser?.name
+                        ? currentUser.name.charAt(0).toUpperCase()
+                        : "?"}
                     </span>
                   </Button>
                 </Menu.Trigger>
@@ -67,7 +85,7 @@ export const Header = () => {
                     <Menu.Content>
                       <Menu.Item value="profile">
                         <Link
-                          to={`/users/${user.username}`}
+                          to={`/users/${currentUser.username}`}
                           className="header-link"
                         >
                           My Profile
@@ -75,7 +93,7 @@ export const Header = () => {
                       </Menu.Item>
                       <Menu.Item value="scores">
                         <Link
-                          to={`/users/${user.username}/scores`}
+                          to={`/users/${currentUser.username}/scores`}
                           className="header-link"
                         >
                           My Scores
@@ -86,7 +104,11 @@ export const Header = () => {
                           Settings
                         </Link>
                       </Menu.Item>
-                      <Menu.Item value="logout" className="logout-item">
+                      <Menu.Item
+                        value="logout"
+                        className="logout-item"
+                        onClick={handleLogout}
+                      >
                         Logout
                       </Menu.Item>
                     </Menu.Content>

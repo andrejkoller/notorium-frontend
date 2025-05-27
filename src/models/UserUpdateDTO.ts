@@ -4,5 +4,6 @@ export interface UserUpdateDTO {
   name: string;
   email: string;
   username: string;
+  description?: string;
   role?: Role;
 }

@@ -3,7 +3,7 @@ import type { User } from "../models/User";
 
 type UserContextType = {
   currentUser: User | null;
-  setCurrentUser: React.Dispatch<React.SetStateAction<User>>;
+  setCurrentUser: React.Dispatch<React.SetStateAction<User | null>>;
 };
 
 const CurrentUserContext = createContext<UserContextType | undefined>(
@@ -13,7 +13,7 @@ const CurrentUserContext = createContext<UserContextType | undefined>(
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [currentUser, setCurrentUser] = useState<User>({} as User);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
   return (
     <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       {children}

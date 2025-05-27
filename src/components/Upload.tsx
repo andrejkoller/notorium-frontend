@@ -19,12 +19,13 @@ import React, { useEffect, useState } from "react";
 import { LuUpload } from "react-icons/lu";
 import { uploadSheetMusic } from "../services/SheetMusicService";
 import { toaster } from "./ui/toaster";
-import type { User } from "../models/User";
 import { getCurrentUser } from "../services/UserService";
 import type { Difficulty, Genre, Instrument } from "../models/SheetMusic";
+import { useCurrentUser } from "../contexts/UserContext";
 
 export default function Upload() {
-  const [user, setUser] = useState<User | null>(null);
+  const { currentUser, setCurrentUser } = useCurrentUser();
+
   const [formData, setFormData] = useState({
     title: "",
     composer: "",
@@ -33,7 +34,7 @@ export default function Upload() {
     difficulty: "",
     description: "",
     isPublic: true,
-    userId: user?.id,
+    userId: currentUser?.id,
   });
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
@@ -155,7 +156,7 @@ export default function Upload() {
         difficulty: "",
         description: "",
         isPublic: true,
-        userId: user?.id || 0,
+        userId: currentUser?.id || 0,
       });
       setFile(null);
       toaster.success({
@@ -173,7 +174,7 @@ export default function Upload() {
     const fetchUser = async () => {
       try {
         const currentUser = await getCurrentUser();
-        setUser(currentUser);
+        setCurrentUser(currentUser);
         setFormData((prevData) => ({
           ...prevData,
           userId: currentUser.id,
@@ -184,7 +185,7 @@ export default function Upload() {
     };
 
     fetchUser();
-  }, []);
+  }, [setCurrentUser]);
 
   return (
     <>
@@ -195,208 +196,210 @@ export default function Upload() {
         </VStack>
       ) : (
         <Card.Root className="upload-card">
-          <Card.Header className="upload-header">
-            <h1 className="upload-title">Upload Sheet Music</h1>
-          </Card.Header>
-          <Card.Body className="upload-body">
-            <form onSubmit={handleUpload} className="upload-form">
-              <Input
-                name="title"
-                placeholder="Title"
-                value={formData.title}
-                onChange={handleInputChange}
-                required
-                className="upload-input"
-              />
-              <Input
-                name="composer"
-                placeholder="Composer"
-                value={formData.composer}
-                onChange={handleInputChange}
-                required
-                className="upload-input"
-              />
-              <Select.Root
-                size={"lg"}
-                value={formData.genre ? [formData.genre] : []}
-                onValueChange={(e) =>
-                  handleSelectChange(
-                    "genre",
-                    (e as { items: { value: string }[] }).items[0].value
-                  )
-                }
-                collection={createListCollection({
-                  items: genreOptions.map((genre) => ({
-                    label: genre,
-                    value: genre,
-                  })),
-                })}
-              >
-                <Select.HiddenSelect />
-                <Select.Control>
-                  <Select.Trigger>
-                    <Select.ValueText placeholder="Genre" />
-                  </Select.Trigger>
-                  <Select.IndicatorGroup>
-                    <Select.Indicator />
-                  </Select.IndicatorGroup>
-                </Select.Control>
-                <Portal>
-                  <Select.Positioner>
-                    <Select.Content>
-                      {genreOptions.map((genre) => (
-                        <Select.Item
-                          item={{ label: genre, value: genre }}
-                          key={genre}
-                        >
-                          {genre}
-                          <Select.ItemIndicator />
-                        </Select.Item>
-                      ))}
-                    </Select.Content>
-                  </Select.Positioner>
-                </Portal>
-              </Select.Root>
-              <Select.Root
-                size={"lg"}
-                value={formData.instrument ? [formData.instrument] : []}
-                onValueChange={(e) =>
-                  handleSelectChange(
-                    "instrument",
-                    (e as { items: { value: string }[] }).items[0].value
-                  )
-                }
-                collection={createListCollection({
-                  items: instrumentOptions.map((instrument) => ({
-                    label: instrument,
-                    value: instrument,
-                  })),
-                })}
-              >
-                <Select.HiddenSelect />
-                <Select.Control>
-                  <Select.Trigger>
-                    <Select.ValueText placeholder="Instrument" />
-                  </Select.Trigger>
-                  <Select.IndicatorGroup>
-                    <Select.Indicator />
-                  </Select.IndicatorGroup>
-                </Select.Control>
-                <Portal>
-                  <Select.Positioner>
-                    <Select.Content>
-                      {instrumentOptions.map((instrument) => (
-                        <Select.Item
-                          item={{ label: instrument, value: instrument }}
-                          key={instrument}
-                        >
-                          {instrument}
-                          <Select.ItemIndicator />
-                        </Select.Item>
-                      ))}
-                    </Select.Content>
-                  </Select.Positioner>
-                </Portal>
-              </Select.Root>
-              <Select.Root
-                size={"lg"}
-                value={formData.difficulty ? [formData.difficulty] : []}
-                onValueChange={(e) =>
-                  handleSelectChange(
-                    "difficulty",
-                    (e as { items: { value: string }[] }).items[0].value
-                  )
-                }
-                collection={createListCollection({
-                  items: difficultyOptions.map((difficulty) => ({
-                    label: difficulty,
-                    value: difficulty,
-                  })),
-                })}
-              >
-                <Select.HiddenSelect />
-                <Select.Control>
-                  <Select.Trigger>
-                    <Select.ValueText placeholder="Difficulty" />
-                  </Select.Trigger>
-                  <Select.IndicatorGroup>
-                    <Select.Indicator />
-                  </Select.IndicatorGroup>
-                </Select.Control>
-                <Portal>
-                  <Select.Positioner>
-                    <Select.Content>
-                      {difficultyOptions.map((difficulty) => (
-                        <Select.Item
-                          item={{ label: difficulty, value: difficulty }}
-                          key={difficulty}
-                        >
-                          {difficulty}
-                          <Select.ItemIndicator />
-                        </Select.Item>
-                      ))}
-                    </Select.Content>
-                  </Select.Positioner>
-                </Portal>
-              </Select.Root>
-              <Textarea
-                name="description"
-                placeholder="Description"
-                value={formData.description}
-                onChange={handleTextareaChange}
-                required
-                className="upload-textarea"
-              />
-              <RadioGroup.Root
-                size="lg"
-                defaultValue="true"
-                value={formData.isPublic ? "true" : "false"}
-                onValueChange={(e) => handleRadioChange(e.value ?? "true")}
-              >
-                <HStack gap="6">
-                  {visibilityItems.map((visibilityItem) => (
-                    <RadioGroup.Item
-                      key={visibilityItem.label}
-                      value={visibilityItem.value.toString()}
-                    >
-                      <RadioGroup.ItemHiddenInput />
-                      <RadioGroup.ItemIndicator />
-                      <RadioGroup.ItemText>
-                        {visibilityItem.label}
-                      </RadioGroup.ItemText>
-                    </RadioGroup.Item>
-                  ))}
-                </HStack>
-              </RadioGroup.Root>
-              <FileUpload.Root
-                maxW="xl"
-                alignItems="stretch"
-                maxFiles={1}
-                onFileChange={(details) => {
-                  handleFileChange(details.acceptedFiles);
-                }}
-              >
-                <FileUpload.HiddenInput />
-                <FileUpload.Dropzone>
-                  <Icon size="md" color="fg.muted">
-                    <LuUpload />
-                  </Icon>
-                  <FileUpload.DropzoneContent>
-                    <Box>Drag and drop files here</Box>
-                    <Box color="fg.muted">.png, .jpg up to 5MB</Box>
-                  </FileUpload.DropzoneContent>
-                </FileUpload.Dropzone>
-                <FileUpload.List />
-              </FileUpload.Root>
-              <Button
-                type="submit"
-                disabled={!isFormValid || loading}
-                className="upload-button"
-              >
-                Upload
-              </Button>
-            </form>
-          </Card.Body>
+          <div className="upload-content">
+            <Card.Header className="upload-header">
+              <h1 className="upload-title">Upload Sheet Music</h1>
+            </Card.Header>
+            <Card.Body className="upload-body">
+              <form onSubmit={handleUpload} className="upload-form">
+                <Input
+                  name="title"
+                  placeholder="Title"
+                  value={formData.title}
+                  onChange={handleInputChange}
+                  required
+                  className="upload-input"
+                />
+                <Input
+                  name="composer"
+                  placeholder="Composer"
+                  value={formData.composer}
+                  onChange={handleInputChange}
+                  required
+                  className="upload-input"
+                />
+                <Select.Root
+                  size={"lg"}
+                  value={formData.genre ? [formData.genre] : []}
+                  onValueChange={(e) =>
+                    handleSelectChange(
+                      "genre",
+                      (e as { items: { value: string }[] }).items[0].value
+                    )
+                  }
+                  collection={createListCollection({
+                    items: genreOptions.map((genre) => ({
+                      label: genre,
+                      value: genre,
+                    })),
+                  })}
+                >
+                  <Select.HiddenSelect />
+                  <Select.Control>
+                    <Select.Trigger>
+                      <Select.ValueText placeholder="Genre" />
+                    </Select.Trigger>
+                    <Select.IndicatorGroup>
+                      <Select.Indicator />
+                    </Select.IndicatorGroup>
+                  </Select.Control>
+                  <Portal>
+                    <Select.Positioner>
+                      <Select.Content>
+                        {genreOptions.map((genre) => (
+                          <Select.Item
+                            item={{ label: genre, value: genre }}
+                            key={genre}
+                          >
+                            {genre}
+                            <Select.ItemIndicator />
+                          </Select.Item>
+                        ))}
+                      </Select.Content>
+                    </Select.Positioner>
+                  </Portal>
+                </Select.Root>
+                <Select.Root
+                  size={"lg"}
+                  value={formData.instrument ? [formData.instrument] : []}
+                  onValueChange={(e) =>
+                    handleSelectChange(
+                      "instrument",
+                      (e as { items: { value: string }[] }).items[0].value
+                    )
+                  }
+                  collection={createListCollection({
+                    items: instrumentOptions.map((instrument) => ({
+                      label: instrument,
+                      value: instrument,
+                    })),
+                  })}
+                >
+                  <Select.HiddenSelect />
+                  <Select.Control>
+                    <Select.Trigger>
+                      <Select.ValueText placeholder="Instrument" />
+                    </Select.Trigger>
+                    <Select.IndicatorGroup>
+                      <Select.Indicator />
+                    </Select.IndicatorGroup>
+                  </Select.Control>
+                  <Portal>
+                    <Select.Positioner>
+                      <Select.Content>
+                        {instrumentOptions.map((instrument) => (
+                          <Select.Item
+                            item={{ label: instrument, value: instrument }}
+                            key={instrument}
+                          >
+                            {instrument}
+                            <Select.ItemIndicator />
+                          </Select.Item>
+                        ))}
+                      </Select.Content>
+                    </Select.Positioner>
+                  </Portal>
+                </Select.Root>
+                <Select.Root
+                  size={"lg"}
+                  value={formData.difficulty ? [formData.difficulty] : []}
+                  onValueChange={(e) =>
+                    handleSelectChange(
+                      "difficulty",
+                      (e as { items: { value: string }[] }).items[0].value
+                    )
+                  }
+                  collection={createListCollection({
+                    items: difficultyOptions.map((difficulty) => ({
+                      label: difficulty,
+                      value: difficulty,
+                    })),
+                  })}
+                >
+                  <Select.HiddenSelect />
+                  <Select.Control>
+                    <Select.Trigger>
+                      <Select.ValueText placeholder="Difficulty" />
+                    </Select.Trigger>
+                    <Select.IndicatorGroup>
+                      <Select.Indicator />
+                    </Select.IndicatorGroup>
+                  </Select.Control>
+                  <Portal>
+                    <Select.Positioner>
+                      <Select.Content>
+                        {difficultyOptions.map((difficulty) => (
+                          <Select.Item
+                            item={{ label: difficulty, value: difficulty }}
+                            key={difficulty}
+                          >
+                            {difficulty}
+                            <Select.ItemIndicator />
+                          </Select.Item>
+                        ))}
+                      </Select.Content>
+                    </Select.Positioner>
+                  </Portal>
+                </Select.Root>
+                <Textarea
+                  name="description"
+                  placeholder="Description"
+                  value={formData.description}
+                  onChange={handleTextareaChange}
+                  required
+                  className="upload-textarea"
+                />
+                <RadioGroup.Root
+                  size="lg"
+                  defaultValue="true"
+                  value={formData.isPublic ? "true" : "false"}
+                  onValueChange={(e) => handleRadioChange(e.value ?? "true")}
+                >
+                  <HStack gap="6">
+                    {visibilityItems.map((visibilityItem) => (
+                      <RadioGroup.Item
+                        key={visibilityItem.label}
+                        value={visibilityItem.value.toString()}
+                      >
+                        <RadioGroup.ItemHiddenInput />
+                        <RadioGroup.ItemIndicator />
+                        <RadioGroup.ItemText>
+                          {visibilityItem.label}
+                        </RadioGroup.ItemText>
+                      </RadioGroup.Item>
+                    ))}
+                  </HStack>
+                </RadioGroup.Root>
+                <FileUpload.Root
+                  maxW="xl"
+                  alignItems="stretch"
+                  maxFiles={1}
+                  onFileChange={(details) => {
+                    handleFileChange(details.acceptedFiles);
+                  }}
+                >
+                  <FileUpload.HiddenInput />
+                  <FileUpload.Dropzone>
+                    <Icon size="md" color="fg.muted">
+                      <LuUpload />
+                    </Icon>
+                    <FileUpload.DropzoneContent>
+                      <Box>Drag and drop files here</Box>
+                      <Box color="fg.muted">.png, .jpg up to 5MB</Box>
+                    </FileUpload.DropzoneContent>
+                  </FileUpload.Dropzone>
+                  <FileUpload.List />
+                </FileUpload.Root>
+                <Button
+                  type="submit"
+                  disabled={!isFormValid || loading}
+                  className="upload-button"
+                >
+                  Upload
+                </Button>
+              </form>
+            </Card.Body>
+          </div>
         </Card.Root>
       )}
     </>

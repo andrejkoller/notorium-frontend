@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getCurrentUser } from "../services/UserService";
-import type { User } from "../models/User";
 import { Card, Dialog, Portal } from "@chakra-ui/react";
 import ProfileDialog from "./dialogs/ProfileDialog";
+import { useCurrentUser } from "../contexts/UserContext";
 
 export default function MyProfile() {
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const { currentUser, setCurrentUser } = useCurrentUser();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -18,7 +18,7 @@ export default function MyProfile() {
     };
 
     fetchUser();
-  }, []);
+  }, [setCurrentUser]);
 
   return (
     <Dialog.Root>
@@ -26,17 +26,22 @@ export default function MyProfile() {
         <Card.Body className="profile-body">
           {currentUser ? (
             <div className="profile-details">
-              <div className="profile-image">
-                <span>{currentUser.name.charAt(0).toUpperCase()}</span>
-              </div>
-              <div className="profile-username">
-                <p>Profile</p>
-                <div className="profile-username-text">
-                  <Dialog.Trigger asChild>
-                    <h2>{currentUser.name}</h2>
-                  </Dialog.Trigger>
-                  <p>@{currentUser.username}</p>
+              <div className="profile-details-wrapper">
+                <div className="profile-image">
+                  <span>{currentUser.name.charAt(0).toUpperCase()}</span>
                 </div>
+                <div className="profile-username">
+                  <p>Profile</p>
+                  <div className="profile-username-text">
+                    <Dialog.Trigger asChild>
+                      <h2>{currentUser.name}</h2>
+                    </Dialog.Trigger>
+                    <p>@{currentUser.username}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="profile-description">
+                <p>{currentUser.description || "No description provided."}</p>
               </div>
               <Portal>
                 <Dialog.Backdrop />
@@ -55,7 +60,7 @@ export default function MyProfile() {
           )}
           <div className="profile-scores">
             <div className="profile-scores-title">
-              <h3>Scores</h3>
+              <h3>Last published scores</h3>
             </div>
             <div className="profile-scores-list"></div>
           </div>
