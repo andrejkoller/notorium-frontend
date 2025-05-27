@@ -622,7 +622,7 @@
 }
 
 /* My Profile */
-.my-profile-card {
+.profile-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -631,7 +631,7 @@
   width: 100%;
 }
 
-.my-profile-card .my-profile-header {
+.profile-card .profile-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -639,36 +639,122 @@
   width: 100%;
 }
 
-.my-profile-card .my-profile-header h1 {
+.profile-card .profile-header h1 {
   font-size: 24px;
   margin: 0;
 }
 
-.my-profile-card .my-profile-body {
+.profile-card .profile-body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  gap: 48px;
   width: 100%;
 }
 
-.my-profile-card .my-profile-body .my-profile-form {
+.profile-card .profile-body .profile-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.profile-card .profile-body .profile-details .profile-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  width: 250px;
+  border-radius: 999px;
+  background-color: var(--primary);
+  border: 1px solid var(--foreground);
+}
+
+.profile-card .profile-body .profile-details .profile-image span {
+  font-size: 72px;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0;
+}
+
+.profile-card .profile-body .profile-details .profile-username {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.profile-card .profile-body .profile-details .profile-username h2 {
+  font-size: 72px;
+  font-weight: bold;
+  margin: 0;
+  cursor: pointer;
+}
+
+.profile-card .profile-body .profile-scores {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.profile-card .profile-body .profile-scores .profile-scores-title h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Profile Dialog */
+.profile-dialog-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.profile-dialog-card .profile-dialog-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.profile-dialog-card .profile-dialog-form .profile-dialog-header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.profile-dialog-card .profile-dialog-form .profile-dialog-body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 16px;
-  width: 750px;
-  margin-bottom: 16px;
+  width: 100%;
 }
 
-.my-profile-card .my-profile-body .my-profile-form input {
+.profile-dialog-card .profile-dialog-form .profile-dialog-body input {
   width: 100%;
   padding: 24px;
   border-radius: 8px;
 }
 
-.my-profile-card .my-profile-body .my-profile-form button {
+.profile-dialog-card .profile-dialog-form .profile-dialog-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.profile-dialog-card .profile-dialog-form .profile-dialog-footer button {
   width: 100%;
   padding: 24px;
   border-radius: 999px;
@@ -679,11 +765,14 @@
   cursor: pointer;
 }
 
-.my-profile-card .my-profile-body .my-profile-form button:hover {
+.profile-dialog-card .profile-dialog-form .profile-dialog-footer button:hover {
   background-color: var(--primary-hover);
 }
 
-.my-profile-card .my-profile-body .my-profile-form button:disabled {
+.profile-dialog-card
+  .profile-dialog-form
+  .profile-dialog-footer
+  button:disabled {
   background-color: var(--disabled);
   cursor: not-allowed;
 }
