@@ -11,12 +11,17 @@ import Sidebar from "./components/Sidebar";
 import Settings from "./components/Settings";
 import MyScores from "./components/MyScores";
 import MyProfile from "./components/MyProfile";
+import { useRef, useState } from "react";
 
 function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === "/login";
   const isRegisterPage = location.pathname === "/register";
   const isUploadPage = location.pathname === "/upload";
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const sidebarRef = useRef<HTMLDivElement>(null);
 
   return (
     <UserProvider>
@@ -26,8 +31,15 @@ function App() {
         </nav>
         <main className="main">
           {!isLoginPage && !isRegisterPage && !isUploadPage && (
-            <div className="sidebar">
-              <Sidebar />
+            <div
+              className={`sidebar${sidebarOpen ? " sidebar-open" : ""}`}
+              ref={sidebarRef}
+            >
+              <Sidebar
+                sidebarOpen={sidebarOpen}
+                setSidebarOpen={setSidebarOpen}
+                sidebarRef={sidebarRef}
+              />
             </div>
           )}
           <div
@@ -35,7 +47,9 @@ function App() {
             style={
               isLoginPage || isRegisterPage || isUploadPage
                 ? { width: "100%" }
-                : { width: "80vw" }
+                : sidebarOpen
+                ? { width: "80vw" }
+                : { width: "95vw" }
             }
           >
             <Routes>
