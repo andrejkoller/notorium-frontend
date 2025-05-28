@@ -35,14 +35,14 @@ export default function Login() {
 
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
+      setCurrentUser(data.user);
+      setLoading(false);
+      navigate("/");
       toaster.success({
         title: "Login successful",
         description: "You are now logged in.",
         duration: 2000,
       });
-      setCurrentUser(data.user);
-      setLoading(false);
-      setTimeout(() => navigate("/"), 1000);
     } catch (err) {
       if (err instanceof Error) {
         setLoading(false);

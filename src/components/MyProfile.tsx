@@ -1,19 +1,59 @@
-import { useEffect, useState } from "react";
-import { Card, Dialog, Portal } from "@chakra-ui/react";
+import React, { useEffect, useState, useRef } from "react";
+import {
+  Card,
+  createListCollection,
+  Dialog,
+  Input,
+  Portal,
+  Select,
+} from "@chakra-ui/react";
 import ProfileDialog from "./dialogs/ProfileDialog";
 import { useCurrentUser } from "../contexts/UserContext";
 import { getCurrentUserSheetMusic } from "../services/SheetMusicService";
 import type { SheetMusic } from "../models/SheetMusic";
 import { Link } from "react-router-dom";
+import { Tooltip } from "./ui/tooltip";
+import { uploadProfilePicture } from "../services/UserService";
+import { Toaster, toaster } from "./ui/toaster";
 
 export default function MyProfile() {
+  const sheetMusicCollectionFilter = createListCollection({
+    items: [{ label: "Upload Date", value: "upload-date" }],
+  });
+
   const { currentUser, setCurrentUser } = useCurrentUser();
   const [sheetMusic, setSheetMusic] = useState<SheetMusic[]>([]);
   const [loadingScores, setLoadingScores] = useState(true);
 
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
   function formatGenre(genre: string) {
     return genre.replace(/([a-z])([A-Z])/g, "$1 $2");
   }
+
+  const handleProfileImageClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleProfileImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (currentUser && e.target.files?.length) {
+      const file = e.target.files[0];
+      const formData = new FormData();
+      formData.append("profileImageFile", file);
+
+      uploadProfilePicture(currentUser.id, formData)
+        .then((updatedUser) => {
+          setCurrentUser({ ...currentUser, ...updatedUser });
+          toaster.success({
+            title: "Profile picture updated",
+            description: "Your profile picture has been successfully updated.",
+          });
+        })
+        .catch((error) => {
+          console.error("Error uploading profile picture:", error);
+        });
+    }
+  };
 
   useEffect(() => {
     if (!currentUser?.id) return;
@@ -34,23 +74,40 @@ export default function MyProfile() {
           {currentUser ? (
             <div className="profile-details">
               <div className="profile-details-wrapper">
-                <div className="profile-image">
-                  <span>
-                    {currentUser.name?.charAt(0).toUpperCase() ?? "?"}
-                  </span>
-                </div>
+                <Tooltip content="Click to change profile image">
+                  <div
+                    className="profile-image"
+                    onClick={handleProfileImageClick}
+                  >
+                    {currentUser.profilePicture ? (
+                      <img
+                        src={`https://localhost:7189/${currentUser.profilePicture}`}
+                        alt="Profile"
+                        className="profile-image"
+                      />
+                    ) : (
+                      <div className="profile-image-placeholder">
+                        <span>{currentUser.name?.charAt(0)}</span>
+                      </div>
+                    )}
+                    <Input
+                      type="file"
+                      accept="image/*"
+                      className="profile-image-input"
+                      ref={fileInputRef}
+                      style={{ display: "none" }}
+                      onChange={handleProfileImageChange}
+                    />
+                  </div>
+                </Tooltip>
                 <div className="profile-username">
-                  <p>Profile</p>
                   <div className="profile-username-text">
                     <Dialog.Trigger asChild>
-                      <h2>{currentUser.name}</h2>
+                      <h2>{currentUser?.name}</h2>
                     </Dialog.Trigger>
-                    <p>@{currentUser.username}</p>
+                    <p>{currentUser?.description}</p>
                   </div>
                 </div>
-              </div>
-              <div className="profile-description">
-                <p>{currentUser.description || "No description provided."}</p>
               </div>
               <Portal>
                 <Dialog.Backdrop />
@@ -68,8 +125,37 @@ export default function MyProfile() {
             <p>Loading user information...</p>
           )}
           <div className="profile-scores">
-            <div className="profile-scores-title">
-              <h3>Last published scores</h3>
+            <div className="profile-scores-title-filter-wrapper">
+              <h3 className="profile-scores-title">Sheet music</h3>
+              <div className="profile-scores-filter">
+                <Select.Root
+                  collection={sheetMusicCollectionFilter}
+                  size="sm"
+                  width="320px"
+                >
+                  <Select.HiddenSelect />
+                  <Select.Control>
+                    <Select.Trigger>
+                      <Select.ValueText placeholder="Sort music sheet" />
+                    </Select.Trigger>
+                    <Select.IndicatorGroup>
+                      <Select.Indicator />
+                    </Select.IndicatorGroup>
+                  </Select.Control>
+                  <Portal>
+                    <Select.Positioner>
+                      <Select.Content>
+                        {sheetMusicCollectionFilter.items.map((sheetMusic) => (
+                          <Select.Item item={sheetMusic} key={sheetMusic.value}>
+                            {sheetMusic.label}
+                            <Select.ItemIndicator />
+                          </Select.Item>
+                        ))}
+                      </Select.Content>
+                    </Select.Positioner>
+                  </Portal>
+                </Select.Root>
+              </div>
             </div>
             {loadingScores ? (
               <p>Loading scores...</p>
@@ -130,8 +216,17 @@ export default function MyProfile() {
               <p>No scores published yet.</p>
             )}
           </div>
+          <div className="profile-favourite-scores">
+            <div className="profile-favourite-scores-title">
+              <h3>Favourites</h3>
+            </div>
+            <p className="profile-favourite-scores-text">
+              You haven't added any scores to your favourites yet.
+            </p>
+          </div>
         </Card.Body>
       </Card.Root>
+      <Toaster />
     </Dialog.Root>
   );
 }

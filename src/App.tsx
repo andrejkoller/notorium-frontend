@@ -20,8 +20,6 @@ function App() {
     "/register",
     "/upload",
     "/settings",
-    "/users/",
-    "/users/scores",
   ];
   const pathName = location.pathname;
 

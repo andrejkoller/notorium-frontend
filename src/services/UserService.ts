@@ -25,7 +25,7 @@ export const updateUser = async (
 ): Promise<User> => {
   try {
     const response = await axiosInstance.put(
-      `${BASE_URL}/update/${userId}`,
+      `${BASE_URL}/${userId}/update`,
       user,
       {
         headers: {
@@ -37,6 +37,28 @@ export const updateUser = async (
     return response.data;
   } catch (error) {
     console.error("Error updating user:", error);
+    throw error;
+  }
+};
+
+export const uploadProfilePicture = async (
+  userId: number,
+  formData: FormData
+): Promise<User> => {
+  try {
+    const response = await axiosInstance.put(
+      `${BASE_URL}/${userId}/uploadProfilePicture`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error("Error uploading profile picture:", error);
     throw error;
   }
 };

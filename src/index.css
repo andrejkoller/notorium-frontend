@@ -1,10 +1,10 @@
 .light {
-  --background: #ffffff;
-  --background-elevated: #f1f1f1;
-  --background-card: #f8f9fa;
+  --background: #f9f7fa;
+  --background-elevated: #ffffff;
+  --background-card: #f1f1f1;
   --foreground: #000000;
-  --primary: #e61c5f;
-  --primary-hover: #d61a5b;
+  --primary: #6c5eff;
+  --primary-hover: #5a4cd1;
   --secondary: #7e7e7e;
   --disabled: #b0b0b0;
   --border-color: #ced4da;
@@ -17,13 +17,21 @@
   --background-elevated: #1f1f1f;
   --background-card: #0f0f0f;
   --foreground: #ffffff;
-  --primary: #e61c5f;
-  --primary-hover: #d61a5b;
+  --primary: #6c5eff;
+  --primary-hover: #5a4cd1;
   --secondary: #7e7e7e;
   --disabled: #b0b0b0;
   --border-color: #666666;
   --sheet-border-color: #333333;
   --sheet-border-color-hover: #444444;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {

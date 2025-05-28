@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Tooltip } from "./ui/tooltip";
 import { useCurrentUser } from "../contexts/UserContext";
+import { Toaster, toaster } from "./ui/toaster";
 
 export const Header = () => {
   const { currentUser, setCurrentUser } = useCurrentUser();
@@ -17,6 +18,10 @@ export const Header = () => {
       localStorage.removeItem("user");
       setCurrentUser(null);
       navigate("/login");
+      toaster.success({
+        title: "Logged out successfully",
+        description: "You have been logged out.",
+      });
     } else {
       console.error("No user is currently logged in.");
     }
@@ -73,11 +78,19 @@ export const Header = () => {
               <Menu.Root>
                 <Menu.Trigger asChild>
                   <Button variant="outline" size="sm">
-                    <span className="header-username">
-                      {currentUser?.name
-                        ? currentUser.name.charAt(0).toUpperCase()
-                        : "?"}
-                    </span>
+                    {currentUser.profilePicture ? (
+                      <img
+                        src={`https://localhost:7189/${currentUser.profilePicture}`}
+                        alt="Profile"
+                        className="header-profile-image"
+                      />
+                    ) : (
+                      <span className="header-image-placeholder">
+                        {currentUser?.name
+                          ? currentUser.name.charAt(0).toUpperCase()
+                          : "?"}
+                      </span>
+                    )}
                   </Button>
                 </Menu.Trigger>
                 <Portal>
@@ -130,6 +143,7 @@ export const Header = () => {
               </Link>
             </div>
           )}
+          <Toaster />
         </div>
       </div>
     </div>
