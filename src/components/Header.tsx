@@ -101,7 +101,7 @@ export const Header = () => {
                           to={`/users/${currentUser.username}`}
                           className="header-link"
                         >
-                          My Profile
+                          Profile
                         </Link>
                       </Menu.Item>
                       <Menu.Item value="scores">
@@ -109,7 +109,7 @@ export const Header = () => {
                           to={`/users/${currentUser.username}/scores`}
                           className="header-link"
                         >
-                          My Scores
+                          Scores
                         </Link>
                       </Menu.Item>
                       <Menu.Item value="settings">

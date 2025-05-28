@@ -9,18 +9,13 @@ import { UserProvider } from "./contexts/UserContext";
 import Upload from "./components/Upload";
 import Sidebar from "./components/Sidebar";
 import Settings from "./components/Settings";
-import MyScores from "./components/MyScores";
-import MyProfile from "./components/MyProfile";
 import { useRef, useState } from "react";
+import Profile from "./components/Profile";
+import Scores from "./components/Scores";
 
 function App() {
   const location = useLocation();
-  const sidebarHiddenRoutes = [
-    "/login",
-    "/register",
-    "/upload",
-    "/settings",
-  ];
+  const sidebarHiddenRoutes = ["/login", "/register", "/upload", "/settings"];
   const pathName = location.pathname;
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -61,8 +56,8 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/upload" element={<Upload />} />
-              <Route path="/users/:username" element={<MyProfile />} />
-              <Route path="/users/:username/scores" element={<MyScores />} />
+              <Route path="/users/:username" element={<Profile />} />
+              <Route path="/users/:username/scores" element={<Scores />} />
               <Route path="/settings" element={<Settings />} />
             </Routes>
           </div>

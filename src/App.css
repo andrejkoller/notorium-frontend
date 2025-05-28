@@ -485,8 +485,17 @@
   padding: 0;
 }
 
-.home-card .home-header h1 {
+.home-card .home-header .home-title-filter-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.home-card .home-header .home-title-filter-wrapper h1.home-title {
   font-size: 24px;
+  font-weight: bold;
   margin: 0;
 }
 
@@ -1055,7 +1064,7 @@
 }
 
 /* My Scores */
-.my-scores-card {
+.scores-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1063,20 +1072,29 @@
   height: 100%;
   width: 100%;
 }
-.my-scores-card .my-scores-header {
+.scores-card .scores-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 100%;
 }
 
-.my-scores-card .my-scores-header h1 {
+.scores-card .scores-header .scores-title-filter-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.scores-card .scores-header .scores-title-filter-wrapper h1.scores-title {
   font-size: 24px;
+  font-weight: bold;
   margin: 0;
 }
 
-.my-scores-card .my-scores-body {
+.scores-card .scores-body {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1084,11 +1102,57 @@
   width: 100%;
 }
 
-.my-scores-card .my-scores-body .my-scores-list {
+.scores-card .scores-body .scores-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.scores-card .scores-body .scores-list .scores-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.scores-card .scores-body .scores-list .scores-item .scores-link {
+  margin-bottom: 16px;
+}
+
+.scores-card .scores-body .scores-list .scores-item .scores-image {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 400px;
   width: 100%;
-  gap: 16px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: 1px solid var(--sheet-border-color);
+}
+
+.scores-card .scores-body .scores-list .scores-item .scores-image:hover {
+  border-color: var(--sheet-border-color-hover);
+}
+
+.scores-card .scores-body .scores-list .scores-item .scores-title {
+  color: var(--primary);
+}
+
+.scores-card .scores-body .scores-list .scores-item .scores-title:hover {
+  text-decoration: underline;
+}
+
+.scores-card .scores-body .scores-list .scores-item .scores-title,
+.scores-card .scores-body .scores-list .scores-item .scores-composer {
+  width: fit-content;
+}
+
+.scores-card .scores-body .scores-list .scores-item .scores-genre-instrument {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  width: 100%;
 }

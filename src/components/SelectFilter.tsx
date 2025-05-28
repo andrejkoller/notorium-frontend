@@ -1,20 +1,20 @@
 import { createListCollection, Portal, Select } from "@chakra-ui/react";
 
 export const SelectFilter = () => {
-  const filterItems = createListCollection({
-    items: [
-      { label: "Genre", value: "genre" },
-      { label: "Instrument", value: "instrument" },
-      { label: "Difficulty", value: "difficulty" },
-    ],
+  const sheetMusicCollectionFilter = createListCollection({
+    items: [{ label: "Upload Date", value: "upload-date" }],
   });
 
   return (
-    <Select.Root size="lg" collection={filterItems}>
+    <Select.Root
+      collection={sheetMusicCollectionFilter}
+      size="sm"
+      width="320px"
+    >
       <Select.HiddenSelect />
       <Select.Control>
         <Select.Trigger>
-          <Select.ValueText placeholder="Genre" />
+          <Select.ValueText placeholder="Sort music sheet" />
         </Select.Trigger>
         <Select.IndicatorGroup>
           <Select.Indicator />
@@ -23,9 +23,9 @@ export const SelectFilter = () => {
       <Portal>
         <Select.Positioner>
           <Select.Content>
-            {filterItems.items.map((filterItem) => (
-              <Select.Item item={filterItem} key={filterItem.value}>
-                {filterItem.label}
+            {sheetMusicCollectionFilter.items.map((sheetMusic) => (
+              <Select.Item item={sheetMusic} key={sheetMusic.value}>
+                {sheetMusic.label}
                 <Select.ItemIndicator />
               </Select.Item>
             ))}

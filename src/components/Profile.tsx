@@ -1,12 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import {
-  Card,
-  createListCollection,
-  Dialog,
-  Input,
-  Portal,
-  Select,
-} from "@chakra-ui/react";
+import { Card, Dialog, Input, Portal } from "@chakra-ui/react";
 import ProfileDialog from "./dialogs/ProfileDialog";
 import { useCurrentUser } from "../contexts/UserContext";
 import { getCurrentUserSheetMusic } from "../services/SheetMusicService";
@@ -15,12 +8,9 @@ import { Link } from "react-router-dom";
 import { Tooltip } from "./ui/tooltip";
 import { uploadProfilePicture } from "../services/UserService";
 import { Toaster, toaster } from "./ui/toaster";
+import { SelectFilter } from "./SelectFilter";
 
-export default function MyProfile() {
-  const sheetMusicCollectionFilter = createListCollection({
-    items: [{ label: "Upload Date", value: "upload-date" }],
-  });
-
+export default function Profile() {
   const { currentUser, setCurrentUser } = useCurrentUser();
   const [sheetMusic, setSheetMusic] = useState<SheetMusic[]>([]);
   const [loadingScores, setLoadingScores] = useState(true);
@@ -128,33 +118,7 @@ export default function MyProfile() {
             <div className="profile-scores-title-filter-wrapper">
               <h3 className="profile-scores-title">Sheet music</h3>
               <div className="profile-scores-filter">
-                <Select.Root
-                  collection={sheetMusicCollectionFilter}
-                  size="sm"
-                  width="320px"
-                >
-                  <Select.HiddenSelect />
-                  <Select.Control>
-                    <Select.Trigger>
-                      <Select.ValueText placeholder="Sort music sheet" />
-                    </Select.Trigger>
-                    <Select.IndicatorGroup>
-                      <Select.Indicator />
-                    </Select.IndicatorGroup>
-                  </Select.Control>
-                  <Portal>
-                    <Select.Positioner>
-                      <Select.Content>
-                        {sheetMusicCollectionFilter.items.map((sheetMusic) => (
-                          <Select.Item item={sheetMusic} key={sheetMusic.value}>
-                            {sheetMusic.label}
-                            <Select.ItemIndicator />
-                          </Select.Item>
-                        ))}
-                      </Select.Content>
-                    </Select.Positioner>
-                  </Portal>
-                </Select.Root>
+                <SelectFilter />
               </div>
             </div>
             {loadingScores ? (

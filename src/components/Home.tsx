@@ -3,6 +3,7 @@ import { getAllSheetMusic } from "../services/SheetMusicService";
 import type { SheetMusic } from "../models/SheetMusic";
 import { Card } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { SelectFilter } from "./SelectFilter";
 
 export default function Home() {
   const [sheetMusic, setSheetMusic] = useState<SheetMusic[]>([]);
@@ -27,7 +28,12 @@ export default function Home() {
   return (
     <Card.Root className="home-card">
       <Card.Header className="home-header">
-        <h1 className="home-title">Explore sheet music</h1>
+        <div className="home-title-filter-wrapper">
+          <h1 className="home-title">Explore sheet music</h1>
+          <div className="home-filter">
+            <SelectFilter />
+          </div>
+        </div>
       </Card.Header>
       <Card.Body className="home-body">
         {sheetMusic.length > 0 ? (
