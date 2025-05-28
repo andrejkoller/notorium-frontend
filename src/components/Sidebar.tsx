@@ -1,6 +1,14 @@
-import { Card } from "@chakra-ui/react";
-import { Filter, PanelRightClose, PanelRightOpen } from "lucide-react";
+import { Button, Card } from "@chakra-ui/react";
+import {
+  Filter,
+  Gauge,
+  PanelRightClose,
+  PanelRightOpen,
+  Piano,
+  Theater,
+} from "lucide-react";
 import { useCallback, useEffect, type RefObject } from "react";
+import { Tooltip } from "./ui/tooltip";
 
 type SidebarProps = {
   sidebarOpen: boolean;
@@ -47,7 +55,35 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
               </div>
               <Filter className="sidebar-icon" />
             </Card.Header>
-            <Card.Body className="sidebar-body"></Card.Body>
+            <Card.Body className="sidebar-body">
+              <Tooltip
+                content="Filter by instrument"
+                positioning={{ placement: "bottom" }}
+              >
+                <Button variant={"outline"} className="instrument-button">
+                  <Piano className="sidebar-icon" />
+                  <span>Instrument</span>
+                </Button>
+              </Tooltip>
+              <Tooltip
+                content="Filter by genre"
+                positioning={{ placement: "bottom" }}
+              >
+                <Button variant={"outline"} className="genre-button">
+                  <Theater className="sidebar-icon" />
+                  <span>Genre</span>
+                </Button>
+              </Tooltip>
+              <Tooltip
+                content="Filter by difficulty"
+                positioning={{ placement: "bottom" }}
+              >
+                <Button variant={"outline"} className="difficulty-button">
+                  <Gauge className="sidebar-icon" />
+                  <span>Difficulty</span>
+                </Button>
+              </Tooltip>
+            </Card.Body>
           </Card.Root>
         </div>
       ) : (
@@ -61,7 +97,32 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
                 />
               </div>
             </Card.Header>
-            <Card.Body className="sidebar-body"></Card.Body>
+            <Card.Body className="sidebar-body">
+              <Tooltip
+                content="Filter by instrument"
+                positioning={{ placement: "right" }}
+              >
+                <Button variant={"outline"} className="instrument-button">
+                  <Piano className="sidebar-icon" />
+                </Button>
+              </Tooltip>
+              <Tooltip
+                content="Filter by genre"
+                positioning={{ placement: "right" }}
+              >
+                <Button variant={"outline"} className="genre-button">
+                  <Theater className="sidebar-icon" />
+                </Button>
+              </Tooltip>
+              <Tooltip
+                content="Filter by difficulty"
+                positioning={{ placement: "right" }}
+              >
+                <Button variant={"outline"} className="difficulty-button">
+                  <Gauge className="sidebar-icon" />
+                </Button>
+              </Tooltip>
+            </Card.Body>
           </Card.Root>
         </div>
       )}
