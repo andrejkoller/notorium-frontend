@@ -21,7 +21,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-export const useCurrentUser = () => {
+export const useCurrentUserContext = () => {
   const context = useContext(CurrentUserContext);
   if (!context) {
     throw new Error("useUser must be used within a UserProvider");

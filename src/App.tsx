@@ -6,13 +6,13 @@ import Home from "./components/Home";
 import Login from "./components/authentication/Login";
 import Register from "./components/authentication/Register";
 import { UserProvider } from "./contexts/UserContext";
-import Upload from "./components/Upload";
 import Sidebar from "./components/Sidebar";
 import Settings from "./components/Settings";
 import { useRef, useState } from "react";
 import Profile from "./components/Profile";
 import Scores from "./components/Scores";
 import MusicSheet from "./components/MusicSheet";
+import { SheetMusicProvider } from "./contexts/MusicSheetContext";
 
 function App() {
   const location = useLocation();
@@ -35,49 +35,50 @@ function App() {
 
   return (
     <UserProvider>
-      <Provider>
-        <nav className="header">
-          <Header />
-        </nav>
-        <main className="main">
-          {!isSidebarHidden && (
+      <SheetMusicProvider>
+        <Provider>
+          <nav className="header">
+            <Header />
+          </nav>
+          <main className="main">
+            {!isSidebarHidden && (
+              <div
+                className={`sidebar${sidebarOpen ? " sidebar-open" : ""}`}
+                ref={sidebarRef}
+              >
+                <Sidebar
+                  sidebarOpen={sidebarOpen}
+                  setSidebarOpen={setSidebarOpen}
+                  sidebarRef={sidebarRef}
+                />
+              </div>
+            )}
             <div
-              className={`sidebar${sidebarOpen ? " sidebar-open" : ""}`}
-              ref={sidebarRef}
+              className="content"
+              style={
+                isSidebarHidden
+                  ? { width: "100%" }
+                  : sidebarOpen
+                  ? { width: "80vw", marginLeft: "20vw" }
+                  : { width: "95vw", marginLeft: "5vw" }
+              }
             >
-              <Sidebar
-                sidebarOpen={sidebarOpen}
-                setSidebarOpen={setSidebarOpen}
-                sidebarRef={sidebarRef}
-              />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/users/:username" element={<Profile />} />
+                <Route path="/users/:username/scores" element={<Scores />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route
+                  path="/user/:username/scores/:scoreId"
+                  element={<MusicSheet />}
+                />
+              </Routes>
             </div>
-          )}
-          <div
-            className="content"
-            style={
-              isSidebarHidden
-                ? { width: "100%" }
-                : sidebarOpen
-                ? { width: "80vw", marginLeft: "20vw" }
-                : { width: "95vw", marginLeft: "5vw" }
-            }
-          >
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/upload" element={<Upload />} />
-              <Route path="/users/:username" element={<Profile />} />
-              <Route path="/users/:username/scores" element={<Scores />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route
-                path="/user/:username/scores/:scoreId"
-                element={<MusicSheet />}
-              />
-            </Routes>
-          </div>
-        </main>
-      </Provider>
+          </main>
+        </Provider>
+      </SheetMusicProvider>
     </UserProvider>
   );
 }

@@ -1,18 +1,18 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Card, Dialog, Input, Portal } from "@chakra-ui/react";
 import ProfileDialog from "./dialogs/ProfileDialog";
-import { useCurrentUser } from "../contexts/UserContext";
+import { useCurrentUserContext } from "../contexts/UserContext";
 import { getCurrentUserSheetMusic } from "../services/SheetMusicService";
-import type { SheetMusic } from "../models/SheetMusic";
 import { Link } from "react-router-dom";
 import { Tooltip } from "./ui/tooltip";
 import { uploadProfilePicture } from "../services/UserService";
 import { Toaster, toaster } from "./ui/toaster";
 import { SelectFilter } from "./SelectFilter";
+import { useSheetMusicContext } from "../contexts/MusicSheetContext";
 
 export default function Profile() {
-  const { currentUser, setCurrentUser } = useCurrentUser();
-  const [sheetMusic, setSheetMusic] = useState<SheetMusic[]>([]);
+  const { currentUser, setCurrentUser } = useCurrentUserContext();
+  const { sheetMusic, setSheetMusic } = useSheetMusicContext();
   const [loadingScores, setLoadingScores] = useState(true);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -123,7 +123,7 @@ export default function Profile() {
             </div>
             {loadingScores ? (
               <p>Loading scores...</p>
-            ) : sheetMusic.length > 0 ? (
+            ) : sheetMusic && sheetMusic.length > 0 ? (
               <ul className="profile-scores-list">
                 {sheetMusic.map(
                   (music) =>

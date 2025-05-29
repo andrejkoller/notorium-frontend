@@ -3,12 +3,12 @@ import { useState } from "react";
 import { login } from "../../services/AuthService";
 import { Link, useNavigate } from "react-router-dom";
 import { Toaster, toaster } from "../ui/toaster";
-import { useCurrentUser } from "../../contexts/UserContext";
+import { useCurrentUserContext } from "../../contexts/UserContext";
 
 export default function Login() {
   const navigate = useNavigate();
 
-  const { setCurrentUser } = useCurrentUser();
+  const { setCurrentUser } = useCurrentUserContext();
 
   const [formData, setFormData] = useState({
     email: "",

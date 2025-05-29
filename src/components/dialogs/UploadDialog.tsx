@@ -1,13 +1,11 @@
 import {
   Box,
   Button,
-  Card,
   createListCollection,
   FileUpload,
   HStack,
   Icon,
   Input,
-  Portal,
   RadioGroup,
   Select,
   Spinner,
@@ -17,14 +15,19 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { LuUpload } from "react-icons/lu";
-import { uploadSheetMusic } from "../services/SheetMusicService";
-import { Toaster, toaster } from "./ui/toaster";
-import { getCurrentUser } from "../services/UserService";
-import type { Difficulty, Genre, Instrument } from "../models/SheetMusic";
-import { useCurrentUser } from "../contexts/UserContext";
+import {
+  getAllSheetMusic,
+  uploadSheetMusic,
+} from "../../services/SheetMusicService";
+import { Toaster, toaster } from "../ui/toaster";
+import { getCurrentUser } from "../../services/UserService";
+import type { Difficulty, Genre, Instrument } from "../../models/SheetMusic";
+import { useCurrentUserContext } from "../../contexts/UserContext";
+import { useSheetMusicContext } from "../../contexts/MusicSheetContext";
 
-export default function Upload() {
-  const { currentUser, setCurrentUser } = useCurrentUser();
+export default function UploadDialog() {
+  const { currentUser, setCurrentUser } = useCurrentUserContext();
+  const { setSheetMusic } = useSheetMusicContext();
 
   const [formData, setFormData] = useState({
     title: "",
@@ -147,6 +150,10 @@ export default function Upload() {
       data.append("fileName", file.name);
 
       await uploadSheetMusic(data);
+
+      const updatedSheetMusic = await getAllSheetMusic();
+      setSheetMusic(updatedSheetMusic);
+
       setLoading(false);
       setFormData({
         title: "",
@@ -200,12 +207,12 @@ export default function Upload() {
           <Text>Loading...</Text>
         </VStack>
       ) : (
-        <Card.Root className="upload-card">
+        <div className="upload-container">
           <div className="upload-content">
-            <Card.Header className="upload-header">
+            <div className="upload-header">
               <h1 className="upload-title">Upload Sheet Music</h1>
-            </Card.Header>
-            <Card.Body className="upload-body">
+            </div>
+            <div className="upload-body">
               <form onSubmit={handleUpload} className="upload-form">
                 <Input
                   name="title"
@@ -223,6 +230,8 @@ export default function Upload() {
                   required
                   className="upload-input"
                 />
+
+                {/* Genre Select */}
                 <Select.Root
                   size={"lg"}
                   value={formData.genre ? [formData.genre] : []}
@@ -248,22 +257,22 @@ export default function Upload() {
                       <Select.Indicator />
                     </Select.IndicatorGroup>
                   </Select.Control>
-                  <Portal>
-                    <Select.Positioner>
-                      <Select.Content>
-                        {genreOptions.map((genre) => (
-                          <Select.Item
-                            item={{ label: genre, value: genre }}
-                            key={genre}
-                          >
-                            {genre}
-                            <Select.ItemIndicator />
-                          </Select.Item>
-                        ))}
-                      </Select.Content>
-                    </Select.Positioner>
-                  </Portal>
+                  <Select.Positioner>
+                    <Select.Content>
+                      {genreOptions.map((genre) => (
+                        <Select.Item
+                          item={{ label: genre, value: genre }}
+                          key={genre}
+                        >
+                          {genre}
+                          <Select.ItemIndicator />
+                        </Select.Item>
+                      ))}
+                    </Select.Content>
+                  </Select.Positioner>
                 </Select.Root>
+
+                {/* Instrument Select */}
                 <Select.Root
                   size={"lg"}
                   value={formData.instrument ? [formData.instrument] : []}
@@ -283,28 +292,28 @@ export default function Upload() {
                   <Select.HiddenSelect />
                   <Select.Control>
                     <Select.Trigger>
-                      <Select.ValueText placeholder="Instrument" />
+                      <Select.ValueText placeholder="Instruments" />
                     </Select.Trigger>
                     <Select.IndicatorGroup>
                       <Select.Indicator />
                     </Select.IndicatorGroup>
                   </Select.Control>
-                  <Portal>
-                    <Select.Positioner>
-                      <Select.Content>
-                        {instrumentOptions.map((instrument) => (
-                          <Select.Item
-                            item={{ label: instrument, value: instrument }}
-                            key={instrument}
-                          >
-                            {instrument}
-                            <Select.ItemIndicator />
-                          </Select.Item>
-                        ))}
-                      </Select.Content>
-                    </Select.Positioner>
-                  </Portal>
+                  <Select.Positioner>
+                    <Select.Content>
+                      {instrumentOptions.map((instrument) => (
+                        <Select.Item
+                          item={{ label: instrument, value: instrument }}
+                          key={instrument}
+                        >
+                          {instrument}
+                          <Select.ItemIndicator />
+                        </Select.Item>
+                      ))}
+                    </Select.Content>
+                  </Select.Positioner>
                 </Select.Root>
+
+                {/* Difficulty Select */}
                 <Select.Root
                   size={"lg"}
                   value={formData.difficulty ? [formData.difficulty] : []}
@@ -330,22 +339,22 @@ export default function Upload() {
                       <Select.Indicator />
                     </Select.IndicatorGroup>
                   </Select.Control>
-                  <Portal>
-                    <Select.Positioner>
-                      <Select.Content>
-                        {difficultyOptions.map((difficulty) => (
-                          <Select.Item
-                            item={{ label: difficulty, value: difficulty }}
-                            key={difficulty}
-                          >
-                            {difficulty}
-                            <Select.ItemIndicator />
-                          </Select.Item>
-                        ))}
-                      </Select.Content>
-                    </Select.Positioner>
-                  </Portal>
+                  <Select.Positioner>
+                    <Select.Content>
+                      {difficultyOptions.map((difficulty) => (
+                        <Select.Item
+                          item={{ label: difficulty, value: difficulty }}
+                          key={difficulty}
+                        >
+                          {difficulty}
+                          <Select.ItemIndicator />
+                        </Select.Item>
+                      ))}
+                    </Select.Content>
+                  </Select.Positioner>
                 </Select.Root>
+
+                {/* Description Textarea */}
                 <Textarea
                   name="description"
                   placeholder="Description"
@@ -354,6 +363,8 @@ export default function Upload() {
                   required
                   className="upload-textarea"
                 />
+
+                {/* Visibility Radio Group */}
                 <RadioGroup.Root
                   size="lg"
                   defaultValue="true"
@@ -375,6 +386,8 @@ export default function Upload() {
                     ))}
                   </HStack>
                 </RadioGroup.Root>
+
+                {/* File Upload */}
                 <FileUpload.Root
                   maxW="xl"
                   alignItems="stretch"
@@ -403,9 +416,9 @@ export default function Upload() {
                   Upload
                 </Button>
               </form>
-            </Card.Body>
+            </div>
           </div>
-        </Card.Root>
+        </div>
       )}
       <Toaster />
     </>

@@ -1,14 +1,14 @@
 import { Card } from "@chakra-ui/react";
-import { useCurrentUser } from "../contexts/UserContext";
 import { useEffect, useState } from "react";
-import type { SheetMusic } from "../models/SheetMusic";
 import { Link } from "react-router-dom";
 import { getCurrentUserSheetMusic } from "../services/SheetMusicService";
 import { SelectFilter } from "./SelectFilter";
+import { useCurrentUserContext } from "../contexts/UserContext";
+import { useSheetMusicContext } from "../contexts/MusicSheetContext";
 
 export default function Scores() {
-  const { currentUser } = useCurrentUser();
-  const [sheetMusic, setSheetMusic] = useState<SheetMusic[]>([]);
+  const { currentUser } = useCurrentUserContext();
+  const { sheetMusic, setSheetMusic } = useSheetMusicContext();
   const [loadingScores, setLoadingScores] = useState(true);
 
   function formatGenre(genre: string) {
@@ -40,7 +40,7 @@ export default function Scores() {
       <Card.Body className="scores-body">
         {loadingScores ? (
           <p>Loading scores...</p>
-        ) : sheetMusic.length > 0 ? (
+        ) : sheetMusic && sheetMusic.length > 0 ? (
           <ul className="scores-list">
             {sheetMusic.map(
               (music) =>

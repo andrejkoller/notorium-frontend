@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getAllSheetMusic } from "../services/SheetMusicService";
-import type { SheetMusic } from "../models/SheetMusic";
 import { Link } from "react-router-dom";
 import { SelectFilter } from "./SelectFilter";
+import { useSheetMusicContext } from "../contexts/MusicSheetContext";
 
 export default function Home() {
-  const [sheetMusic, setSheetMusic] = useState<SheetMusic[]>([]);
+  const { sheetMusic, setSheetMusic } = useSheetMusicContext();
 
   function formatGenre(genre: string) {
     return genre.replace(/([a-z])([A-Z])/g, "$1 $2");
@@ -34,7 +34,7 @@ export default function Home() {
           </div>
         </div>
         <div className="home-body">
-          {sheetMusic.length > 0 ? (
+          {sheetMusic && sheetMusic.length > 0 ? (
             <ul className="sheet-music-list">
               {sheetMusic.map(
                 (music) =>
