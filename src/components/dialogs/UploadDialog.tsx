@@ -8,10 +8,8 @@ import {
   Input,
   RadioGroup,
   Select,
-  Spinner,
   Text,
   Textarea,
-  VStack,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { LuUpload } from "react-icons/lu";
@@ -24,6 +22,7 @@ import { getCurrentUser } from "../../services/UserService";
 import type { Difficulty, Genre, Instrument } from "../../models/SheetMusic";
 import { useCurrentUserContext } from "../../contexts/UserContext";
 import { useSheetMusicContext } from "../../contexts/MusicSheetContext";
+import { Link } from "react-router-dom";
 
 export default function UploadDialog() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();
@@ -201,11 +200,19 @@ export default function UploadDialog() {
 
   return (
     <>
-      {loading ? (
-        <VStack colorPalette="teal">
-          <Spinner color="colorPalette.600" />
-          <Text>Loading...</Text>
-        </VStack>
+      {!currentUser ? (
+        <div className="upload-container">
+          <div className="upload-content">
+            <Text className="upload-login-text">
+              Please log in to upload sheet music.
+            </Text>
+            <Button variant={"solid"} className="upload-login-button">
+              <Link to="/login">Log In</Link>
+            </Button>
+          </div>
+        </div>
+      ) : loading ? (
+        <Text>Uploading your sheet music...</Text>
       ) : (
         <div className="upload-container">
           <div className="upload-content">
