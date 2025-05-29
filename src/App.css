@@ -314,7 +314,7 @@
 }
 
 /* Login */
-.login-card {
+.login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -323,7 +323,16 @@
   width: 100%;
 }
 
-.login-card .login-header {
+.login-container .login-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.login-container .login-content .login-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -341,20 +350,21 @@
   margin-bottom: 16px;
 }
 
-.login-card .login-header h1 {
+.login-container .login-content .login-header h1 {
   font-size: 24px;
   margin: 0;
 }
 
-.login-card .login-body {
+.login-container .login-content .login-body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  gap: 16px;
   width: 100%;
 }
 
-.login-card .login-body .login-form {
+.login-container .login-content .login-body .login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -364,12 +374,12 @@
   margin-bottom: 16px;
 }
 
-.login-card .login-body .login-form input {
+.login-container .login-content .login-body .login-form input {
   padding: 24px;
   border-radius: 8px;
 }
 
-.login-card .login-body .login-form button {
+.login-container .login-content .login-body .login-form button {
   width: 100%;
   padding: 24px;
   border-radius: 999px;
@@ -381,16 +391,16 @@
   margin-top: 16px;
 }
 
-.login-card .login-body .login-form button:hover {
+.login-container .login-content .login-body .login-form button:hover {
   background-color: var(--primary-hover);
 }
 
-.login-card .login-body .login-form button:disabled {
+.login-container .login-content .login-body .login-form button:disabled {
   background-color: var(--disabled);
   cursor: not-allowed;
 }
 
-.login-card .login-body .login-register-link {
+.login-container .login-content .login-body .login-register-link {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -400,23 +410,32 @@
   margin-top: 16px;
 }
 
-.login-card .login-body .login-register-link a {
+.login-container .login-content .login-body .login-register-link a {
   text-decoration: underline;
   color: inherit;
   font-size: 16px;
 }
 
 /* Register */
-.register-card {
+.register-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 100%;
   width: 100%;
 }
 
-.register-card .register-header {
+.register-container .register-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.register-container .register-content .register-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -425,12 +444,12 @@
   margin-top: 120px;
 }
 
-.register-card .register-header h1 {
+.register-container .register-content .register-header h1 {
   font-size: 24px;
   margin: 0;
 }
 
-.register-card .register-form {
+.register-container .register-content .register-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -440,13 +459,13 @@
   margin-bottom: 16px;
 }
 
-.register-card .register-form input {
+.register-container .register-content .register-form input {
   padding: 24px;
   border-radius: 8px;
   width: 100%;
 }
 
-.register-card .register-form button {
+.register-container .register-content .register-form button {
   width: 100%;
   padding: 24px;
   border-radius: 999px;
@@ -457,16 +476,16 @@
   cursor: pointer;
 }
 
-.register-card .register-form button:hover {
+.register-container .register-content .register-form button:hover {
   background-color: var(--primary-hover);
 }
 
-.register-card .register-form button:disabled {
+.register-container .register-content .register-form button:disabled {
   background-color: var(--disabled);
   cursor: not-allowed;
 }
 
-.register-card .register-login-link {
+.register-container .register-content .register-login-link {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -476,7 +495,7 @@
   margin-top: 16px;
 }
 
-.register-card .register-login-link a {
+.register-container .register-content .register-login-link a {
   text-decoration: underline;
   color: inherit;
   font-size: 16px;

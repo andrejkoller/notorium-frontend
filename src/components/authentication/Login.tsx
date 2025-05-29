@@ -1,4 +1,4 @@
-import { Button, Card, Input, Spinner, Text, VStack } from "@chakra-ui/react";
+import { Button, Input, Spinner, Text, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 import { login } from "../../services/AuthService";
 import { Link, useNavigate } from "react-router-dom";
@@ -63,42 +63,46 @@ export default function Login() {
           <Text>Loading...</Text>
         </VStack>
       ) : (
-        <Card.Root className="login-card">
-          <Card.Header className="login-header">
-            <h1 className="login-title">Login</h1>
-          </Card.Header>
-          <Card.Body className="login-body">
-            <form onSubmit={handleSubmit} className="login-form">
-              <Input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-              />
-              <Input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleInputChange}
-                required
-              />
-              <Button type="submit" disabled={!isFormValid || loading}>
-                Login
-              </Button>
-            </form>
-            <p className="login-register-link">
-              Don't have an account?{" "}
-              <Link to="/register" className="login-link">
-                Register here
-              </Link>
-            </p>
-          </Card.Body>
-        </Card.Root>
+        <div className="login-container">
+          <div className="login-content">
+            <div className="login-header">
+              <h1 className="login-title">Login</h1>
+            </div>
+            <div className="login-body">
+              <form onSubmit={handleSubmit} className="login-form">
+                <Input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  autoComplete="email"
+                  required
+                />
+                <Input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  autoComplete="current-password"
+                  required
+                />
+                <Button type="submit" disabled={!isFormValid || loading}>
+                  Login
+                </Button>
+              </form>
+              <p className="login-register-link">
+                Don't have an account?{" "}
+                <Link to="/register" className="login-link">
+                  Register here
+                </Link>
+              </p>
+            </div>
+          </div>
+        </div>
       )}
       <Toaster />
     </>

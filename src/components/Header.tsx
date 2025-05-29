@@ -56,7 +56,10 @@ export const Header = () => {
         <div className="header-second-part">
           <div className="header-searchbar">
             <InputGroup flex={1} endElement={<Search />}>
-              <Input placeholder="Search for sheet music" />
+              <Input
+                placeholder="Search for sheet music"
+                disabled={!currentUser}
+              />
             </InputGroup>
           </div>
         </div>
