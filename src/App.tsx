@@ -56,10 +56,10 @@ function App() {
             className="content"
             style={
               isSidebarHidden
-                ? { height: "unset", width: "100%" }
+                ? { width: "100%" }
                 : sidebarOpen
-                ? { width: "80vw" }
-                : { height: "100%", width: "95vw" }
+                ? { width: "80vw", marginLeft: "20vw" }
+                : { width: "95vw", marginLeft: "5vw" }
             }
           >
             <Routes>

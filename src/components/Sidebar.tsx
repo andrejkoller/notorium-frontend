@@ -1,6 +1,5 @@
-import { Button, Card } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import {
-  Filter,
   Gauge,
   PanelRightClose,
   PanelRightOpen,
@@ -43,87 +42,75 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
   return (
     <>
       {sidebarOpen ? (
-        <div className="wide-sidebar">
-          <Card.Root className="sidebar-card">
-            <Card.Header className="sidebar-header">
-              <div className="sidebar-title">
-                <PanelRightOpen
-                  className="sidebar-icon"
-                  onClick={closeSidebar}
-                />
-                <h2>Filter</h2>
-              </div>
-              <Filter className="sidebar-icon" />
-            </Card.Header>
-            <Card.Body className="sidebar-body">
-              <Tooltip
-                content="Filter by instrument"
-                positioning={{ placement: "bottom" }}
-              >
-                <Button variant={"outline"} className="instrument-button">
-                  <Piano className="sidebar-icon" />
-                  <span>Instrument</span>
-                </Button>
-              </Tooltip>
-              <Tooltip
-                content="Filter by genre"
-                positioning={{ placement: "bottom" }}
-              >
-                <Button variant={"outline"} className="genre-button">
-                  <Theater className="sidebar-icon" />
-                  <span>Genre</span>
-                </Button>
-              </Tooltip>
-              <Tooltip
-                content="Filter by difficulty"
-                positioning={{ placement: "bottom" }}
-              >
-                <Button variant={"outline"} className="difficulty-button">
-                  <Gauge className="sidebar-icon" />
-                  <span>Difficulty</span>
-                </Button>
-              </Tooltip>
-            </Card.Body>
-          </Card.Root>
+        <div className="sidebar-wide">
+          <div className="sidebar-header">
+            <PanelRightOpen className="sidebar-icon" onClick={closeSidebar} />
+            <h1>Filter</h1>
+          </div>
+          <div className="sidebar-body">
+            <Tooltip
+              content="Filter by instrument"
+              positioning={{ placement: "bottom" }}
+            >
+              <Button variant={"outline"} className="instrument-button">
+                <Piano className="sidebar-icon" />
+                <span>Instrument</span>
+              </Button>
+            </Tooltip>
+            <Tooltip
+              content="Filter by genre"
+              positioning={{ placement: "bottom" }}
+            >
+              <Button variant={"outline"} className="genre-button">
+                <Theater className="sidebar-icon" />
+                <span>Genre</span>
+              </Button>
+            </Tooltip>
+            <Tooltip
+              content="Filter by difficulty"
+              positioning={{ placement: "bottom" }}
+            >
+              <Button variant={"outline"} className="difficulty-button">
+                <Gauge className="sidebar-icon" />
+                <span>Difficulty</span>
+              </Button>
+            </Tooltip>
+          </div>
         </div>
       ) : (
-        <div className="narrow-sidebar">
-          <Card.Root className="sidebar-card">
-            <Card.Header className="sidebar-header">
-              <div className="sidebar-title">
-                <PanelRightClose
-                  className="sidebar-icon panelRightClose"
-                  onClick={openSidebar}
-                />
-              </div>
-            </Card.Header>
-            <Card.Body className="sidebar-body">
-              <Tooltip
-                content="Filter by instrument"
-                positioning={{ placement: "right" }}
-              >
-                <Button variant={"outline"} className="instrument-button">
-                  <Piano className="sidebar-icon" />
-                </Button>
-              </Tooltip>
-              <Tooltip
-                content="Filter by genre"
-                positioning={{ placement: "right" }}
-              >
-                <Button variant={"outline"} className="genre-button">
-                  <Theater className="sidebar-icon" />
-                </Button>
-              </Tooltip>
-              <Tooltip
-                content="Filter by difficulty"
-                positioning={{ placement: "right" }}
-              >
-                <Button variant={"outline"} className="difficulty-button">
-                  <Gauge className="sidebar-icon" />
-                </Button>
-              </Tooltip>
-            </Card.Body>
-          </Card.Root>
+        <div className="sidebar-narrow">
+          <div className="sidebar-header">
+            <PanelRightClose
+              className="sidebar-icon panelRightClose"
+              onClick={openSidebar}
+            />
+          </div>
+          <div className="sidebar-body">
+            <Tooltip
+              content="Filter by instrument"
+              positioning={{ placement: "right" }}
+            >
+              <Button variant={"outline"} className="instrument-button">
+                <Piano className="sidebar-icon" />
+              </Button>
+            </Tooltip>
+            <Tooltip
+              content="Filter by genre"
+              positioning={{ placement: "right" }}
+            >
+              <Button variant={"outline"} className="genre-button">
+                <Theater className="sidebar-icon" />
+              </Button>
+            </Tooltip>
+            <Tooltip
+              content="Filter by difficulty"
+              positioning={{ placement: "right" }}
+            >
+              <Button variant={"outline"} className="difficulty-button">
+                <Gauge className="sidebar-icon" />
+              </Button>
+            </Tooltip>
+          </div>
         </div>
       )}
     </>

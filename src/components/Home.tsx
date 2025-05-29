@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllSheetMusic } from "../services/SheetMusicService";
 import type { SheetMusic } from "../models/SheetMusic";
-import { Card } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { SelectFilter } from "./SelectFilter";
 
@@ -26,66 +25,69 @@ export default function Home() {
   }, []);
 
   return (
-    <Card.Root className="home-card">
-      <Card.Header className="home-header">
-        <div className="home-title-filter-wrapper">
-          <h1 className="home-title">Explore sheet music</h1>
-          <div className="home-filter">
+    <div className="home-container">
+      <div className="home-content">
+        <div className="home-header">
+          <h1>Explore sheet music</h1>
+          <div className="home-filters">
             <SelectFilter />
           </div>
         </div>
-      </Card.Header>
-      <Card.Body className="home-body">
-        {sheetMusic.length > 0 ? (
-          <ul className="sheet-music-list">
-            {sheetMusic.map(
-              (music) =>
-                music.isPublic && (
-                  <li key={music.id} className="sheet-music-item">
-                    <Link
-                      to={`/user/${music.user?.username}/scores/${music.id}`}
-                      className="sheet-music-link"
-                    >
-                      <img
-                        src={`https://localhost:7189/${music.previewImage}`}
-                        alt={music.title}
-                        className="sheet-music-image"
-                      />
-                    </Link>
-                    <Link
-                      to={`/user/${music.user?.username}/scores/${music.id}`}
-                      className="sheet-music-title"
-                    >
-                      <h2 className="sheet-music-title">{music.title}</h2>
-                    </Link>
-                    <p className="sheet-music-composer">{music.composer}</p>
-                    <div className="sheet-music-genre-instrument">
-                      <p className="sheet-music-instrument">
-                        {music.instrument}
+        <div className="home-body">
+          {sheetMusic.length > 0 ? (
+            <ul className="sheet-music-list">
+              {sheetMusic.map(
+                (music) =>
+                  music.isPublic && (
+                    <li key={music.id} className="sheet-music-item">
+                      <Link
+                        to={`/user/${music.user?.username}/scores/${music.id}`}
+                        className="sheet-music-link"
+                      >
+                        <img
+                          src={`https://localhost:7189/${music.previewImage}`}
+                          alt={music.title}
+                          className="sheet-music-image"
+                        />
+                      </Link>
+                      <Link
+                        to={`/user/${music.user?.username}/scores/${music.id}`}
+                        className="sheet-music-title"
+                      >
+                        <h2 className="sheet-music-title">{music.title}</h2>
+                      </Link>
+                      <p className="sheet-music-composer">{music.composer}</p>
+                      <div className="sheet-music-genre-instrument">
+                        <p className="sheet-music-instrument">
+                          {music.instrument}
+                        </p>
+                        <span>-</span>
+                        <p className="sheet-music-genre">
+                          {formatGenre(music.genre)}
+                        </p>
+                      </div>
+                      <p className="sheet-music-author">
+                        Uploaded by {music?.user?.name}
                       </p>
-                      <span>-</span>
-                      <p className="sheet-music-genre">
-                        {formatGenre(music.genre)}
+                      <p className="sheet-music-date">
+                        {new Date(music.uploadedAt).toLocaleDateString(
+                          "en-US",
+                          {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          }
+                        )}
                       </p>
-                    </div>
-                    <p className="sheet-music-author">
-                      Uploaded by {music?.user?.name}
-                    </p>
-                    <p className="sheet-music-date">
-                      {new Date(music.uploadedAt).toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </p>
-                  </li>
-                )
-            )}
-          </ul>
-        ) : (
-          <p>No sheet music available.</p>
-        )}
-      </Card.Body>
-    </Card.Root>
+                    </li>
+                  )
+              )}
+            </ul>
+          ) : (
+            <p>No sheet music available.</p>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
