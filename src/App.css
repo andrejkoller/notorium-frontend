@@ -17,7 +17,6 @@
   height: 100%;
   border-radius: 8px;
   position: sticky;
-  background-color: var(--background-card);
 }
 
 .sidebar-open {
@@ -34,7 +33,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 100%;
   margin-left: auto;
   flex: 1 1 100%;
 }
@@ -153,9 +151,9 @@
   .header-third-part
   .header-menu-container
   button {
-  border-radius: 999px;
   cursor: pointer;
   padding: 0;
+  border-radius: 999px;
 }
 
 .header-container
@@ -183,6 +181,12 @@
   border: 1px solid var(--foreground);
   font-size: 16px;
   font-weight: bold;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header-container .header-content .header-third-part .button-container {
@@ -220,10 +224,8 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 32px;
   width: 100%;
   height: 100%;
-  padding: 24px;
 }
 
 .sidebar .wide-sidebar .sidebar-card .sidebar-header {
@@ -232,7 +234,6 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0;
 }
 
 .sidebar .wide-sidebar .sidebar-card .sidebar-header .sidebar-title {
@@ -261,7 +262,6 @@
   justify-content: flex-start;
   gap: 32px;
   width: 100%;
-  padding: 0;
 }
 
 .sidebar .wide-sidebar .sidebar-card .sidebar-body button {
@@ -282,10 +282,8 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 32px;
   width: 100%;
   height: 100%;
-  padding: 24px;
 }
 
 .sidebar .narrow-sidebar .sidebar-card .sidebar-header {
@@ -294,7 +292,6 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 0;
 }
 
 .sidebar .narrow-sidebar .sidebar-card .sidebar-header .sidebar-title {
@@ -323,7 +320,6 @@
   justify-content: flex-start;
   gap: 32px;
   width: 100%;
-  padding: 0;
 }
 
 .sidebar .narrow-sidebar .sidebar-card .sidebar-body button {
@@ -511,7 +507,6 @@
   justify-content: flex-start;
   height: 100%;
   width: 100%;
-  padding: 24px;
 }
 
 .home-card .home-header {
@@ -520,7 +515,6 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0;
 }
 
 .home-card .home-header .home-title-filter-wrapper {
@@ -543,7 +537,6 @@
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
-  padding: 0;
 }
 
 .home-card .home-body .sheet-music-list {
@@ -846,7 +839,7 @@
   justify-content: center;
   height: 250px;
   width: 250px;
-  border-radius: 8px;
+  border-radius: 999px;
   background-color: var(--primary);
   border: 1px solid var(--foreground);
   cursor: pointer;
@@ -1193,4 +1186,189 @@
   flex-direction: row;
   gap: 8px;
   width: 100%;
+}
+
+/* Music Sheet */
+.music-sheet-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.music-sheet-card .music-sheet-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
+
+.music-sheet-card .music-sheet-body .music-sheet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  margin-right: 440px;
+}
+
+.music-sheet-card .music-sheet-body .music-sheet .music-sheet-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: var(--background-card);
+}
+
+.music-sheet-card .music-sheet-body .music-sheet .music-sheet-details img {
+  width: 100%;
+  max-width: 850px;
+  height: 1099px;
+  object-fit: cover;
+  background-color: #ffffff;
+}
+
+.music-sheet-card .music-sheet-body .music-sheet-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  height: 100%;
+  width: 100%;
+  max-width: 440px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 24px;
+}
+
+.music-sheet-card .music-sheet-body .music-sheet-actions .music-sheet-author {
+  width: 100%;
+}
+
+.music-sheet-card .music-sheet-body .music-sheet-actions .music-sheet-author p {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.music-sheet-card .music-sheet-body .music-sheet-actions .music-sheet-title {
+  width: 100%;
+}
+
+.music-sheet-card .music-sheet-body .music-sheet-actions .music-sheet-title h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.music-sheet-card
+  .music-sheet-body
+  .music-sheet-actions
+  .music-sheet-description {
+  width: 100%;
+}
+
+.music-sheet-card
+  .music-sheet-body
+  .music-sheet-actions
+  .music-sheet-description
+  p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.music-sheet-card
+  .music-sheet-body
+  .music-sheet-actions
+  .music-sheet-category-selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+.music-sheet-card
+  .music-sheet-body
+  .music-sheet-actions
+  .music-sheet-category-selector
+  .instrument-selector,
+.music-sheet-card
+  .music-sheet-body
+  .music-sheet-actions
+  .music-sheet-category-selector
+  .difficulty-selector {
+  width: 100%;
+}
+
+.music-sheet-card .music-sheet-body .music-sheet-actions .music-sheet-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.music-sheet-card
+  .music-sheet-body
+  .music-sheet-actions
+  .music-sheet-controls
+  .button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.music-sheet-card
+  .music-sheet-body
+  .music-sheet-actions
+  .music-sheet-controls
+  .button-group
+  button {
+  width: 100%;
+  padding: 16px;
+  border-radius: 999px;
+  border: none;
+  background-color: var(--sheet-border-color);
+  color: var(--forground);
+}
+
+.music-sheet-card
+  .music-sheet-body
+  .music-sheet-actions
+  .music-sheet-controls
+  .button-group
+  button.btn-download {
+  width: 100%;
+  padding: 16px;
+  border-radius: 999px;
+  border: none;
+  background-color: var(--primary);
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.music-sheet-card
+  .music-sheet-body
+  .music-sheet-actions
+  .music-sheet-controls
+  .button-group
+  button.btn-download:hover {
+  background-color: var(--primary-hover);
 }

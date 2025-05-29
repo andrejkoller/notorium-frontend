@@ -8,8 +8,8 @@ export const SelectFilter = () => {
   return (
     <Select.Root
       collection={sheetMusicCollectionFilter}
-      size="sm"
-      width="320px"
+      size="lg"
+      variant="outline"
     >
       <Select.HiddenSelect />
       <Select.Control>

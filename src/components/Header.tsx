@@ -33,7 +33,7 @@ export const Header = () => {
         const user = await getCurrentUser();
         setCurrentUser({
           ...user,
-          name: user.name || "Guest",
+          name: user.name,
         });
       } catch (error) {
         console.error("Error fetching user:", error);
@@ -87,7 +87,7 @@ export const Header = () => {
                     ) : (
                       <span className="header-image-placeholder">
                         {currentUser?.name
-                          ? currentUser.name.charAt(0).toUpperCase()
+                          ? currentUser?.name?.charAt(0).toUpperCase()
                           : "?"}
                       </span>
                     )}

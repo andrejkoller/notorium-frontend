@@ -130,7 +130,7 @@ export default function Profile() {
                     music.isPublic && (
                       <li key={music.id} className="profile-scores-item">
                         <Link
-                          to={`/scores/${music.id}`}
+                          to={`/user/${music.user?.username}/scores/${music.id}`}
                           className="profile-scores-link"
                         >
                           <img
@@ -140,7 +140,7 @@ export default function Profile() {
                           />
                         </Link>
                         <Link
-                          to={`/scores/${music.id}`}
+                          to={`/user/${music.user?.username}/scores/${music.id}`}
                           className="profile-scores-title"
                         >
                           <h2 className="profile-scores-title">

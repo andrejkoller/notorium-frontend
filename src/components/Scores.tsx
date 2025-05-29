@@ -46,14 +46,20 @@ export default function Scores() {
               (music) =>
                 music.isPublic && (
                   <li key={music.id} className="scores-item">
-                    <Link to={`/scores/${music.id}`} className="scores-link">
+                    <Link
+                      to={`/user/${music.user?.username}/scores/${music.id}`}
+                      className="scores-link"
+                    >
                       <img
                         src={`https://localhost:7189/${music.previewImage}`}
                         alt={music.title}
                         className="scores-image"
                       />
                     </Link>
-                    <Link to={`/scores/${music.id}`} className="scores-title">
+                    <Link
+                      to={`/user/${music.user?.username}/scores/${music.id}`}
+                      className="scores-title"
+                    >
                       <h2 className="profile-scores-title">{music.title}</h2>
                     </Link>
                     <p className="scores-composer">{music.composer}</p>

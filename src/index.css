@@ -15,7 +15,7 @@
 .dark {
   --background: #000000;
   --background-elevated: #1f1f1f;
-  --background-card: #0f0f0f;
+  --background-card: #000000;
   --foreground: #ffffff;
   --primary: #6c5eff;
   --primary-hover: #5a4cd1;

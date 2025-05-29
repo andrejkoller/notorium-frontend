@@ -43,7 +43,7 @@ export default function Home() {
                 music.isPublic && (
                   <li key={music.id} className="sheet-music-item">
                     <Link
-                      to={`/scores/${music.id}`}
+                      to={`/user/${music.user?.username}/scores/${music.id}`}
                       className="sheet-music-link"
                     >
                       <img
@@ -53,7 +53,7 @@ export default function Home() {
                       />
                     </Link>
                     <Link
-                      to={`/scores/${music.id}`}
+                      to={`/user/${music.user?.username}/scores/${music.id}`}
                       className="sheet-music-title"
                     >
                       <h2 className="sheet-music-title">{music.title}</h2>

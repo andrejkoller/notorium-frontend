@@ -12,11 +12,22 @@ import Settings from "./components/Settings";
 import { useRef, useState } from "react";
 import Profile from "./components/Profile";
 import Scores from "./components/Scores";
+import MusicSheet from "./components/MusicSheet";
 
 function App() {
   const location = useLocation();
-  const sidebarHiddenRoutes = ["/login", "/register", "/upload", "/settings"];
+  const sidebarHiddenRoutes = [
+    /^\/login$/,
+    /^\/register$/,
+    /^\/upload$/,
+    /^\/settings$/,
+    /^\/user\/[^/]+\/scores\/[^/]+$/,
+  ];
   const pathName = location.pathname;
+
+  const isSidebarHidden = sidebarHiddenRoutes.some((regex) =>
+    regex.test(pathName)
+  );
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -29,7 +40,7 @@ function App() {
           <Header />
         </nav>
         <main className="main">
-          {!sidebarHiddenRoutes.some((p) => pathName.startsWith(p)) && (
+          {!isSidebarHidden && (
             <div
               className={`sidebar${sidebarOpen ? " sidebar-open" : ""}`}
               ref={sidebarRef}
@@ -44,11 +55,11 @@ function App() {
           <div
             className="content"
             style={
-              !sidebarHiddenRoutes.some((p) => pathName.startsWith(p))
-                ? { width: "100%" }
+              isSidebarHidden
+                ? { height: "unset", width: "100%" }
                 : sidebarOpen
                 ? { width: "80vw" }
-                : { width: "95vw" }
+                : { height: "100%", width: "95vw" }
             }
           >
             <Routes>
@@ -59,6 +70,10 @@ function App() {
               <Route path="/users/:username" element={<Profile />} />
               <Route path="/users/:username/scores" element={<Scores />} />
               <Route path="/settings" element={<Settings />} />
+              <Route
+                path="/user/:username/scores/:scoreId"
+                element={<MusicSheet />}
+              />
             </Routes>
           </div>
         </main>
