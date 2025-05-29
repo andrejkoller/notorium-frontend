@@ -44,7 +44,12 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
       {sidebarOpen ? (
         <div className="sidebar-wide">
           <div className="sidebar-header">
-            <PanelRightOpen className="sidebar-icon" onClick={closeSidebar} />
+            <Tooltip
+              content="Close sidebar"
+              positioning={{ placement: "bottom" }}
+            >
+              <PanelRightOpen className="sidebar-icon" onClick={closeSidebar} />
+            </Tooltip>
             <h1>Filter</h1>
           </div>
           <div className="sidebar-body">
@@ -80,10 +85,15 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
       ) : (
         <div className="sidebar-narrow">
           <div className="sidebar-header">
-            <PanelRightClose
-              className="sidebar-icon panelRightClose"
-              onClick={openSidebar}
-            />
+            <Tooltip
+              content="Open sidebar"
+              positioning={{ placement: "right" }}
+            >
+              <PanelRightClose
+                className="sidebar-icon panelRightClose"
+                onClick={openSidebar}
+              />
+            </Tooltip>
           </div>
           <div className="sidebar-body">
             <Tooltip

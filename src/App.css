@@ -22,7 +22,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 64px);
+  height: 100%;
   margin-top: 64px;
   flex: 1 1 100%;
 }
@@ -1134,23 +1134,25 @@
 }
 
 /* My Scores */
-.scores-card {
+.scores-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+  padding: 24px;
+}
+
+.scores-container .scores-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 100%;
-}
-.scores-card .scores-header {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
   width: 100%;
 }
 
-.scores-card .scores-header .scores-title-filter-wrapper {
+.scores-container .scores-content .scores-header {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1158,13 +1160,13 @@
   width: 100%;
 }
 
-.scores-card .scores-header .scores-title-filter-wrapper h1.scores-title {
+.scores-container .scores-content .scores-header h1 {
   font-size: 24px;
   font-weight: bold;
   margin: 0;
 }
 
-.scores-card .scores-body {
+.scores-container .scores-content .scores-body {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1172,7 +1174,7 @@
   width: 100%;
 }
 
-.scores-card .scores-body .scores-list {
+.scores-container .scores-content .scores-body .scores-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 16px;
@@ -1180,18 +1182,28 @@
   margin-top: 16px;
 }
 
-.scores-card .scores-body .scores-list .scores-item {
+.scores-container .scores-content .scores-body .scores-list .scores-item {
   display: flex;
   flex-direction: column;
   width: 100%;
   border-radius: 8px;
 }
 
-.scores-card .scores-body .scores-list .scores-item .scores-link {
+.scores-container
+  .scores-content
+  .scores-body
+  .scores-list
+  .scores-item
+  .scores-link {
   margin-bottom: 16px;
 }
 
-.scores-card .scores-body .scores-list .scores-item .scores-image {
+.scores-container
+  .scores-content
+  .scores-body
+  .scores-list
+  .scores-item
+  .scores-image {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1203,24 +1215,49 @@
   border: 1px solid var(--sheet-border-color);
 }
 
-.scores-card .scores-body .scores-list .scores-item .scores-image:hover {
+.scores-container
+  .scores-content
+  .scores-body
+  .scores-list
+  .scores-item
+  .scores-image:hover {
   border-color: var(--sheet-border-color-hover);
 }
 
-.scores-card .scores-body .scores-list .scores-item .scores-title {
+.scores-container
+  .scores-content
+  .scores-body
+  .scores-list
+  .scores-item
+  .scores-title {
   color: var(--primary);
 }
 
-.scores-card .scores-body .scores-list .scores-item .scores-title:hover {
+.scores-container
+  .scores-content
+  .scores-body
+  .scores-list
+  .scores-item
+  .scores-title:hover {
   text-decoration: underline;
 }
 
-.scores-card .scores-body .scores-list .scores-item .scores-title,
+.scores-container
+  .scores-content
+  .scores-body
+  .scores-list
+  .scores-item
+  .scores-title,
 .scores-card .scores-body .scores-list .scores-item .scores-composer {
   width: fit-content;
 }
 
-.scores-card .scores-body .scores-list .scores-item .scores-genre-instrument {
+.scores-container
+  .scores-content
+  .scores-body
+  .scores-list
+  .scores-item
+  .scores-genre-instrument {
   display: flex;
   flex-direction: row;
   gap: 8px;

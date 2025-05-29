@@ -89,61 +89,63 @@ export const Header = () => {
               </Tooltip>
             </div>
             {currentUser ? (
-              <div className="header-menu-container">
-                <Menu.Root>
-                  <Menu.Trigger asChild>
-                    <Button variant="outline" size="sm">
-                      {currentUser.profilePicture ? (
-                        <img
-                          src={`https://localhost:7189/${currentUser.profilePicture}`}
-                          alt="Profile"
-                          className="header-profile-image"
-                        />
-                      ) : (
-                        <span className="header-image-placeholder">
-                          {currentUser?.name
-                            ? currentUser?.name?.charAt(0).toUpperCase()
-                            : "?"}
-                        </span>
-                      )}
-                    </Button>
-                  </Menu.Trigger>
-                  <Portal>
-                    <Menu.Positioner>
-                      <Menu.Content>
-                        <Menu.Item value="profile">
-                          <Link
-                            to={`/users/${currentUser.username}`}
-                            className="header-link"
+              <Tooltip content="User menu" aria-label="User menu tooltip">
+                <div className="header-menu-container">
+                  <Menu.Root>
+                    <Menu.Trigger asChild>
+                      <Button variant="outline" size="sm">
+                        {currentUser.profilePicture ? (
+                          <img
+                            src={`https://localhost:7189/${currentUser.profilePicture}`}
+                            alt="Profile"
+                            className="header-profile-image"
+                          />
+                        ) : (
+                          <span className="header-image-placeholder">
+                            {currentUser?.name
+                              ? currentUser?.name?.charAt(0).toUpperCase()
+                              : "?"}
+                          </span>
+                        )}
+                      </Button>
+                    </Menu.Trigger>
+                    <Portal>
+                      <Menu.Positioner>
+                        <Menu.Content>
+                          <Menu.Item value="profile">
+                            <Link
+                              to={`/users/${currentUser.username}`}
+                              className="header-link"
+                            >
+                              Profile
+                            </Link>
+                          </Menu.Item>
+                          <Menu.Item value="scores">
+                            <Link
+                              to={`/users/${currentUser.username}/scores`}
+                              className="header-link"
+                            >
+                              Scores
+                            </Link>
+                          </Menu.Item>
+                          <Menu.Item value="settings">
+                            <Link to={"/settings"} className="header-link">
+                              Settings
+                            </Link>
+                          </Menu.Item>
+                          <Menu.Item
+                            value="logout"
+                            className="logout-item"
+                            onClick={handleLogout}
                           >
-                            Profile
-                          </Link>
-                        </Menu.Item>
-                        <Menu.Item value="scores">
-                          <Link
-                            to={`/users/${currentUser.username}/scores`}
-                            className="header-link"
-                          >
-                            Scores
-                          </Link>
-                        </Menu.Item>
-                        <Menu.Item value="settings">
-                          <Link to={"/settings"} className="header-link">
-                            Settings
-                          </Link>
-                        </Menu.Item>
-                        <Menu.Item
-                          value="logout"
-                          className="logout-item"
-                          onClick={handleLogout}
-                        >
-                          Logout
-                        </Menu.Item>
-                      </Menu.Content>
-                    </Menu.Positioner>
-                  </Portal>
-                </Menu.Root>
-              </div>
+                            Logout
+                          </Menu.Item>
+                        </Menu.Content>
+                      </Menu.Positioner>
+                    </Portal>
+                  </Menu.Root>
+                </div>
+              </Tooltip>
             ) : (
               <div className="button-container">
                 <Link to={"/login"} className="header-link">
