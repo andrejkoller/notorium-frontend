@@ -10,6 +10,7 @@ export const SelectFilter = () => {
       collection={sheetMusicCollectionFilter}
       size="lg"
       variant="outline"
+      width={"200px"}
     >
       <Select.HiddenSelect />
       <Select.Control>
