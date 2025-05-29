@@ -7,7 +7,7 @@ import { Tooltip } from "./ui/tooltip";
 import { uploadProfilePicture } from "../services/UserService";
 import { Toaster, toaster } from "./ui/toaster";
 import { SelectFilter } from "./SelectFilter";
-import { useSheetMusicContext } from "../contexts/MusicSheetContext";
+import { useSheetMusicContext } from "../contexts/SheetMusicContext";
 
 export default function Profile() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();

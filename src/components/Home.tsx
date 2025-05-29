@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { getAllSheetMusic } from "../services/SheetMusicService";
 import { Link } from "react-router-dom";
 import { SelectFilter } from "./SelectFilter";
-import { useSheetMusicContext } from "../contexts/MusicSheetContext";
+import { useSheetMusicContext } from "../contexts/SheetMusicContext";
 
 export default function Home() {
   const { sheetMusic, setSheetMusic } = useSheetMusicContext();

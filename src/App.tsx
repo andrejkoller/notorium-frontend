@@ -11,8 +11,8 @@ import Settings from "./components/Settings";
 import { useRef, useState } from "react";
 import Profile from "./components/Profile";
 import Scores from "./components/Scores";
-import MusicSheet from "./components/MusicSheet";
-import { SheetMusicProvider } from "./contexts/MusicSheetContext";
+import MusicSheet from "./components/SheetMusic";
+import { SheetMusicProvider } from "./contexts/SheetMusicContext";
 
 function App() {
   const location = useLocation();

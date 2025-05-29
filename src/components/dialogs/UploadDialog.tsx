@@ -21,7 +21,7 @@ import { Toaster, toaster } from "../ui/toaster";
 import { getCurrentUser } from "../../services/UserService";
 import type { Difficulty, Genre, Instrument } from "../../models/SheetMusic";
 import { useCurrentUserContext } from "../../contexts/UserContext";
-import { useSheetMusicContext } from "../../contexts/MusicSheetContext";
+import { useSheetMusicContext } from "../../contexts/SheetMusicContext";
 import { Link } from "react-router-dom";
 
 export default function UploadDialog() {

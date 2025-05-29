@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { getCurrentUserSheetMusic } from "../services/SheetMusicService";
 import { SelectFilter } from "./SelectFilter";
 import { useCurrentUserContext } from "../contexts/UserContext";
-import { useSheetMusicContext } from "../contexts/MusicSheetContext";
+import { useSheetMusicContext } from "../contexts/SheetMusicContext";
 
 export default function Scores() {
   const { currentUser } = useCurrentUserContext();
