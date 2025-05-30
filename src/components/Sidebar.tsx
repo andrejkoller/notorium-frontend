@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Dialog, Portal } from "@chakra-ui/react";
 import {
   Gauge,
   PanelRightClose,
@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { useCallback, useEffect, type RefObject } from "react";
 import { Tooltip } from "./ui/tooltip";
+import GenreDialog from "./dialogs/GenreDialog";
 
 type SidebarProps = {
   sidebarOpen: boolean;
@@ -40,7 +41,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
   }, [openSidebar, closeSidebar]);
 
   return (
-    <>
+    <Dialog.Root size={"md"} modal={false}>
       {sidebarOpen ? (
         <div className="sidebar-wide">
           <div className="sidebar-header">
@@ -66,10 +67,12 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
               content="Filter by genre"
               positioning={{ placement: "bottom" }}
             >
-              <Button variant={"outline"} className="genre-button">
-                <Theater className="sidebar-icon" />
-                <span>Genre</span>
-              </Button>
+              <Dialog.Trigger asChild>
+                <Button variant={"outline"} className="genre-button">
+                  <Theater className="sidebar-icon" />
+                  <span>Genre</span>
+                </Button>
+              </Dialog.Trigger>
             </Tooltip>
             <Tooltip
               content="Filter by difficulty"
@@ -108,9 +111,11 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
               content="Filter by genre"
               positioning={{ placement: "right" }}
             >
-              <Button variant={"outline"} className="genre-button">
-                <Theater className="sidebar-icon" />
-              </Button>
+              <Dialog.Trigger asChild>
+                <Button variant={"outline"} className="genre-button">
+                  <Theater className="sidebar-icon" />
+                </Button>
+              </Dialog.Trigger>
             </Tooltip>
             <Tooltip
               content="Filter by difficulty"
@@ -121,8 +126,16 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
               </Button>
             </Tooltip>
           </div>
+          <Portal>
+            <Dialog.Backdrop />
+            <Dialog.Positioner>
+              <Dialog.Content>
+                <GenreDialog />
+              </Dialog.Content>
+            </Dialog.Positioner>
+          </Portal>
         </div>
       )}
-    </>
+    </Dialog.Root>
   );
 }

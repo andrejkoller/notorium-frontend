@@ -83,3 +83,28 @@ export const uploadSheetMusic = async (data: FormData): Promise<unknown> => {
     throw error;
   }
 };
+
+export const filterSheetMusicByGenre = async (
+  genre: string
+): Promise<SheetMusic[]> => {
+  try {
+    const response = await axiosInstance.get(
+      `${BASE_URL}/bygenre?genre=${encodeURIComponent(genre)}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (!response.data || !Array.isArray(response.data)) {
+      throw new Error("Invalid response format");
+    }
+
+    return response.data as SheetMusic[];
+  } catch (error) {
+    console.error(`Error fetching sheet music for genre ${genre}:`, error);
+    throw error;
+  }
+};

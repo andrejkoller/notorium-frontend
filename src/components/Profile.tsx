@@ -64,9 +64,9 @@ export default function Profile() {
             <div
               className="profile-banner"
               style={
-                currentUser?.profileBanner
+                currentUser?.bannerImage
                   ? {
-                      backgroundImage: `url(https://localhost:7189/${currentUser.profileBanner})`,
+                      backgroundImage: `url(https://localhost:7189/${currentUser.bannerImage})`,
                     }
                   : { backgroundColor: "var(--primary)" }
               }
@@ -79,9 +79,9 @@ export default function Profile() {
                         className="profile-image"
                         onClick={handleProfileImageClick}
                       >
-                        {currentUser.profilePicture ? (
+                        {currentUser.profileImage ? (
                           <img
-                            src={`https://localhost:7189/${currentUser.profilePicture}`}
+                            src={`https://localhost:7189/${currentUser.profileImage}`}
                             alt="Profile"
                             className="profile-image"
                           />

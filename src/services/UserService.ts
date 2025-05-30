@@ -47,7 +47,7 @@ export const uploadProfilePicture = async (
 ): Promise<User> => {
   try {
     const response = await axiosInstance.put(
-      `${BASE_URL}/${userId}/uploadProfilePicture`,
+      `${BASE_URL}/${userId}/uploadProfileImage`,
       formData,
       {
         headers: {

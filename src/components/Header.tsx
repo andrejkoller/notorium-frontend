@@ -94,9 +94,9 @@ export const Header = () => {
                   <Menu.Root>
                     <Menu.Trigger asChild>
                       <Button variant="outline" size="sm">
-                        {currentUser.profilePicture ? (
+                        {currentUser.profileImage ? (
                           <img
-                            src={`https://localhost:7189/${currentUser.profilePicture}`}
+                            src={`https://localhost:7189/${currentUser.profileImage}`}
                             alt="Profile"
                             className="header-profile-image"
                           />

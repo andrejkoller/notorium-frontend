@@ -1,3 +1,5 @@
+import type { Genre } from "./SheetMusic";
+
 export interface User {
   id: number;
   name: string;
@@ -5,8 +7,9 @@ export interface User {
   username: string;
   password: string;
   description?: string;
-  profilePicture?: string;
-  profileBanner?: string;
+  profileImage?: string;
+  bannerImage?: string;
+  activatedGenre?: Genre;
   role: Role;
   token: string;
 }
