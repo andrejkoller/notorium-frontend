@@ -44,7 +44,7 @@ export default function DifficultyDialog() {
           setSheetMusic(filteredSheetMusic);
           toaster.success({
             title: "Sheet music filtered",
-            description: `Filtered sheet music by genre: ${selectedDifficulty}`,
+            description: `Filtered sheet music by difficulty: ${selectedDifficulty}`,
           });
         })
         .catch((error) => {
@@ -56,7 +56,7 @@ export default function DifficultyDialog() {
         });
     } else {
       toaster.warning({
-        title: "No genre selected",
+        title: "No difficulty selected",
         description: "Please select a difficulty to filter sheet music.",
       });
       return;
@@ -114,7 +114,7 @@ export default function DifficultyDialog() {
               </RadioCard.Root>
               <Button
                 variant={"solid"}
-                className="genre-submit-button"
+                className="difficulty-submit-button"
                 type="submit"
                 disabled={!selectedDifficulty}
               >
