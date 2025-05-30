@@ -108,3 +108,31 @@ export const filterSheetMusicByGenre = async (
     throw error;
   }
 };
+
+export const filterSheetMusicByDifficulty = async (
+  difficulty: string
+): Promise<SheetMusic[]> => {
+  try {
+    const response = await axiosInstance.get(
+      `${BASE_URL}/bydifficulty?difficulty=${encodeURIComponent(difficulty)}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (!response.data || !Array.isArray(response.data)) {
+      throw new Error("Invalid response format");
+    }
+
+    return response.data as SheetMusic[];
+  } catch (error) {
+    console.error(
+      `Error fetching sheet music for difficulty ${difficulty}:`,
+      error
+    );
+    throw error;
+  }
+};

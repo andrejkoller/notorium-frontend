@@ -9,6 +9,8 @@ import {
 import { useCallback, useEffect, type RefObject } from "react";
 import { Tooltip } from "./ui/tooltip";
 import GenreDialog from "./dialogs/GenreDialog";
+import DifficultyDialog from "./dialogs/DifficultyDialog";
+import InstrumentDialog from "./dialogs/InstrumentDialog";
 
 type SidebarProps = {
   sidebarOpen: boolean;
@@ -41,101 +43,161 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
   }, [openSidebar, closeSidebar]);
 
   return (
-    <Dialog.Root size={"md"} modal={false}>
-      {sidebarOpen ? (
-        <div className="sidebar-wide">
-          <div className="sidebar-header">
-            <Tooltip
-              content="Close sidebar"
-              positioning={{ placement: "bottom" }}
-            >
-              <PanelRightOpen className="sidebar-icon" onClick={closeSidebar} />
-            </Tooltip>
-            <h1>Filter</h1>
+    <div className="sidebar-container">
+      {/* Instrument Filter Dialog */}
+      <Dialog.Root size={"md"} modal={false}>
+        {sidebarOpen ? (
+          <div className="sidebar-wide">
+            <div className="sidebar-header">
+              <Tooltip
+                content="Close sidebar"
+                positioning={{ placement: "bottom" }}
+              >
+                <PanelRightOpen
+                  className="sidebar-icon"
+                  onClick={closeSidebar}
+                />
+              </Tooltip>
+              <h1>Filter</h1>
+            </div>
+            <div className="sidebar-body">
+              <Tooltip
+                content="Filter by instrument"
+                positioning={{ placement: "bottom" }}
+              >
+                <Dialog.Trigger asChild>
+                  <Button variant={"outline"} className="instrument-button">
+                    <Piano className="sidebar-icon" />
+                    <span>Instrument</span>
+                  </Button>
+                </Dialog.Trigger>
+              </Tooltip>
+            </div>
           </div>
-          <div className="sidebar-body">
-            <Tooltip
-              content="Filter by instrument"
-              positioning={{ placement: "bottom" }}
-            >
-              <Button variant={"outline"} className="instrument-button">
-                <Piano className="sidebar-icon" />
-                <span>Instrument</span>
-              </Button>
-            </Tooltip>
-            <Tooltip
-              content="Filter by genre"
-              positioning={{ placement: "bottom" }}
-            >
-              <Dialog.Trigger asChild>
-                <Button variant={"outline"} className="genre-button">
-                  <Theater className="sidebar-icon" />
-                  <span>Genre</span>
-                </Button>
-              </Dialog.Trigger>
-            </Tooltip>
-            <Tooltip
-              content="Filter by difficulty"
-              positioning={{ placement: "bottom" }}
-            >
-              <Button variant={"outline"} className="difficulty-button">
-                <Gauge className="sidebar-icon" />
-                <span>Difficulty</span>
-              </Button>
-            </Tooltip>
+        ) : (
+          <div className="sidebar-narrow">
+            <div className="sidebar-header">
+              <Tooltip
+                content="Open sidebar"
+                positioning={{ placement: "right" }}
+              >
+                <PanelRightClose
+                  className="sidebar-icon panelRightClose"
+                  onClick={openSidebar}
+                />
+              </Tooltip>
+            </div>
+            <div className="sidebar-body">
+              <Tooltip
+                content="Filter by instrument"
+                positioning={{ placement: "right" }}
+              >
+                <Dialog.Trigger asChild>
+                  <Button variant={"outline"} className="instrument-button">
+                    <Piano className="sidebar-icon" />
+                  </Button>
+                </Dialog.Trigger>
+              </Tooltip>
+            </div>
           </div>
-        </div>
-      ) : (
-        <div className="sidebar-narrow">
-          <div className="sidebar-header">
-            <Tooltip
-              content="Open sidebar"
-              positioning={{ placement: "right" }}
-            >
-              <PanelRightClose
-                className="sidebar-icon panelRightClose"
-                onClick={openSidebar}
-              />
-            </Tooltip>
+        )}
+        <Portal>
+          <Dialog.Backdrop />
+          <Dialog.Positioner>
+            <Dialog.Content>
+              <InstrumentDialog />
+            </Dialog.Content>
+          </Dialog.Positioner>
+        </Portal>
+      </Dialog.Root>
+
+      {/* Genre Filter Dialog */}
+      <Dialog.Root size={"md"} modal={false}>
+        {sidebarOpen ? (
+          <div className="sidebar-wide">
+            <div className="sidebar-body">
+              <Tooltip
+                content="Filter by genre"
+                positioning={{ placement: "bottom" }}
+              >
+                <Dialog.Trigger asChild>
+                  <Button variant={"outline"} className="genre-button">
+                    <Theater className="sidebar-icon" />
+                    <span>Genre</span>
+                  </Button>
+                </Dialog.Trigger>
+              </Tooltip>
+            </div>
           </div>
-          <div className="sidebar-body">
-            <Tooltip
-              content="Filter by instrument"
-              positioning={{ placement: "right" }}
-            >
-              <Button variant={"outline"} className="instrument-button">
-                <Piano className="sidebar-icon" />
-              </Button>
-            </Tooltip>
-            <Tooltip
-              content="Filter by genre"
-              positioning={{ placement: "right" }}
-            >
-              <Dialog.Trigger asChild>
-                <Button variant={"outline"} className="genre-button">
-                  <Theater className="sidebar-icon" />
-                </Button>
-              </Dialog.Trigger>
-            </Tooltip>
-            <Tooltip
-              content="Filter by difficulty"
-              positioning={{ placement: "right" }}
-            >
-              <Button variant={"outline"} className="difficulty-button">
-                <Gauge className="sidebar-icon" />
-              </Button>
-            </Tooltip>
+        ) : (
+          <div className="sidebar-narrow">
+            <div className="sidebar-body">
+              <Tooltip
+                content="Filter by genre"
+                positioning={{ placement: "right" }}
+              >
+                <Dialog.Trigger asChild>
+                  <Button variant={"outline"} className="genre-button">
+                    <Theater className="sidebar-icon" />
+                  </Button>
+                </Dialog.Trigger>
+              </Tooltip>
+            </div>
           </div>
-          <Portal>
-            <Dialog.Backdrop />
-            <Dialog.Positioner>
-              <Dialog.Content>
-                <GenreDialog />
-              </Dialog.Content>
-            </Dialog.Positioner>
-          </Portal>
-        </div>
-      )}
-    </Dialog.Root>
+        )}
+        <Portal>
+          <Dialog.Backdrop />
+          <Dialog.Positioner>
+            <Dialog.Content>
+              <GenreDialog />
+            </Dialog.Content>
+          </Dialog.Positioner>
+        </Portal>
+      </Dialog.Root>
+
+      {/* Difficulty Filter Dialog */}
+      <Dialog.Root size={"md"} modal={false}>
+        {sidebarOpen ? (
+          <div className="sidebar-wide">
+            <div className="sidebar-body">
+              <Tooltip
+                content="Filter by difficulty"
+                positioning={{ placement: "bottom" }}
+              >
+                <Dialog.Trigger asChild>
+                  <Button variant={"outline"} className="difficulty-button">
+                    <Gauge className="sidebar-icon" />
+                    <span>Difficulty</span>
+                  </Button>
+                </Dialog.Trigger>
+              </Tooltip>
+            </div>
+          </div>
+        ) : (
+          <div className="sidebar-narrow">
+            <div className="sidebar-body">
+              <Tooltip
+                content="Filter by difficulty"
+                positioning={{ placement: "right" }}
+              >
+                <Dialog.Trigger asChild>
+                  <Button variant={"outline"} className="difficulty-button">
+                    <Gauge className="sidebar-icon" />
+                  </Button>
+                </Dialog.Trigger>
+              </Tooltip>
+            </div>
+          </div>
+        )}
+        <Portal>
+          <Dialog.Backdrop />
+          <Dialog.Positioner>
+            <Dialog.Content>
+              <DifficultyDialog />
+            </Dialog.Content>
+          </Dialog.Positioner>
+        </Portal>
+      </Dialog.Root>
+    </div>
   );
 }
