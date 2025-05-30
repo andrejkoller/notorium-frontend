@@ -4,7 +4,7 @@ import { useCurrentUserContext } from "../contexts/UserContext";
 import { getCurrentUserSheetMusic } from "../services/SheetMusicService";
 import { Link } from "react-router-dom";
 import { Tooltip } from "./ui/tooltip";
-import { uploadProfilePicture } from "../services/UserService";
+import { uploadBannerImage, uploadProfileImage } from "../services/UserService";
 import { Toaster, toaster } from "./ui/toaster";
 import { SelectFilter } from "./SelectFilter";
 import { useSheetMusicContext } from "../contexts/SheetMusicContext";
@@ -14,14 +14,15 @@ export default function Profile() {
   const { sheetMusic, setSheetMusic } = useSheetMusicContext();
   const [loadingScores, setLoadingScores] = useState(true);
 
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const profileImageInputRef = useRef<HTMLInputElement | null>(null);
+  const bannerImageInputRef = useRef<HTMLInputElement | null>(null);
 
   function formatGenre(genre: string) {
     return genre.replace(/([a-z])([A-Z])/g, "$1 $2");
   }
 
   const handleProfileImageClick = () => {
-    fileInputRef.current?.click();
+    profileImageInputRef.current?.click();
   };
 
   const handleProfileImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,16 +31,48 @@ export default function Profile() {
       const formData = new FormData();
       formData.append("profileImageFile", file);
 
-      uploadProfilePicture(currentUser.id, formData)
+      uploadProfileImage(currentUser.id, formData)
         .then((updatedUser) => {
           setCurrentUser({ ...currentUser, ...updatedUser });
           toaster.success({
-            title: "Profile picture updated",
-            description: "Your profile picture has been successfully updated.",
+            title: "Profile image updated",
+            description: "Your profile image has been successfully updated.",
           });
         })
         .catch((error) => {
-          console.error("Error uploading profile picture:", error);
+          console.error("Error uploading profile image:", error);
+          toaster.error({
+            title: "Error updating profile image",
+            description: "There was an error updating your profile image.",
+          });
+        });
+    }
+  };
+
+  const handleBannerImageClick = () => {
+    bannerImageInputRef.current?.click();
+  };
+
+  const handleBannerImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (currentUser && e.target.files?.length) {
+      const file = e.target.files[0];
+      const formData = new FormData();
+      formData.append("bannerImageFile", file);
+
+      uploadBannerImage(currentUser.id, formData)
+        .then((updatedUser) => {
+          setCurrentUser({ ...currentUser, ...updatedUser });
+          toaster.success({
+            title: "Banner image updated",
+            description: "Your banner image has been successfully updated.",
+          });
+        })
+        .catch((error) => {
+          console.error("Error uploading banner image:", error);
+          toaster.error({
+            title: "Error updating banner image",
+            description: "There was an error updating your banner image.",
+          });
         });
     }
   };
@@ -70,7 +103,16 @@ export default function Profile() {
                     }
                   : { backgroundColor: "var(--primary)" }
               }
+              onClick={handleBannerImageClick}
             >
+              <Input
+                type="file"
+                accept="image/*"
+                className="profile-banner-input"
+                style={{ display: "none" }}
+                ref={bannerImageInputRef}
+                onChange={handleBannerImageChange}
+              />
               <div className="profile-account-info">
                 {currentUser ? (
                   <div className="profile-details">
@@ -94,7 +136,7 @@ export default function Profile() {
                           type="file"
                           accept="image/*"
                           className="profile-image-input"
-                          ref={fileInputRef}
+                          ref={profileImageInputRef}
                           style={{ display: "none" }}
                           onChange={handleProfileImageChange}
                         />

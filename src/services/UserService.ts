@@ -41,7 +41,7 @@ export const updateUser = async (
   }
 };
 
-export const uploadProfilePicture = async (
+export const uploadProfileImage = async (
   userId: number,
   formData: FormData
 ): Promise<User> => {
@@ -58,7 +58,29 @@ export const uploadProfilePicture = async (
 
     return response.data;
   } catch (error) {
-    console.error("Error uploading profile picture:", error);
+    console.error("Error uploading profile image:", error);
+    throw error;
+  }
+};
+
+export const uploadBannerImage = async (
+  userId: number,
+  formData: FormData
+): Promise<User> => {
+  try {
+    const response = await axiosInstance.put(
+      `${BASE_URL}/${userId}/uploadBannerImage`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error("Error uploading banner image:", error);
     throw error;
   }
 };

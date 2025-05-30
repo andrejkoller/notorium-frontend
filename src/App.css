@@ -996,6 +996,8 @@
   width: 100%;
   background-color: var(--background-elevated);
   padding: 24px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .profile-container

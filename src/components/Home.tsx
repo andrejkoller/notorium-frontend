@@ -22,7 +22,7 @@ export default function Home() {
     };
 
     fetchSheetMusic();
-  }, []);
+  }, [setSheetMusic]);
 
   return (
     <div className="home-container">
