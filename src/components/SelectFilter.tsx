@@ -10,13 +10,15 @@ export const SelectFilter = () => {
 
   const sheetMusicCollectionFilter = createListCollection({
     items: [
-      { label: "Newest first", value: true },
-      { label: "Oldest first", value: false },
+      { label: "Newest first", value: false },
+      { label: "Oldest first", value: true },
     ],
   });
 
-  const handleValueChange = () => {
-    setDescending((prev) => !prev);
+  const handleValueChange = (e: unknown) => {
+    const value = (e as { items: { value: boolean }[] }).items[0].value;
+    if (value === descending) return;
+    setDescending(value);
     filterSheetMusicByUploadDate(descending)
       .then((music) => {
         setSheetMusic(music);
@@ -63,6 +65,12 @@ export const SelectFilter = () => {
                 <Select.Item
                   item={sheetMusic}
                   key={sheetMusic.value.toString()}
+                  aria-disabled={descending === sheetMusic.value}
+                  style={{
+                    opacity: descending === sheetMusic.value ? 0.5 : 1,
+                    pointerEvents:
+                      descending === sheetMusic.value ? "none" : "auto",
+                  }}
                 >
                   {sheetMusic.label}
                   <Select.ItemIndicator />

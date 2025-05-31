@@ -1,17 +1,27 @@
 import { Button } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import type { SheetMusic } from "../models/SheetMusic";
 import {
   addSheetMusicToFavorites,
+  deleteSheetMusic,
   getSheetMusicById,
   removeSheetMusicFromFavorites,
 } from "../services/SheetMusicService";
-import { Download, Heart, HeartOff, Printer, Share2 } from "lucide-react";
+import {
+  Download,
+  Heart,
+  HeartOff,
+  Printer,
+  Share2,
+  Trash2,
+} from "lucide-react";
 import { Toaster, toaster } from "./ui/toaster";
 import { useCurrentUserContext } from "../contexts/UserContext";
 
 export default function MusicSheet() {
+  const navigate = useNavigate();
+
   const [score, setScore] = useState<SheetMusic | null>(null);
   const { currentUser, setCurrentUser } = useCurrentUserContext();
 
@@ -80,6 +90,29 @@ export default function MusicSheet() {
         });
     } else {
       console.error("No sheet music available to unfavorite.");
+    }
+  };
+
+  const handleRemoveSubmit = () => {
+    if (score) {
+      deleteSheetMusic(Number(scoreId))
+        .then(() => {
+          toaster.success({
+            title: "Deleted",
+            description: `${score.title} has been deleted successfully.`,
+          });
+          setScore(null);
+          navigate("/");
+        })
+        .catch((error) => {
+          console.error("Error deleting sheet music:", error);
+          toaster.error({
+            title: "Error",
+            description: "Failed to delete sheet music.",
+          });
+        });
+    } else {
+      console.error("No sheet music available to delete.");
     }
   };
 
@@ -163,6 +196,18 @@ export default function MusicSheet() {
                     Share
                   </Button>
                 </div>
+                {currentUser?.id === score?.user?.id && (
+                  <div className="button-group">
+                    <Button
+                      variant={"solid"}
+                      className="btn-delete"
+                      onClick={handleRemoveSubmit}
+                    >
+                      <Trash2 className="icon" />
+                      Delete
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
           </div>

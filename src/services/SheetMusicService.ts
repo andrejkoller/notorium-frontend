@@ -84,6 +84,23 @@ export const uploadSheetMusic = async (data: FormData): Promise<unknown> => {
   }
 };
 
+export const deleteSheetMusic = async (id: number): Promise<void> => {
+  try {
+    const response = await axiosInstance.delete(`${BASE_URL}/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.status !== 200) {
+      throw new Error("Failed to delete sheet music");
+    }
+  } catch (error) {
+    console.error(`Error deleting sheet music with ID ${id}:`, error);
+    throw error;
+  }
+};
+
 export const filterSheetMusicByGenre = async (
   genre: string
 ): Promise<SheetMusic[]> => {
