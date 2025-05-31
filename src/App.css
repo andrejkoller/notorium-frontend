@@ -1315,6 +1315,110 @@
   margin: 0;
 }
 
+/* Profile Favorite Scores */
+.profile-container
+  .profile-content
+  .profile-body
+  .profile-favorite-scores
+  .profile-favorite-scores-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.profile-container
+  .profile-content
+  .profile-body
+  .profile-favorite-scores
+  .profile-favorite-scores-list
+  .profile-favorite-scores-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.profile-container
+  .profile-content
+  .profile-body
+  .profile-favorite-scores-list
+  .profile-favorite-scores-item
+  .profile-favorite-scores-link {
+  margin-bottom: 16px;
+}
+
+.profile-container
+  .profile-content
+  .profile-body
+  .profile-favorite-scores-list
+  .profile-favorite-scores-item
+  .profile-favorite-scores-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: 1px solid var(--sheet-border-color);
+}
+
+.profile-container
+  .profile-content
+  .profile-body
+  .profile-favorite-scores-list
+  .profile-favorite-scores-item
+  .profile-favorite-scores-image:hover {
+  border-color: var(--sheet-border-color-hover);
+}
+
+.profile-container
+  .profile-content
+  .profile-body
+  .profile-favorite-scores-list
+  .profile-favorite-scores-item
+  .profile-favorite-scores-title {
+  color: var(--primary);
+}
+
+.profile-container
+  .profile-content
+  .profile-body
+  .profile-favorite-scores-list
+  .profile-favorite-scores-item
+  .profile-favorite-scores-title:hover {
+  text-decoration: underline;
+}
+
+.profile-container
+  .profile-content
+  .profile-body
+  .profile-favorite-scores-list
+  .profile-favorite-scores-item
+  .profile-favorite-scores-title,
+.profile-card
+  .profile-body
+  .profile-favorite-scores-list
+  .profile-favorite-scores-item
+  .profile-favorite-scores-composer {
+  width: fit-content;
+}
+
+.profile-container
+  .profile-content
+  .profile-body
+  .profile-favorite-scores-list
+  .profile-favorite-scores-item
+  .profile-favorite-scores-genre-instrument {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  width: 100%;
+}
+
 /* My Scores */
 .scores-container {
   display: flex;

@@ -1,4 +1,4 @@
-import type { Genre } from "./SheetMusic";
+import type { Genre, SheetMusic } from "./SheetMusic";
 
 export interface User {
   id: number;
@@ -12,6 +12,8 @@ export interface User {
   activatedGenre?: Genre;
   role: Role;
   token: string;
+  sheetMusic?: SheetMusic[];
+  favoriteSheetMusic?: SheetMusic[];
 }
 
 export interface UserResponse {

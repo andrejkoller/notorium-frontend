@@ -217,3 +217,82 @@ export const searchSheetMusic = async (
     throw error;
   }
 };
+
+export const getSheetMusicFavorites = async (
+  userId: number
+): Promise<SheetMusic[]> => {
+  try {
+    const response = await axiosInstance.get(
+      `${BASE_URL}/${userId}/favorites`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (!response.data || !Array.isArray(response.data)) {
+      throw new Error("Invalid response format");
+    }
+
+    return response.data as SheetMusic[];
+  } catch (error) {
+    console.error(`Error fetching favorites for user ID ${userId}:`, error);
+    throw error;
+  }
+};
+
+export const addSheetMusicToFavorites = async (
+  sheetMusicId: number,
+  userId: number
+): Promise<void> => {
+  try {
+    const response = await axiosInstance.post(
+      `${BASE_URL}/favorite/${sheetMusicId}`,
+      { sheetMusicId, userId },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (response.status !== 200) {
+      throw new Error("Failed to add sheet music to favorites");
+    }
+  } catch (error) {
+    console.error(
+      `Error adding sheet music ID ${sheetMusicId} to favorites for user ID ${userId}:`,
+      error
+    );
+    throw error;
+  }
+};
+
+export const removeSheetMusicFromFavorites = async (
+  sheetMusicId: number,
+  userId: number
+): Promise<void> => {
+  try {
+    const response = await axiosInstance.delete(
+      `${BASE_URL}/favorite/${sheetMusicId}`,
+      {
+        data: { userId },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (response.status !== 200) {
+      throw new Error("Failed to remove sheet music from favorites");
+    }
+  } catch (error) {
+    console.error(
+      `Error removing sheet music ID ${sheetMusicId} from favorites for user ID ${userId}:`,
+      error
+    );
+    throw error;
+  }
+};

@@ -1,7 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Button, Input } from "@chakra-ui/react";
 import { useCurrentUserContext } from "../contexts/UserContext";
-import { getCurrentUserSheetMusic } from "../services/SheetMusicService";
+import {
+  getCurrentUserSheetMusic,
+  getSheetMusicFavorites,
+} from "../services/SheetMusicService";
 import { Link } from "react-router-dom";
 import { Tooltip } from "./ui/tooltip";
 import { uploadBannerImage, uploadProfileImage } from "../services/UserService";
@@ -9,11 +12,16 @@ import { Toaster, toaster } from "./ui/toaster";
 import { SelectFilter } from "./SelectFilter";
 import { useSheetMusicContext } from "../contexts/SheetMusicContext";
 import { Camera, ImageIcon, UserRoundPen } from "lucide-react";
+import type { SheetMusic } from "../models/SheetMusic";
 
 export default function Profile() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();
   const { sheetMusic, setSheetMusic } = useSheetMusicContext();
   const [loadingScores, setLoadingScores] = useState(true);
+
+  const [favoriteSheetMusic, setFavoriteSheetMusic] = useState<SheetMusic[]>(
+    []
+  );
 
   const profileImageInputRef = useRef<HTMLInputElement | null>(null);
   const bannerImageInputRef = useRef<HTMLInputElement | null>(null);
@@ -89,6 +97,18 @@ export default function Profile() {
       })
       .finally(() => setLoadingScores(false));
   }, [currentUser?.id, setSheetMusic]);
+
+  useEffect(() => {
+    if (!currentUser?.id) return;
+    getSheetMusicFavorites(currentUser.id)
+      .then((favorites) => {
+        setFavoriteSheetMusic(favorites);
+      })
+      .catch((error) => {
+        console.error("Error fetching user's favorite sheet music:", error);
+        setFavoriteSheetMusic([]);
+      });
+  }, [currentUser?.id]);
 
   return (
     <>
@@ -241,9 +261,59 @@ export default function Profile() {
               <div className="profile-favorite-scores-title">
                 <h3>Favourites</h3>
               </div>
-              <p className="profile-favorite-scores-text">
-                You haven't added any scores to your favourites yet.
-              </p>
+              {favoriteSheetMusic && favoriteSheetMusic.length > 0 ? (
+                <ul className="profile-favorite-scores-list">
+                  {favoriteSheetMusic.map((music) => (
+                    <li key={music.id} className="profile-favorite-scores-item">
+                      <Link
+                        to={`/user/${music.user?.username}/scores/${music.id}`}
+                        className="profile-favorite-scores-link"
+                      >
+                        <img
+                          src={`https://localhost:7189/${music.previewImage}`}
+                          alt={music.title}
+                          className="profile-favorite-scores-image"
+                        />
+                      </Link>
+                      <Link
+                        to={`/user/${music.user?.username}/scores/${music.id}`}
+                        className="profile-favorite-scores-title"
+                      >
+                        <h2 className="profile-favorite-scores-title">
+                          {music.title}
+                        </h2>
+                      </Link>
+                      <p className="profile-favorite-scores-composer">
+                        {music.composer}
+                      </p>
+                      <div className="profile-favorite-scores-genre-instrument">
+                        <p className="profile-favorite-scores-instrument">
+                          {music.instrument}
+                        </p>
+                        <span>-</span>
+                        <p className="profile-favorite-scores-genre">
+                          {formatGenre(music.genre)}
+                        </p>
+                      </div>
+                      <p className="profile-favorite-scores-author">
+                        Uploaded by {music?.user?.name}
+                      </p>
+                      <p className="profile-favorite-scores-date">
+                        {new Date(music.uploadedAt).toLocaleDateString(
+                          "en-US",
+                          {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          }
+                        )}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p>You haven't added any scores to your favourites yet.</p>
+              )}
             </div>
           </div>
         </div>

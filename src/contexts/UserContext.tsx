@@ -15,7 +15,12 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   return (
-    <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
+    <CurrentUserContext.Provider
+      value={{
+        currentUser,
+        setCurrentUser,
+      }}
+    >
       {children}
     </CurrentUserContext.Provider>
   );
