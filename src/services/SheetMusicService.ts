@@ -164,3 +164,31 @@ export const filterSheetMusicByInstrument = async (
     throw error;
   }
 };
+
+export const filterSheetMusicByUploadDate = async (
+  isOrderByDescending: boolean
+): Promise<SheetMusic[]> => {
+  try {
+    const response = await axiosInstance.get(
+      `${BASE_URL}/byuploaddate?isOrderByDescending=${isOrderByDescending}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (!response.data || !Array.isArray(response.data)) {
+      throw new Error("Invalid response format");
+    }
+
+    return response.data as SheetMusic[];
+  } catch (error) {
+    console.error(
+      `Error fetching sheet music by upload date (descending: ${isOrderByDescending}):`,
+      error
+    );
+    throw error;
+  }
+}

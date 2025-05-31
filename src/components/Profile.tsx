@@ -8,6 +8,7 @@ import { uploadBannerImage, uploadProfileImage } from "../services/UserService";
 import { Toaster, toaster } from "./ui/toaster";
 import { SelectFilter } from "./SelectFilter";
 import { useSheetMusicContext } from "../contexts/SheetMusicContext";
+import { Camera, ImageIcon, UserRoundPen } from "lucide-react";
 
 export default function Profile() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();
@@ -105,14 +106,6 @@ export default function Profile() {
               }
               onClick={handleBannerImageClick}
             >
-              <Input
-                type="file"
-                accept="image/*"
-                className="profile-banner-input"
-                style={{ display: "none" }}
-                ref={bannerImageInputRef}
-                onChange={handleBannerImageChange}
-              />
               <div className="profile-account-info">
                 {currentUser ? (
                   <div className="profile-details">
@@ -132,14 +125,6 @@ export default function Profile() {
                             <span>{currentUser.name?.charAt(0)}</span>
                           </div>
                         )}
-                        <Input
-                          type="file"
-                          accept="image/*"
-                          className="profile-image-input"
-                          ref={profileImageInputRef}
-                          style={{ display: "none" }}
-                          onChange={handleProfileImageChange}
-                        />
                       </div>
                     </Tooltip>
                     <div className="profile-username-description">
@@ -153,9 +138,34 @@ export default function Profile() {
               </div>
             </div>
             <div className="profile-nav-actions">
+              <Button variant={"outline"} onClick={handleBannerImageClick}>
+                <ImageIcon className="profile-edit-icon" />
+                <span>Change Banner</span>
+                <Input
+                  type="file"
+                  accept="image/*"
+                  className="profile-banner-input"
+                  style={{ display: "none" }}
+                  ref={bannerImageInputRef}
+                  onChange={handleBannerImageChange}
+                />
+              </Button>
+              <Button variant={"outline"} onClick={handleProfileImageClick}>
+                <Camera className="profile-edit-icon" />
+                <span>Change Profile Image</span>
+                <Input
+                  type="file"
+                  accept="image/*"
+                  className="profile-image-input"
+                  ref={profileImageInputRef}
+                  style={{ display: "none" }}
+                  onChange={handleProfileImageChange}
+                />
+              </Button>
               <Button variant={"outline"}>
                 <Link to={"/settings"} className="profile-edit-link">
-                  Edit Profile
+                  <UserRoundPen className="profile-edit-icon" />
+                  <span>Edit Profile</span>
                 </Link>
               </Button>
             </div>

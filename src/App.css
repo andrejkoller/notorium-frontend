@@ -4,7 +4,8 @@
   align-items: flex-start;
   justify-content: flex-start;
   gap: 8px;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   width: 100%;
 }
 
@@ -998,6 +999,8 @@
   padding: 24px;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  cursor: pointer;
 }
 
 .profile-container
@@ -1110,6 +1113,19 @@
   .profile-nav-actions
   button:hover {
   background-color: var(--background-elevated);
+}
+
+.profile-container
+  .profile-content
+  .profile-header
+  .profile-nav-actions
+  button
+  a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .profile-container .profile-content .profile-body {
