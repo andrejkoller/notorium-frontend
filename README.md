@@ -52,7 +52,7 @@ npm run dev
     <img src="https://github.com/user-attachments/assets/a62cf64e-08d6-47da-8d5a-9ac8bb790bc4">
   </div>
   <div>
-    <img src="https://github.com/user-attachments/assets/e910c47c-e4a6-44e3-a911-531936e0a025">
+    <img src="https://github.com/user-attachments/assets/41e8450b-88e0-4345-9e9c-21e9f2aeb3d0">
   </div>
   <div>
     <img src="https://github.com/user-attachments/assets/28553d00-104b-4d5b-a121-20ae05ec93d1">
@@ -76,6 +76,6 @@ npm run dev
     <img src="https://github.com/user-attachments/assets/d4e1aa77-782e-4d46-bd60-70c5d0196c46">
   </div>
   <div>
-    <img src="https://github.com/user-attachments/assets/0763abbe-77fb-4b64-b41c-60fd87f23cf5">
+    <img src="https://github.com/user-attachments/assets/f638ce9e-94a1-43ba-babc-159f0e651e4a">
   </div>
 </div>
