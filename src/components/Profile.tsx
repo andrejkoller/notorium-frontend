@@ -158,18 +158,6 @@ export default function Profile() {
               </div>
             </div>
             <div className="profile-nav-actions">
-              <Button variant={"outline"} onClick={handleBannerImageClick}>
-                <ImageIcon className="profile-edit-icon" />
-                <span>Change Banner</span>
-                <Input
-                  type="file"
-                  accept="image/*"
-                  className="profile-banner-input"
-                  style={{ display: "none" }}
-                  ref={bannerImageInputRef}
-                  onChange={handleBannerImageChange}
-                />
-              </Button>
               <Button variant={"outline"} onClick={handleProfileImageClick}>
                 <Camera className="profile-edit-icon" />
                 <span>Change Profile Image</span>
@@ -180,6 +168,18 @@ export default function Profile() {
                   ref={profileImageInputRef}
                   style={{ display: "none" }}
                   onChange={handleProfileImageChange}
+                />
+              </Button>
+              <Button variant={"outline"} onClick={handleBannerImageClick}>
+                <ImageIcon className="profile-edit-icon" />
+                <span>Change Banner</span>
+                <Input
+                  type="file"
+                  accept="image/*"
+                  className="profile-banner-input"
+                  style={{ display: "none" }}
+                  ref={bannerImageInputRef}
+                  onChange={handleBannerImageChange}
                 />
               </Button>
               <Button variant={"outline"}>

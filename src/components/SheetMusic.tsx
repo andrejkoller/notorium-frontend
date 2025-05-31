@@ -86,7 +86,9 @@ export default function MusicSheet() {
   useEffect(() => {
     if (scoreId) {
       getSheetMusicById(Number(scoreId))
-        .then((data) => setScore(data))
+        .then((data) => {
+          setScore(data);
+        })
         .catch((error) => {
           console.error("Error fetching sheet music:", error);
           setScore(null);
@@ -101,13 +103,11 @@ export default function MusicSheet() {
           <div className="music-sheet-body">
             <div className="music-sheet">
               {score ? (
-                <div className="music-sheet-details">
-                  <img
-                    src={`https://localhost:7189/${score.previewImage}`}
-                    alt={score.title}
-                    className="music-sheet-image"
-                  />
-                </div>
+                <iframe
+                  src={`https://localhost:7189/${score.filePath}`}
+                  style={{ width: "100%", height: "100%", border: "none" }}
+                  title="Sheet Music PDF"
+                />
               ) : (
                 <p>Loading sheet music...</p>
               )}

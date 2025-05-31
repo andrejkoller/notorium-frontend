@@ -63,22 +63,23 @@ export const Header = () => {
           description: "An error occurred while searching for sheet music.",
         });
       });
-  }
+  };
 
   useEffect(() => {
-    const fetchUser = async () => {
+    const fetchCurrentUser = async () => {
       try {
         const user = await getCurrentUser();
-        setCurrentUser({
-          ...user,
-          name: user.name,
-        });
+        setCurrentUser(user);
       } catch (error) {
-        console.error("Error fetching user:", error);
+        console.error("Error fetching current user:", error);
+        toaster.error({
+          title: "Error",
+          description: "Failed to fetch current user.",
+        });
       }
     };
 
-    fetchUser();
+    fetchCurrentUser();
   }, [setCurrentUser]);
 
   return (
