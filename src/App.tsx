@@ -13,6 +13,7 @@ import Profile from "./components/Profile";
 import Scores from "./components/Scores";
 import MusicSheet from "./components/SheetMusic";
 import { SheetMusicProvider } from "./contexts/SheetMusicContext";
+import { SearchResults } from "./components/SearchResults";
 
 function App() {
   const location = useLocation();
@@ -73,6 +74,10 @@ function App() {
                 <Route
                   path="/user/:username/scores/:scoreId"
                   element={<MusicSheet />}
+                />
+                <Route
+                  path="/search"
+                  element={<SearchResults />}
                 />
               </Routes>
             </div>

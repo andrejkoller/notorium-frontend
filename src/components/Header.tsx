@@ -14,6 +14,7 @@ import { Tooltip } from "./ui/tooltip";
 import { Toaster, toaster } from "./ui/toaster";
 import UploadDialog from "./dialogs/UploadDialog";
 import { useCurrentUserContext } from "../contexts/UserContext";
+import { searchSheetMusic } from "../services/SheetMusicService";
 
 export const Header = () => {
   const { currentUser, setCurrentUser } = useCurrentUserContext();
@@ -34,6 +35,35 @@ export const Header = () => {
       console.error("No user is currently logged in.");
     }
   };
+
+  const handleSearch = (query: string) => {
+    if (query.trim() === "") {
+      toaster.error({
+        title: "Search Error",
+        description: "Please enter a search term.",
+      });
+      return;
+    }
+
+    searchSheetMusic(query)
+      .then((results) => {
+        if (results.length > 0) {
+          navigate(`/search?query=${encodeURIComponent(query)}`);
+        } else {
+          toaster.info({
+            title: "No Results",
+            description: "No sheet music found for your search.",
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error searching sheet music:", error);
+        toaster.error({
+          title: "Search Error",
+          description: "An error occurred while searching for sheet music.",
+        });
+      });
+  }
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -68,6 +98,11 @@ export const Header = () => {
                 <Input
                   placeholder="Search for sheet music"
                   disabled={!currentUser}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleSearch(e.currentTarget.value);
+                    }
+                  }}
                 />
               </InputGroup>
             </div>

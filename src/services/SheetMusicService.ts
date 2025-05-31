@@ -191,4 +191,29 @@ export const filterSheetMusicByUploadDate = async (
     );
     throw error;
   }
-}
+};
+
+export const searchSheetMusic = async (
+  query: string
+): Promise<SheetMusic[]> => {
+  try {
+    const response = await axiosInstance.get(
+      `${BASE_URL}/search?query=${encodeURIComponent(query)}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (!response.data || !Array.isArray(response.data)) {
+      throw new Error("Invalid response format");
+    }
+
+    return response.data as SheetMusic[];
+  } catch (error) {
+    console.error(`Error searching sheet music with query "${query}":`, error);
+    throw error;
+  }
+};
