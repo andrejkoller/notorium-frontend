@@ -1605,21 +1605,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: calc(100vh - 64px);
   width: 100%;
   max-width: 100%;
   margin-right: 440px;
-}
-
-.sheet-music-container
-  .sheet-music-content
-  .sheet-music-body
-  .sheet-music
-  iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
+  overflow-y: auto;
 }
 
 .sheet-music-container

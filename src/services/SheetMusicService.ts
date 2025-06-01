@@ -58,8 +58,6 @@ export const getSheetMusicById = async (id: number): Promise<SheetMusic> => {
       throw new Error("Sheet music not found");
     }
 
-    console.log("Fetched sheet music:", response.data);
-
     return response.data as SheetMusic;
   } catch (error) {
     console.error(`Error fetching sheet music with ID ${id}:`, error);
@@ -337,10 +335,31 @@ export const downloadSheetMusic = async (
 
     return response.data as Blob;
   } catch (error) {
-    console.error(
-      `Error downloading sheet music ID ${sheetMusicId}`,
-      error
+    console.error(`Error downloading sheet music ID ${sheetMusicId}`, error);
+    throw error;
+  }
+};
+
+export const printSheetMusic = async (sheetMusicId: number): Promise<Blob> => {
+  try {
+    const response = await axiosInstance.get(
+      `${BASE_URL}/${sheetMusicId}/print`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        responseType: "blob",
+      }
     );
+
+    if (response.status !== 200) {
+      throw new Error("Failed to print sheet music");
+    }
+
+    return response.data as Blob;
+  } catch (error) {
+    console.error(`Error printing sheet music ID ${sheetMusicId}:`, error);
     throw error;
   }
 };
