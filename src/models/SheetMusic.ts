@@ -14,7 +14,9 @@ export interface SheetMusic {
   filePath: string;
   uploadedAt: Date;
   isPublic: boolean;
-  downloadCount: number;
+  downloads: number;
+  favorites: number;
+  views: number;
   userId: number;
   user: User;
 }

@@ -5,10 +5,19 @@ import type { SheetMusic } from "../models/SheetMusic";
 import {
   addSheetMusicToFavorites,
   deleteSheetMusic,
+  downloadSheetMusic,
   getSheetMusicById,
   removeSheetMusicFromFavorites,
 } from "../services/SheetMusicService";
-import { Download, Heart, HeartOff, Printer, Trash2 } from "lucide-react";
+import {
+  ArrowDownToLine,
+  Download,
+  Eye,
+  Heart,
+  HeartOff,
+  Printer,
+  Trash2,
+} from "lucide-react";
 import { Toaster, toaster } from "./ui/toaster";
 import { useCurrentUserContext } from "../contexts/UserContext";
 
@@ -109,6 +118,34 @@ export default function MusicSheet() {
     }
   };
 
+  const handleDownload = () => {
+    if (score) {
+      downloadSheetMusic(score.id)
+        .then((response) => {
+          const url = window.URL.createObjectURL(new Blob([response]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", score.fileName);
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          toaster.success({
+            title: "Download Successful",
+            description: `${score.title} has been downloaded.`,
+          });
+        })
+        .catch((error) => {
+          console.error("Error downloading sheet music:", error);
+          toaster.error({
+            title: "Download Error",
+            description: "Failed to download sheet music.",
+          });
+        });
+    } else {
+      console.error("No sheet music available to download.");
+    }
+  };
+
   useEffect(() => {
     if (scoreId) {
       getSheetMusicById(Number(scoreId))
@@ -124,10 +161,10 @@ export default function MusicSheet() {
 
   return (
     <>
-      <div className="music-sheet-container">
-        <div className="music-sheet-content">
-          <div className="music-sheet-body">
-            <div className="music-sheet">
+      <div className="sheet-music-container">
+        <div className="sheet-music-content">
+          <div className="sheet-music-body">
+            <div className="sheet-music">
               {score ? (
                 <iframe
                   src={`https://localhost:7189/${score.filePath}`}
@@ -138,24 +175,42 @@ export default function MusicSheet() {
                 <p>Loading sheet music...</p>
               )}
             </div>
-            <div className="music-sheet-actions">
-              <div className="music-sheet-author">
+            <div className="sheet-music-actions">
+              <div className="sheet-music-author">
                 <p>
                   <a href={`/profile/${username}`}>{username}</a>
                 </p>
               </div>
-              <div className="music-sheet-title">
+              <div className="sheet-music-title">
                 <h1>
                   {score?.title || "Loading title"} -{" "}
                   {score?.composer || "Loading composer"}
                 </h1>
               </div>
-              <div className="music-sheet-description">
+              <div className="sheet-music-description">
                 <p>{score?.description || "Loading description..."}</p>
               </div>
-              <div className="music-sheet-controls">
+              <div className="sheet-music-stats">
+                <div className="views">
+                  <Eye className="icon" />
+                  <span>{score?.views || 0}</span>
+                </div>
+                <div className="downloads">
+                  <ArrowDownToLine className="icon" />
+                  <span>{score?.downloads || 0}</span>
+                </div>
+                <div className="favorites">
+                  <Heart className="icon" />
+                  <span>{score?.favorites || 0}</span>
+                </div>
+              </div>
+              <div className="sheet-music-controls">
                 <div className="button-group">
-                  <Button variant={"solid"} className="btn-download">
+                  <Button
+                    variant={"solid"}
+                    className="btn-download"
+                    onClick={handleDownload}
+                  >
                     <Download className="icon" />
                     Download
                   </Button>

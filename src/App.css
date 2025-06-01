@@ -1573,7 +1573,7 @@
 }
 
 /* Music Sheet */
-.music-sheet-container {
+.sheet-music-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1582,7 +1582,7 @@
   width: 100%;
 }
 
-.music-sheet-container .music-sheet-content {
+.sheet-music-container .sheet-music-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1591,7 +1591,7 @@
   width: 100%;
 }
 
-.music-sheet-container .music-sheet-content .music-sheet-body {
+.sheet-music-container .sheet-music-content .sheet-music-body {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1601,7 +1601,7 @@
   padding: 0;
 }
 
-.music-sheet-container .music-sheet-content .music-sheet-body .music-sheet {
+.sheet-music-container .sheet-music-content .sheet-music-body .sheet-music {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1612,21 +1612,21 @@
   margin-right: 440px;
 }
 
-.music-sheet-container
-  .music-sheet-content
-  .music-sheet-body
-  .music-sheet
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music
   iframe {
   width: 100%;
   height: 100%;
   border: none;
 }
 
-.music-sheet-container
-  .music-sheet-content
-  .music-sheet-body
-  .music-sheet
-  .music-sheet-details {
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music
+  .sheet-music-details {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1636,11 +1636,11 @@
   background-color: var(--background-card);
 }
 
-.music-sheet-container
-  .music-sheet-content
-  .music-sheet-body
-  .music-sheet
-  .music-sheet-details
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music
+  .sheet-music-details
   img {
   width: 100%;
   max-width: 850px;
@@ -1649,10 +1649,10 @@
   background-color: #ffffff;
 }
 
-.music-sheet-container
-  .music-sheet-content
-  .music-sheet-body
-  .music-sheet-actions {
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1669,67 +1669,105 @@
   box-shadow: -1px 0 0px 0px var(--border-color);
 }
 
-.music-sheet-container
-  .music-sheet-content
-  .music-sheet-body
-  .music-sheet-actions
-  .music-sheet-author {
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-author {
   width: 100%;
 }
 
-.music-sheet-container
-  .music-sheet-content
-  .music-sheet-body
-  .music-sheet-actions
-  .music-sheet-author
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-author
   p {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
 
-.music-sheet-container
-  .music-sheet-content
-  .music-sheet-body
-  .music-sheet-actions
-  .music-sheet-title {
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-title {
   width: 100%;
 }
 
-.music-sheet-container
-  .music-sheet-content
-  .music-sheet-body
-  .music-sheet-actions
-  .music-sheet-title
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-title
   h1 {
   font-size: 24px;
   font-weight: bold;
   margin: 0;
 }
 
-.music-sheet-container
-  .music-sheet-content
-  .music-sheet-body
-  .music-sheet-actions
-  .music-sheet-description {
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-description {
   width: 100%;
 }
 
-.music-sheet-container
-  .music-sheet-content
-  .music-sheet-body
-  .music-sheet-actions
-  .music-sheet-description
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-description
   p {
   font-size: 16px;
   margin: 0;
 }
 
-.music-sheet-container
-  .music-sheet-content
-  .music-sheet-body
-  .music-sheet-actions
-  .music-sheet-controls {
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-stats {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-stats
+  .views,
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-stats
+  .downloads,
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-stats
+  .favorites {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-controls {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -1738,11 +1776,11 @@
   width: 100%;
 }
 
-.music-sheet-container
-  .music-sheet-content
-  .music-sheet-body
-  .music-sheet-actions
-  .music-sheet-controls
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-controls
   .button-group {
   display: flex;
   flex-direction: column;
@@ -1752,11 +1790,11 @@
   width: 100%;
 }
 
-.music-sheet-container
-  .music-sheet-content
-  .music-sheet-body
-  .music-sheet-actions
-  .music-sheet-controls
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-controls
   .button-group
   button {
   width: 100%;
@@ -1767,11 +1805,11 @@
   color: var(--forground);
 }
 
-.music-sheet-container
-  .music-sheet-content
-  .music-sheet-body
-  .music-sheet-actions
-  .music-sheet-controls
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-controls
   .button-group
   button.btn-download {
   width: 100%;
@@ -1784,21 +1822,21 @@
   cursor: pointer;
 }
 
-.music-sheet-container
-  .music-sheet-content
-  .music-sheet-body
-  .music-sheet-actions
-  .music-sheet-controls
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-controls
   .button-group
   button.btn-download:hover {
   background-color: var(--primary-hover);
 }
 
-.music-sheet-container
-  .music-sheet-content
-  .music-sheet-body
-  .music-sheet-actions
-  .music-sheet-controls
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-controls
   .button-group
   button:hover {
   background-color: var(--sheet-border-color-hover);
