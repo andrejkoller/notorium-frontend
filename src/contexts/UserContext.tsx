@@ -13,7 +13,11 @@ const CurrentUserContext = createContext<UserContextType | undefined>(
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [currentUser, setCurrentUser] = useState<User | null>(() => {
+    const user = localStorage.getItem("user");
+    return user ? JSON.parse(user) : null;
+  });
+  
   return (
     <CurrentUserContext.Provider
       value={{

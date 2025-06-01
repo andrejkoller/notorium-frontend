@@ -3,8 +3,9 @@
   --background-elevated: #ffffff;
   --background-card: #f1f1f1;
   --foreground: #000000;
-  --primary: #6c5eff;
-  --primary-hover: #5a4cd1;
+  --primary: #e81e61;
+  --primary-hover: #c01750;
+  --searchbar-hover: #f1f1f1;
   --secondary: #7e7e7e;
   --disabled: #b0b0b0;
   --border-color: #ced4da;
@@ -17,8 +18,9 @@
   --background-elevated: #1f1f1f;
   --background-card: #000000;
   --foreground: #ffffff;
-  --primary: #6c5eff;
-  --primary-hover: #5a4cd1;
+  --primary: #e81e61;
+  --primary-hover: #c01750;
+  --searchbar-hover: #333333;
   --secondary: #7e7e7e;
   --disabled: #b0b0b0;
   --border-color: #666666;

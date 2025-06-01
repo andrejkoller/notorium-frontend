@@ -8,14 +8,7 @@ import {
   getSheetMusicById,
   removeSheetMusicFromFavorites,
 } from "../services/SheetMusicService";
-import {
-  Download,
-  Heart,
-  HeartOff,
-  Printer,
-  Share2,
-  Trash2,
-} from "lucide-react";
+import { Download, Heart, HeartOff, Printer, Trash2 } from "lucide-react";
 import { Toaster, toaster } from "./ui/toaster";
 import { useCurrentUserContext } from "../contexts/UserContext";
 
@@ -191,13 +184,7 @@ export default function MusicSheet() {
                       Favorite
                     </Button>
                   )}
-                  <Button variant={"solid"} className="btn-share">
-                    <Share2 className="icon" />
-                    Share
-                  </Button>
-                </div>
-                {currentUser?.id === score?.user?.id && (
-                  <div className="button-group">
+                  {currentUser?.id === score?.user?.id && (
                     <Button
                       variant={"solid"}
                       className="btn-delete"
@@ -206,8 +193,8 @@ export default function MusicSheet() {
                       <Trash2 className="icon" />
                       Delete
                     </Button>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             </div>
           </div>

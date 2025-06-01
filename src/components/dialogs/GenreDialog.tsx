@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useCurrentUserContext } from "../../contexts/UserContext";
 import { getCurrentUser } from "../../services/UserService";
 import { Link } from "react-router-dom";
-import { Button, RadioCard, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import { Button, RadioCard, SimpleGrid, Text } from "@chakra-ui/react";
 import type { Genre } from "../../models/SheetMusic";
 import { useSheetMusicContext } from "../../contexts/SheetMusicContext";
 import { filterSheetMusicByGenre } from "../../services/SheetMusicService";
@@ -102,19 +102,17 @@ export default function GenreDialog() {
                   )
                 }
               >
-                <Wrap>
+                <SimpleGrid columns={{ base: 1, md: 2 }} gap={4}>
                   {genreOptions.map((genreItem) => (
-                    <WrapItem key={genreItem}>
-                      <RadioCard.Item value={genreItem}>
-                        <RadioCard.ItemHiddenInput />
-                        <RadioCard.ItemControl>
-                          <RadioCard.ItemText>{genreItem}</RadioCard.ItemText>
-                          <RadioCard.ItemIndicator />
-                        </RadioCard.ItemControl>
-                      </RadioCard.Item>
-                    </WrapItem>
+                    <RadioCard.Item key={genreItem} value={genreItem}>
+                      <RadioCard.ItemHiddenInput />
+                      <RadioCard.ItemControl>
+                        <RadioCard.ItemText>{genreItem}</RadioCard.ItemText>
+                        <RadioCard.ItemIndicator />
+                      </RadioCard.ItemControl>
+                    </RadioCard.Item>
                   ))}
-                </Wrap>
+                </SimpleGrid>
               </RadioCard.Root>
               <Button
                 variant={"solid"}

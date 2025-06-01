@@ -1,4 +1,4 @@
-import { Button, RadioCard, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import { Button, RadioCard, SimpleGrid, Text } from "@chakra-ui/react";
 import { toaster, Toaster } from "../ui/toaster";
 import type { Instrument } from "../../models/SheetMusic";
 import { useCurrentUserContext } from "../../contexts/UserContext";
@@ -88,9 +88,7 @@ export default function InstrumentDialog() {
         <div className="instrument-container">
           <div className="instrument-content">
             <div className="instrument-header">
-              <h1 className="instrument-title">
-                Filter sheet music by instrument
-              </h1>
+              <h1 className="instrument-title">Filter by instruments</h1>
             </div>
             <form className="instrument-form" onSubmit={handleSubmit}>
               <RadioCard.Root
@@ -103,21 +101,19 @@ export default function InstrumentDialog() {
                   )
                 }
               >
-                <Wrap>
+                <SimpleGrid columns={{ base: 1, md: 2 }} gap={4}>
                   {instrumentOptions.map((instrumentItem) => (
-                    <WrapItem key={instrumentItem}>
-                      <RadioCard.Item value={instrumentItem}>
-                        <RadioCard.ItemHiddenInput />
-                        <RadioCard.ItemControl>
-                          <RadioCard.ItemText>
-                            {instrumentItem}
-                          </RadioCard.ItemText>
-                          <RadioCard.ItemIndicator />
-                        </RadioCard.ItemControl>
-                      </RadioCard.Item>
-                    </WrapItem>
+                    <RadioCard.Item key={instrumentItem} value={instrumentItem}>
+                      <RadioCard.ItemHiddenInput />
+                      <RadioCard.ItemControl>
+                        <RadioCard.ItemText>
+                          {instrumentItem}
+                        </RadioCard.ItemText>
+                        <RadioCard.ItemIndicator />
+                      </RadioCard.ItemControl>
+                    </RadioCard.Item>
                   ))}
-                </Wrap>
+                </SimpleGrid>
               </RadioCard.Root>
               <Button
                 variant={"solid"}

@@ -1,4 +1,4 @@
-import { Button, RadioCard, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import { Button, RadioCard, SimpleGrid, Text } from "@chakra-ui/react";
 import { toaster, Toaster } from "../ui/toaster";
 import { useCurrentUserContext } from "../../contexts/UserContext";
 import { useSheetMusicContext } from "../../contexts/SheetMusicContext";
@@ -96,21 +96,19 @@ export default function DifficultyDialog() {
                   )
                 }
               >
-                <Wrap>
+                <SimpleGrid columns={{ base: 1, md: 2 }} gap={4}>
                   {difficultyOptions.map((difficultyItem) => (
-                    <WrapItem key={difficultyItem}>
-                      <RadioCard.Item value={difficultyItem}>
-                        <RadioCard.ItemHiddenInput />
-                        <RadioCard.ItemControl>
-                          <RadioCard.ItemText>
-                            {difficultyItem}
-                          </RadioCard.ItemText>
-                          <RadioCard.ItemIndicator />
-                        </RadioCard.ItemControl>
-                      </RadioCard.Item>
-                    </WrapItem>
+                    <RadioCard.Item key={difficultyItem} value={difficultyItem}>
+                      <RadioCard.ItemHiddenInput />
+                      <RadioCard.ItemControl>
+                        <RadioCard.ItemText>
+                          {difficultyItem}
+                        </RadioCard.ItemText>
+                        <RadioCard.ItemIndicator />
+                      </RadioCard.ItemControl>
+                    </RadioCard.Item>
                   ))}
-                </Wrap>
+                </SimpleGrid>
               </RadioCard.Root>
               <Button
                 variant={"solid"}
