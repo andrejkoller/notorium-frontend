@@ -245,83 +245,87 @@ export default function MusicSheet() {
               )}
             </div>
             <div className="sheet-music-actions">
-              <div className="sheet-music-author">
-                <p>
-                  <a href={`/profile/${username}`}>{username}</a>
-                </p>
-              </div>
-              <div className="sheet-music-title">
-                <h1>
-                  {score?.title || "Loading title"} -{" "}
-                  {score?.composer || "Loading composer"}
-                </h1>
-              </div>
-              <div className="sheet-music-description">
-                <p>{score?.description || "Loading description..."}</p>
-              </div>
-              <div className="sheet-music-stats">
-                <div className="views">
-                  <Eye className="icon" />
-                  <span>{score?.views || 0}</span>
+              <div className="sheet-music-wrapper">
+                <div className="sheet-music-author">
+                  <p>
+                    <a href={`/profile/${username}`}>{username}</a>
+                  </p>
                 </div>
-                <div className="downloads">
-                  <ArrowDownToLine className="icon" />
-                  <span>{score?.downloads || 0}</span>
+                <div className="sheet-music-title">
+                  <h1>
+                    {score?.title || "Loading title"} -{" "}
+                    {score?.composer || "Loading composer"}
+                  </h1>
                 </div>
-                <div className="favorites">
-                  <Heart className="icon" />
-                  <span>{score?.favorites || 0}</span>
+                <div className="sheet-music-description">
+                  <p>{score?.description || "Loading description..."}</p>
                 </div>
               </div>
-              <div className="sheet-music-controls">
-                <div className="button-group">
-                  <Button
-                    variant={"solid"}
-                    className="btn-download"
-                    onClick={handleDownload}
-                  >
-                    <Download className="icon" />
-                    Download
-                  </Button>
-                  <Button
-                    variant={"solid"}
-                    className="btn-print"
-                    onClick={handlePrint}
-                  >
-                    <Printer className="icon" />
-                    Print
-                  </Button>
+              <div className="sheet-music-wrapper">
+                <div className="sheet-music-stats">
+                  <div className="views">
+                    <Eye className="icon" />
+                    <span>{score?.views || 0}</span>
+                  </div>
+                  <div className="downloads">
+                    <ArrowDownToLine className="icon" />
+                    <span>{score?.downloads || 0}</span>
+                  </div>
+                  <div className="favorites">
+                    <Heart className="icon" />
+                    <span>{score?.favorites || 0}</span>
+                  </div>
                 </div>
-                <div className="button-group">
-                  {isFavorited ? (
+                <div className="sheet-music-controls">
+                  <div className="button-group">
                     <Button
                       variant={"solid"}
-                      className="btn-favorite"
-                      onClick={handleUnfavoriteSubmit}
+                      className="btn-download"
+                      onClick={handleDownload}
                     >
-                      <HeartOff className="icon" />
-                      Unfavorite
+                      <Download className="icon" />
+                      Download
                     </Button>
-                  ) : (
                     <Button
                       variant={"solid"}
-                      className="btn-favorite"
-                      onClick={handleFavoriteSubmit}
+                      className="btn-print"
+                      onClick={handlePrint}
                     >
-                      <Heart className="icon" />
-                      Favorite
+                      <Printer className="icon" />
+                      Print
                     </Button>
-                  )}
-                  {currentUser?.id === score?.user?.id && (
-                    <Button
-                      variant={"solid"}
-                      className="btn-delete"
-                      onClick={handleRemoveSubmit}
-                    >
-                      <Trash2 className="icon" />
-                      Delete
-                    </Button>
-                  )}
+                  </div>
+                  <div className="button-group">
+                    {isFavorited ? (
+                      <Button
+                        variant={"solid"}
+                        className="btn-favorite"
+                        onClick={handleUnfavoriteSubmit}
+                      >
+                        <HeartOff className="icon" />
+                        Unfavorite
+                      </Button>
+                    ) : (
+                      <Button
+                        variant={"solid"}
+                        className="btn-favorite"
+                        onClick={handleFavoriteSubmit}
+                      >
+                        <Heart className="icon" />
+                        Favorite
+                      </Button>
+                    )}
+                    {currentUser?.id === score?.user?.id && (
+                      <Button
+                        variant={"solid"}
+                        className="btn-delete"
+                        onClick={handleRemoveSubmit}
+                      >
+                        <Trash2 className="icon" />
+                        Delete
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

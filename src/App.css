@@ -1112,6 +1112,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  gap: 16px;
   height: 64px;
   width: 100%;
   padding: 0 24px;
@@ -1612,6 +1613,7 @@
   max-width: 100%;
   margin-right: 440px;
   overflow-y: auto;
+  z-index: 0;
 }
 
 .sheet-music-container
@@ -1659,6 +1661,31 @@
   padding: 24px;
   background-color: var(--background);
   box-shadow: -1px 0 0px 0px var(--border-color);
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-wrapper:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-wrapper:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 16px;
+  width: 100%;
 }
 
 .sheet-music-container
@@ -2078,8 +2105,8 @@
 .search-results-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   height: 100%;
   width: 100%;
   padding: 24px;
@@ -2217,7 +2244,49 @@
   width: 100%;
 }
 
-/* Responsive Header */
+@media (max-width: 1250px) {
+  .sheet-music-container .sheet-music-content .sheet-music-body .sheet-music {
+    margin-right: 0;
+  }
+
+  .sheet-music-container
+    .sheet-music-content
+    .sheet-music-body
+    .sheet-music-actions {
+    flex-direction: row;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    top: unset;
+    box-shadow: 0px -1px 0px 0px var(--border-color);
+  }
+}
+
+@media (max-width: 750px) {
+  .register-container .register-content .register-form {
+    width: 100%;
+  }
+
+  .login-container .login-content .login-body .login-form {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .upload-container .upload-content .upload-form {
+    width: 100%;
+  }
+
+  .settings-container {
+    margin-top: 128px;
+  }
+
+  .settings-container .settings-content {
+    width: 100%;
+  }
+}
+
 @media (max-width: 900px) {
   .header-container .header-content {
     height: auto;
@@ -2247,7 +2316,7 @@
   }
 
   .main .sidebar {
-    position: static;
+    position: relative;
     align-items: center;
     height: 64px;
     width: 100%;
@@ -2257,7 +2326,7 @@
   .sidebar .sidebar-wide {
     display: none !important;
   }
-  
+
   .sidebar .sidebar-narrow {
     display: flex !important;
   }
@@ -2279,6 +2348,15 @@
     width: 100% !important;
     margin-left: 0 !important;
     margin-top: 0;
+  }
+
+  .sheet-music-container
+    .sheet-music-content
+    .sheet-music-body
+    .sheet-music-actions
+    .sheet-music-title
+    h1 {
+    font-size: 20px;
   }
 }
 
@@ -2406,5 +2484,48 @@
     .profile-favorite-scores
     .profile-favorite-scores-list {
     justify-content: center;
+  }
+
+  .scores-container .scores-content .scores-body .scores-list {
+    justify-content: center;
+  }
+
+  .scores-container .scores-content .scores-header h1 {
+    font-size: 20px;
+  }
+
+  .settings-container .settings-content .settings-header h1 {
+    font-size: 20px;
+  }
+
+  .settings-container
+    .settings-content
+    .settings-body
+    .settings-form
+    .settings-form-group
+    .input-name-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-results-container .search-results-content .search-results-header h1 {
+    font-size: 20px;
+  }
+
+  .search-results-container
+    .search-results-content
+    .search-results-body
+    .search-results-list {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 450px) {
+  .sheet-music-container
+    .sheet-music-content
+    .sheet-music-body
+    .sheet-music-actions
+    .sheet-music-controls {
+    flex-direction: column;
   }
 }
