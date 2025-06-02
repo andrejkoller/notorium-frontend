@@ -2216,3 +2216,83 @@
   gap: 8px;
   width: 100%;
 }
+
+/* Responsive Header */
+@media (max-width: 900px) {
+  .header-container .header-content {
+    height: auto;
+    gap: 8px;
+  }
+
+  .header-container .header-content .header-second-part .header-searchbar {
+    width: 100%;
+  }
+
+  .header-container .header-content .header-first-part {
+    display: none;
+  }
+
+  .header-container .header-content .header-third-part {
+    gap: 16px;
+    width: auto;
+  }
+
+  .header-container .header-content .header-first-part .header-logo h1 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-container .header-content {
+    gap: 8px;
+  }
+
+  .header-container .header-content .header-first-part,
+  .header-container .header-content .header-second-part,
+  .header-container .header-content .header-third-part {
+    justify-content: center;
+  }
+
+  .header-container
+    .header-content
+    .header-second-part
+    .header-searchbar
+    input {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .header-container .header-content .header-third-part {
+    gap: 8px;
+  }
+
+  .header-container .header-content .header-first-part .header-logo h1 {
+    font-size: 18px;
+  }
+
+  .header-container
+    .header-content
+    .header-third-part
+    .header-menu-container
+    button
+    img,
+  .header-container
+    .header-content
+    .header-third-part
+    .header-menu-container
+    button
+    span {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .header-container
+    .header-content
+    .header-third-part
+    .button-container
+    button {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+}
