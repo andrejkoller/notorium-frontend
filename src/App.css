@@ -26,6 +26,7 @@
   height: fit-content;
   margin-top: 64px;
   flex: 1 1 100%;
+  background-color: var(--background);
 }
 
 .theme-switcher-button {
