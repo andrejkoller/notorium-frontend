@@ -60,8 +60,8 @@ function App() {
                 isSidebarHidden
                   ? { width: "100%" }
                   : sidebarOpen
-                  ? { width: "80vw", marginLeft: "20vw" }
-                  : { width: "95vw", marginLeft: "5vw" }
+                  ? { width: "calc(100vw - 720px)", marginLeft: "300px" }
+                  : { width: "calc(100vw - 90px)", marginLeft: "90px" }
               }
             >
               <Routes>

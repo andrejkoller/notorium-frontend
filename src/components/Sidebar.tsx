@@ -42,6 +42,21 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
     }
   }, [openSidebar, closeSidebar]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 900) {
+        localStorage.setItem("sidebarOpen", "false");
+        closeSidebar();
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [closeSidebar]);
+
   return (
     <div className="sidebar-container">
       {/* Instrument Filter Dialog */}
