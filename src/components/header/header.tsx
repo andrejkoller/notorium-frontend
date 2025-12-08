@@ -13,7 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Tooltip } from "../ui/tooltip";
 import { Toaster, toaster } from "../ui/toaster";
 import UploadDialog from "../dialogs/upload-dialog/upload-dialog";
-import { useCurrentUserContext } from "../../contexts/user-context";
+import { useCurrentUserContext } from "../../hooks/use-current-user";
 import { searchSheetMusic } from "../../services/sheet-music-service";
 
 function Header() {

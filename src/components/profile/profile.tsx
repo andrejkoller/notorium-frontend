@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Button, Input } from "@chakra-ui/react";
-import { useCurrentUserContext } from "../../contexts/user-context";
+import { useCurrentUserContext } from "../../hooks/use-current-user";
 import {
   getCurrentUserSheetMusic,
   getSheetMusicFavorites,
@@ -13,7 +13,7 @@ import {
 } from "../../services/user-service";
 import { Toaster, toaster } from "../ui/toaster";
 import SelectFilter from "../select-filter/select-filter";
-import { useSheetMusicContext } from "../../contexts/sheet-music-context";
+import { useSheetMusicContext } from "../../hooks/use-sheet-music";
 import { Camera, ImageIcon, UserRoundPen } from "lucide-react";
 import type { SheetMusic } from "../../models/sheet-music";
 

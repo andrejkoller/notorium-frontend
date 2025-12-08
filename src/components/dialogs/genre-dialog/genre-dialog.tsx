@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { useCurrentUserContext } from "../../../contexts/user-context";
+import { useCurrentUserContext } from "../../../hooks/use-current-user";
 import { getCurrentUser } from "../../../services/user-service";
 import { Link } from "react-router-dom";
 import { Button, RadioCard, SimpleGrid, Text } from "@chakra-ui/react";
 import type { Genre } from "../../../models/sheet-music";
-import { useSheetMusicContext } from "../../../contexts/sheet-music-context";
+import { useSheetMusicContext } from "../../../hooks/use-sheet-music";
 import { filterSheetMusicByGenre } from "../../../services/sheet-music-service";
 import { Toaster, toaster } from "../../ui/toaster";
 

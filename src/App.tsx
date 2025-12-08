@@ -5,14 +5,14 @@ import { Provider } from "./components/ui/provider";
 import Home from "./components/home/home";
 import Login from "./components/authentication/login/login";
 import Register from "./components/authentication/register/register";
-import { UserProvider } from "./contexts/user-context";
+import { UserProvider } from "./providers/user-provider";
 import Sidebar from "./components/sidebar/sidebar";
 import Settings from "./components/settings/settings";
 import { useRef, useState } from "react";
 import Profile from "./components/profile/profile";
 import Scores from "./components/scores/scores";
 import MusicSheet from "./components/sheet-music/sheet-music";
-import { SheetMusicProvider } from "./contexts/sheet-music-context";
+import { SheetMusicProvider } from "./providers/sheet-music-provider";
 import SearchResults from "./components/search-results/search-results";
 
 function App() {

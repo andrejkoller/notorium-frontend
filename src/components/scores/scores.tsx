@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getCurrentUserSheetMusic } from "../../services/sheet-music-service";
 import SelectFilter from "../select-filter/select-filter";
-import { useCurrentUserContext } from "../../contexts/user-context";
-import { useSheetMusicContext } from "../../contexts/sheet-music-context";
+import { useCurrentUserContext } from "../../hooks/use-current-user";
+import { useSheetMusicContext } from "../../hooks/use-sheet-music";
 
 function Scores() {
   const { currentUser } = useCurrentUserContext();

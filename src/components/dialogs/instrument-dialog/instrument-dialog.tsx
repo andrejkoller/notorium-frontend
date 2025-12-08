@@ -1,8 +1,8 @@
 import { Button, RadioCard, SimpleGrid, Text } from "@chakra-ui/react";
 import { toaster, Toaster } from "../../ui/toaster";
 import type { Instrument } from "../../../models/sheet-music";
-import { useCurrentUserContext } from "../../../contexts/user-context";
-import { useSheetMusicContext } from "../../../contexts/sheet-music-context";
+import { useCurrentUserContext } from "../../../hooks/use-current-user";
+import { useSheetMusicContext } from "../../../hooks/use-sheet-music";
 import { useEffect, useState } from "react";
 import { getCurrentUser } from "../../../services/user-service";
 import { Link } from "react-router-dom";

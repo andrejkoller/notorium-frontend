@@ -9,7 +9,7 @@ import { ThemeSwitcher } from "../theme-switcher/theme-switcher";
 import { toaster } from "../ui/toaster";
 import { useEffect, useState } from "react";
 import { getCurrentUser, updateUser } from "../../services/user-service";
-import { useCurrentUserContext } from "../../contexts/user-context";
+import { useCurrentUserContext } from "../../hooks/use-current-user";
 import type { Role } from "../../models/user";
 
 function Settings() {

@@ -20,7 +20,7 @@ import {
   Trash2,
 } from "lucide-react";
 import { Toaster, toaster } from "../ui/toaster";
-import { useCurrentUserContext } from "../../contexts/user-context";
+import { useCurrentUserContext } from "../../hooks/use-current-user";
 import { Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";

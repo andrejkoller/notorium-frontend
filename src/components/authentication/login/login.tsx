@@ -3,7 +3,7 @@ import { useState } from "react";
 import { login } from "../../../services/auth-service";
 import { Link, useNavigate } from "react-router-dom";
 import { Toaster, toaster } from "../../ui/toaster";
-import { useCurrentUserContext } from "../../../contexts/user-context";
+import { useCurrentUserContext } from "../../../hooks/use-current-user";
 
 function Login() {
   const navigate = useNavigate();
