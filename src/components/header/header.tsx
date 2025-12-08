@@ -16,7 +16,7 @@ import UploadDialog from "../dialogs/upload-dialog/upload-dialog";
 import { useCurrentUserContext } from "../../contexts/user-context";
 import { searchSheetMusic } from "../../services/sheet-music-service";
 
-export const Header = () => {
+function Header() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();
 
   const navigate = useNavigate();
@@ -210,4 +210,6 @@ export const Header = () => {
       </div>
     </Dialog.Root>
   );
-};
+}
+
+export default Header;

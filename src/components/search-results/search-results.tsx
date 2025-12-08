@@ -1,8 +1,8 @@
 import { Link, useSearchParams } from "react-router-dom";
 import { useSheetMusicContext } from "../../contexts/sheet-music-context";
-import { SelectFilter } from "../select-filter/select-filter";
+import SelectFilter from "../select-filter/select-filter";
 
-export function SearchResults() {
+function SearchResults() {
   const { sheetMusic } = useSheetMusicContext();
 
   const [searchParams] = useSearchParams();
@@ -96,3 +96,5 @@ export function SearchResults() {
     </div>
   );
 }
+
+export default SearchResults;

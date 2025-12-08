@@ -1,6 +1,6 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
-import { Header } from "./components/header/header";
+import Header from "./components/header/header";
 import { Provider } from "./components/ui/provider";
 import Home from "./components/home/home";
 import Login from "./components/authentication/login/login";
@@ -13,7 +13,7 @@ import Profile from "./components/profile/profile";
 import Scores from "./components/scores/scores";
 import MusicSheet from "./components/sheet-music/sheet-music";
 import { SheetMusicProvider } from "./contexts/sheet-music-context";
-import { SearchResults } from "./components/search-results/search-results";
+import SearchResults from "./components/search-results/search-results";
 
 function App() {
   const location = useLocation();
@@ -75,10 +75,7 @@ function App() {
                   path="/user/:username/scores/:scoreId"
                   element={<MusicSheet />}
                 />
-                <Route
-                  path="/search"
-                  element={<SearchResults />}
-                />
+                <Route path="/search" element={<SearchResults />} />
               </Routes>
             </div>
           </main>

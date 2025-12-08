@@ -8,7 +8,7 @@ import { getCurrentUser } from "../../../services/user-service";
 import { Link } from "react-router-dom";
 import { filterSheetMusicByDifficulty } from "../../../services/sheet-music-service";
 
-export default function DifficultyDialog() {
+function DifficultyDialog() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();
   const { setSheetMusic } = useSheetMusicContext();
   const [selectedDifficulty, setSelectedDifficulty] =
@@ -126,3 +126,5 @@ export default function DifficultyDialog() {
     </>
   );
 }
+
+export default DifficultyDialog;

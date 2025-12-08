@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useColorMode } from "../ui/color-mode";
 import { Tooltip } from "../ui/tooltip";
 
-export const ThemeSwitcher = () => {
+const ThemeSwitcher = () => {
   const [isChecked, setIsChecked] = useState(false);
   const { setColorMode } = useColorMode();
 
@@ -45,3 +45,5 @@ export const ThemeSwitcher = () => {
     </Tooltip>
   );
 };
+
+export { ThemeSwitcher };

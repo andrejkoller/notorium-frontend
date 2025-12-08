@@ -28,7 +28,7 @@ import { pdfjs } from "react-pdf";
 
 pdfjs.GlobalWorkerOptions.workerSrc = "/pdfjs/pdf.worker.mjs";
 
-export default function MusicSheet() {
+function MusicSheet() {
   const navigate = useNavigate();
   const [score, setScore] = useState<SheetMusic | null>(null);
   const { currentUser, setCurrentUser } = useCurrentUserContext();
@@ -336,3 +336,5 @@ export default function MusicSheet() {
     </>
   );
 }
+
+export default MusicSheet;

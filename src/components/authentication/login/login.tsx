@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Toaster, toaster } from "../../ui/toaster";
 import { useCurrentUserContext } from "../../../contexts/user-context";
 
-export default function Login() {
+function Login() {
   const navigate = useNavigate();
 
   const { setCurrentUser } = useCurrentUserContext();
@@ -108,3 +108,5 @@ export default function Login() {
     </>
   );
 }
+
+export default Login;

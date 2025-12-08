@@ -12,7 +12,7 @@ import { getCurrentUser, updateUser } from "../../services/user-service";
 import { useCurrentUserContext } from "../../contexts/user-context";
 import type { Role } from "../../models/user";
 
-export default function Settings() {
+function Settings() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();
 
   const [formData, setFormData] = useState({
@@ -273,3 +273,5 @@ export default function Settings() {
     </>
   );
 }
+
+export default Settings;

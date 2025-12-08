@@ -5,7 +5,7 @@ import { register } from "../../../services/auth-service";
 import { Link, useNavigate } from "react-router-dom";
 import { Toaster, toaster } from "../../ui/toaster";
 
-export default function Register() {
+function Register() {
   const MIN_PASSWORD_LENGTH = 8;
 
   const navigate = useNavigate();
@@ -168,3 +168,5 @@ export default function Register() {
     </>
   );
 }
+
+export default Register;

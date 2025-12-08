@@ -18,7 +18,7 @@ type SidebarProps = {
   sidebarRef: RefObject<HTMLDivElement | null>;
 };
 
-export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
+function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
   const openSidebar = useCallback(() => {
     if (setSidebarOpen) {
       setSidebarOpen(true);
@@ -216,3 +216,5 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
     </div>
   );
 }
+
+export default Sidebar;

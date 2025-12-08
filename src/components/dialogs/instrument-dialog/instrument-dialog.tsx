@@ -8,7 +8,7 @@ import { getCurrentUser } from "../../../services/user-service";
 import { Link } from "react-router-dom";
 import { filterSheetMusicByInstrument } from "../../../services/sheet-music-service";
 
-export default function InstrumentDialog() {
+function InstrumentDialog() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();
   const { setSheetMusic } = useSheetMusicContext();
   const [selectedInstrument, setSelectedInstrument] =
@@ -131,3 +131,5 @@ export default function InstrumentDialog() {
     </>
   );
 }
+
+export default InstrumentDialog;

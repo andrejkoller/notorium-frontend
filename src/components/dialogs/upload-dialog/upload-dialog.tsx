@@ -19,12 +19,16 @@ import {
 } from "../../../services/sheet-music-service";
 import { Toaster, toaster } from "../../ui/toaster";
 import { getCurrentUser } from "../../../services/user-service";
-import type { Difficulty, Genre, Instrument } from "../../../models/sheet-music";
+import type {
+  Difficulty,
+  Genre,
+  Instrument,
+} from "../../../models/sheet-music";
 import { useCurrentUserContext } from "../../../contexts/user-context";
 import { useSheetMusicContext } from "../../../contexts/sheet-music-context";
 import { Link } from "react-router-dom";
 
-export default function UploadDialog() {
+function UploadDialog() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();
   const { setSheetMusic } = useSheetMusicContext();
 
@@ -431,3 +435,5 @@ export default function UploadDialog() {
     </>
   );
 }
+
+export default UploadDialog;

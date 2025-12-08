@@ -7,14 +7,17 @@ import {
 } from "../../services/sheet-music-service";
 import { Link } from "react-router-dom";
 import { Tooltip } from "../ui/tooltip";
-import { uploadBannerImage, uploadProfileImage } from "../../services/user-service";
+import {
+  uploadBannerImage,
+  uploadProfileImage,
+} from "../../services/user-service";
 import { Toaster, toaster } from "../ui/toaster";
-import { SelectFilter } from "../select-filter/select-filter";
+import SelectFilter from "../select-filter/select-filter";
 import { useSheetMusicContext } from "../../contexts/sheet-music-context";
 import { Camera, ImageIcon, UserRoundPen } from "lucide-react";
 import type { SheetMusic } from "../../models/sheet-music";
 
-export default function Profile() {
+function Profile() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();
   const { sheetMusic, setSheetMusic } = useSheetMusicContext();
   const [loadingScores, setLoadingScores] = useState(true);
@@ -322,3 +325,5 @@ export default function Profile() {
     </>
   );
 }
+
+export default Profile;

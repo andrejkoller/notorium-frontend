@@ -8,7 +8,7 @@ import { useSheetMusicContext } from "../../../contexts/sheet-music-context";
 import { filterSheetMusicByGenre } from "../../../services/sheet-music-service";
 import { Toaster, toaster } from "../../ui/toaster";
 
-export default function GenreDialog() {
+function GenreDialog() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();
   const { setSheetMusic } = useSheetMusicContext();
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
@@ -130,3 +130,5 @@ export default function GenreDialog() {
     </>
   );
 }
+
+export default GenreDialog;

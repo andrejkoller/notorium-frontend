@@ -4,7 +4,7 @@ import { useSheetMusicContext } from "../../contexts/sheet-music-context";
 import { filterSheetMusicByUploadDate } from "../../services/sheet-music-service";
 import { Toaster, toaster } from "../ui/toaster";
 
-export const SelectFilter = () => {
+const SelectFilter = () => {
   const { setSheetMusic } = useSheetMusicContext();
   const [descending, setDescending] = useState(false);
 
@@ -84,3 +84,5 @@ export const SelectFilter = () => {
     </>
   );
 };
+
+export default SelectFilter;
