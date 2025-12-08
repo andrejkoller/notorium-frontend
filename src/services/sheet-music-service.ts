@@ -1,5 +1,5 @@
-import type { SheetMusic } from "../models/SheetMusic";
-import axiosInstance from "./AxiosInstance";
+import type { SheetMusic } from "../models/sheet-music";
+import axiosInstance from "./axios-instance";
 
 const BASE_URL = "https://localhost:7189/api/sheetmusic";
 

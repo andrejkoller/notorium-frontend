@@ -1,9 +1,9 @@
 import { Button, Input, Spinner, Text, VStack } from "@chakra-ui/react";
 import { useState } from "react";
-import { login } from "../../services/AuthService";
+import { login } from "../../../services/auth-service";
 import { Link, useNavigate } from "react-router-dom";
-import { Toaster, toaster } from "../ui/toaster";
-import { useCurrentUserContext } from "../../contexts/UserContext";
+import { Toaster, toaster } from "../../ui/toaster";
+import { useCurrentUserContext } from "../../../contexts/user-context";
 
 export default function Login() {
   const navigate = useNavigate();

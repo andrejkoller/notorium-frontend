@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import type { SheetMusic } from "../models/SheetMusic";
+import type { SheetMusic } from "../models/sheet-music";
 
 type SheetMusicContextType = {
   sheetMusic: SheetMusic[] | null;

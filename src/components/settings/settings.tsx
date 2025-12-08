@@ -5,12 +5,12 @@ import {
   Select,
   Textarea,
 } from "@chakra-ui/react";
-import { ThemeSwitcher } from "./theme/ThemeSwitcher";
-import { toaster } from "./ui/toaster";
+import { ThemeSwitcher } from "../theme-switcher/theme-switcher";
+import { toaster } from "../ui/toaster";
 import { useEffect, useState } from "react";
-import { getCurrentUser, updateUser } from "../services/UserService";
-import { useCurrentUserContext } from "../contexts/UserContext";
-import type { Role } from "../models/User";
+import { getCurrentUser, updateUser } from "../../services/user-service";
+import { useCurrentUserContext } from "../../contexts/user-context";
+import type { Role } from "../../models/user";
 
 export default function Settings() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();

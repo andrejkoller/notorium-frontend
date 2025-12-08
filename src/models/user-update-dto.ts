@@ -1,4 +1,4 @@
-import type { Role } from "./User";
+import type { Role } from "./user";
 
 export interface UserUpdateDTO {
   name: string;

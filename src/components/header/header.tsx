@@ -7,14 +7,14 @@ import {
   Portal,
 } from "@chakra-ui/react";
 import { Search, Upload } from "lucide-react";
-import { getCurrentUser } from "../services/UserService";
+import { getCurrentUser } from "../../services/user-service";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Tooltip } from "./ui/tooltip";
-import { Toaster, toaster } from "./ui/toaster";
-import UploadDialog from "./dialogs/UploadDialog";
-import { useCurrentUserContext } from "../contexts/UserContext";
-import { searchSheetMusic } from "../services/SheetMusicService";
+import { Tooltip } from "../ui/tooltip";
+import { Toaster, toaster } from "../ui/toaster";
+import UploadDialog from "../dialogs/upload-dialog/upload-dialog";
+import { useCurrentUserContext } from "../../contexts/user-context";
+import { searchSheetMusic } from "../../services/sheet-music-service";
 
 export const Header = () => {
   const { currentUser, setCurrentUser } = useCurrentUserContext();

@@ -1,4 +1,4 @@
-import type { Genre, SheetMusic } from "./SheetMusic";
+import type { Genre, SheetMusic } from "./sheet-music";
 
 export interface User {
   id: number;

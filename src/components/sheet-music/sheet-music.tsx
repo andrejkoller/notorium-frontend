@@ -1,7 +1,7 @@
 import { Button } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import type { SheetMusic } from "../models/SheetMusic";
+import type { SheetMusic } from "../../models/sheet-music";
 import {
   addSheetMusicToFavorites,
   deleteSheetMusic,
@@ -9,7 +9,7 @@ import {
   getSheetMusicById,
   printSheetMusic,
   removeSheetMusicFromFavorites,
-} from "../services/SheetMusicService";
+} from "../../services/sheet-music-service";
 import {
   ArrowDownToLine,
   Download,
@@ -19,8 +19,8 @@ import {
   Printer,
   Trash2,
 } from "lucide-react";
-import { Toaster, toaster } from "./ui/toaster";
-import { useCurrentUserContext } from "../contexts/UserContext";
+import { Toaster, toaster } from "../ui/toaster";
+import { useCurrentUserContext } from "../../contexts/user-context";
 import { Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";

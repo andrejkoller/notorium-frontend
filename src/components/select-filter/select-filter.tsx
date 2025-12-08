@@ -1,8 +1,8 @@
 import { createListCollection, Portal, Select } from "@chakra-ui/react";
 import { useState } from "react";
-import { useSheetMusicContext } from "../contexts/SheetMusicContext";
-import { filterSheetMusicByUploadDate } from "../services/SheetMusicService";
-import { Toaster, toaster } from "./ui/toaster";
+import { useSheetMusicContext } from "../../contexts/sheet-music-context";
+import { filterSheetMusicByUploadDate } from "../../services/sheet-music-service";
+import { Toaster, toaster } from "../ui/toaster";
 
 export const SelectFilter = () => {
   const { setSheetMusic } = useSheetMusicContext();

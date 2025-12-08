@@ -1,12 +1,12 @@
 import { Button, RadioCard, SimpleGrid, Text } from "@chakra-ui/react";
-import { toaster, Toaster } from "../ui/toaster";
-import { useCurrentUserContext } from "../../contexts/UserContext";
-import { useSheetMusicContext } from "../../contexts/SheetMusicContext";
-import type { Difficulty } from "../../models/SheetMusic";
+import { toaster, Toaster } from "../../ui/toaster";
+import { useCurrentUserContext } from "../../../contexts/user-context";
+import { useSheetMusicContext } from "../../../contexts/sheet-music-context";
+import type { Difficulty } from "../../../models/sheet-music";
 import { useEffect, useState } from "react";
-import { getCurrentUser } from "../../services/UserService";
+import { getCurrentUser } from "../../../services/user-service";
 import { Link } from "react-router-dom";
-import { filterSheetMusicByDifficulty } from "../../services/SheetMusicService";
+import { filterSheetMusicByDifficulty } from "../../../services/sheet-music-service";
 
 export default function DifficultyDialog() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();

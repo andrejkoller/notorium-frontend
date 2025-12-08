@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { useCurrentUserContext } from "../../contexts/UserContext";
-import { getCurrentUser } from "../../services/UserService";
+import { useCurrentUserContext } from "../../../contexts/user-context";
+import { getCurrentUser } from "../../../services/user-service";
 import { Link } from "react-router-dom";
 import { Button, RadioCard, SimpleGrid, Text } from "@chakra-ui/react";
-import type { Genre } from "../../models/SheetMusic";
-import { useSheetMusicContext } from "../../contexts/SheetMusicContext";
-import { filterSheetMusicByGenre } from "../../services/SheetMusicService";
-import { Toaster, toaster } from "../ui/toaster";
+import type { Genre } from "../../../models/sheet-music";
+import { useSheetMusicContext } from "../../../contexts/sheet-music-context";
+import { filterSheetMusicByGenre } from "../../../services/sheet-music-service";
+import { Toaster, toaster } from "../../ui/toaster";
 
 export default function GenreDialog() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();

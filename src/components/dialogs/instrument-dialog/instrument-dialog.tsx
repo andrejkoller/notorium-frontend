@@ -1,12 +1,12 @@
 import { Button, RadioCard, SimpleGrid, Text } from "@chakra-ui/react";
-import { toaster, Toaster } from "../ui/toaster";
-import type { Instrument } from "../../models/SheetMusic";
-import { useCurrentUserContext } from "../../contexts/UserContext";
-import { useSheetMusicContext } from "../../contexts/SheetMusicContext";
+import { toaster, Toaster } from "../../ui/toaster";
+import type { Instrument } from "../../../models/sheet-music";
+import { useCurrentUserContext } from "../../../contexts/user-context";
+import { useSheetMusicContext } from "../../../contexts/sheet-music-context";
 import { useEffect, useState } from "react";
-import { getCurrentUser } from "../../services/UserService";
+import { getCurrentUser } from "../../../services/user-service";
 import { Link } from "react-router-dom";
-import { filterSheetMusicByInstrument } from "../../services/SheetMusicService";
+import { filterSheetMusicByInstrument } from "../../../services/sheet-music-service";
 
 export default function InstrumentDialog() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();

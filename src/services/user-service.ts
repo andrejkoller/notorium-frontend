@@ -1,6 +1,6 @@
-import type { User } from "../models/User";
-import type { UserUpdateDTO } from "../models/UserUpdateDTO";
-import axiosInstance from "./AxiosInstance";
+import type { User } from "../models/user";
+import type { UserUpdateDTO } from "../models/user-update-dto";
+import axiosInstance from "./axios-instance";
 
 const BASE_URL = "https://localhost:7189/api/user";
 

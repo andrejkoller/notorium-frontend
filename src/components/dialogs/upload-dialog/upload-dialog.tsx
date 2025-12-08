@@ -16,12 +16,12 @@ import { LuUpload } from "react-icons/lu";
 import {
   getAllSheetMusic,
   uploadSheetMusic,
-} from "../../services/SheetMusicService";
-import { Toaster, toaster } from "../ui/toaster";
-import { getCurrentUser } from "../../services/UserService";
-import type { Difficulty, Genre, Instrument } from "../../models/SheetMusic";
-import { useCurrentUserContext } from "../../contexts/UserContext";
-import { useSheetMusicContext } from "../../contexts/SheetMusicContext";
+} from "../../../services/sheet-music-service";
+import { Toaster, toaster } from "../../ui/toaster";
+import { getCurrentUser } from "../../../services/user-service";
+import type { Difficulty, Genre, Instrument } from "../../../models/sheet-music";
+import { useCurrentUserContext } from "../../../contexts/user-context";
+import { useSheetMusicContext } from "../../../contexts/sheet-music-context";
 import { Link } from "react-router-dom";
 
 export default function UploadDialog() {

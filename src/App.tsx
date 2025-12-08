@@ -1,19 +1,19 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
-import { Header } from "./components/Header";
+import { Header } from "./components/header/header";
 import { Provider } from "./components/ui/provider";
-import Home from "./components/Home";
-import Login from "./components/authentication/Login";
-import Register from "./components/authentication/Register";
-import { UserProvider } from "./contexts/UserContext";
-import Sidebar from "./components/Sidebar";
-import Settings from "./components/Settings";
+import Home from "./components/home/home";
+import Login from "./components/authentication/login/login";
+import Register from "./components/authentication/register/register";
+import { UserProvider } from "./contexts/user-context";
+import Sidebar from "./components/sidebar/sidebar";
+import Settings from "./components/settings/settings";
 import { useRef, useState } from "react";
-import Profile from "./components/Profile";
-import Scores from "./components/Scores";
-import MusicSheet from "./components/SheetMusic";
-import { SheetMusicProvider } from "./contexts/SheetMusicContext";
-import { SearchResults } from "./components/SearchResults";
+import Profile from "./components/profile/profile";
+import Scores from "./components/scores/scores";
+import MusicSheet from "./components/sheet-music/sheet-music";
+import { SheetMusicProvider } from "./contexts/sheet-music-context";
+import { SearchResults } from "./components/search-results/search-results";
 
 function App() {
   const location = useLocation();

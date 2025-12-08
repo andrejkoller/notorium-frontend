@@ -1,5 +1,5 @@
-import type { User, UserResponse } from "../models/User";
-import axiosInstance from "./AxiosInstance";
+import type { User, UserResponse } from "../models/user";
+import axiosInstance from "./axios-instance";
 
 const BASE_URL = "https://localhost:7189/api/auth";
 

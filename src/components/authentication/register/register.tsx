@@ -1,9 +1,9 @@
 import { Button, Input, Spinner, Text, VStack } from "@chakra-ui/react";
 import { useState } from "react";
-import { PasswordInput } from "../ui/password-input";
-import { register } from "../../services/AuthService";
+import { PasswordInput } from "../../ui/password-input";
+import { register } from "../../../services/auth-service";
 import { Link, useNavigate } from "react-router-dom";
-import { Toaster, toaster } from "../ui/toaster";
+import { Toaster, toaster } from "../../ui/toaster";
 
 export default function Register() {
   const MIN_PASSWORD_LENGTH = 8;

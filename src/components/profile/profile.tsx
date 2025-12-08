@@ -1,18 +1,18 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Button, Input } from "@chakra-ui/react";
-import { useCurrentUserContext } from "../contexts/UserContext";
+import { useCurrentUserContext } from "../../contexts/user-context";
 import {
   getCurrentUserSheetMusic,
   getSheetMusicFavorites,
-} from "../services/SheetMusicService";
+} from "../../services/sheet-music-service";
 import { Link } from "react-router-dom";
-import { Tooltip } from "./ui/tooltip";
-import { uploadBannerImage, uploadProfileImage } from "../services/UserService";
-import { Toaster, toaster } from "./ui/toaster";
-import { SelectFilter } from "./SelectFilter";
-import { useSheetMusicContext } from "../contexts/SheetMusicContext";
+import { Tooltip } from "../ui/tooltip";
+import { uploadBannerImage, uploadProfileImage } from "../../services/user-service";
+import { Toaster, toaster } from "../ui/toaster";
+import { SelectFilter } from "../select-filter/select-filter";
+import { useSheetMusicContext } from "../../contexts/sheet-music-context";
 import { Camera, ImageIcon, UserRoundPen } from "lucide-react";
-import type { SheetMusic } from "../models/SheetMusic";
+import type { SheetMusic } from "../../models/sheet-music";
 
 export default function Profile() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();
