@@ -46,7 +46,7 @@ function Scores() {
                   music.isPublic && (
                     <li key={music.id} className="scores-item">
                       <Link
-                        to={`/user/${music.user?.username}/scores/${music.id}`}
+                        to={`/dashboard/users/${music.user?.username}/scores/${music.id}`}
                         className="scores-link"
                       >
                         <img
@@ -56,7 +56,7 @@ function Scores() {
                         />
                       </Link>
                       <Link
-                        to={`/user/${music.user?.username}/scores/${music.id}`}
+                        to={`/dashboard/users/${music.user?.username}/scores/${music.id}`}
                         className="scores-title"
                       >
                         <h2 className="profile-scores-title">{music.title}</h2>

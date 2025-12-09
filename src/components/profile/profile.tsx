@@ -187,7 +187,7 @@ function Profile() {
                 />
               </Button>
               <Button variant={"outline"}>
-                <Link to={"/settings"} className="profile-edit-link">
+                <Link to={"/dashboard/settings"} className="profile-edit-link">
                   <UserRoundPen className="profile-edit-icon" />
                   <span>Edit Profile</span>
                 </Link>
@@ -211,7 +211,7 @@ function Profile() {
                       music.isPublic && (
                         <li key={music.id} className="profile-scores-item">
                           <Link
-                            to={`/user/${music.user?.username}/scores/${music.id}`}
+                            to={`/dashboard/users/${music.user?.username}/scores/${music.id}`}
                             className="profile-scores-link"
                           >
                             <img
@@ -221,7 +221,7 @@ function Profile() {
                             />
                           </Link>
                           <Link
-                            to={`/user/${music.user?.username}/scores/${music.id}`}
+                            to={`/dashboard/users/${music.user?.username}/scores/${music.id}`}
                             className="profile-scores-title"
                           >
                             <h2 className="profile-scores-title">
@@ -270,7 +270,7 @@ function Profile() {
                   {favoriteSheetMusic.map((music) => (
                     <li key={music.id} className="profile-favorite-scores-item">
                       <Link
-                        to={`/user/${music.user?.username}/scores/${music.id}`}
+                        to={`/dashboard/users/${music.user?.username}/scores/${music.id}`}
                         className="profile-favorite-scores-link"
                       >
                         <img
@@ -280,7 +280,7 @@ function Profile() {
                         />
                       </Link>
                       <Link
-                        to={`/user/${music.user?.username}/scores/${music.id}`}
+                        to={`/dashboard/users/${music.user?.username}/scores/${music.id}`}
                         className="profile-favorite-scores-title"
                       >
                         <h2 className="profile-favorite-scores-title">

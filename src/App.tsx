@@ -14,12 +14,14 @@ import Scores from "./components/scores/scores";
 import MusicSheet from "./components/sheet-music/sheet-music";
 import { SheetMusicProvider } from "./providers/sheet-music-provider";
 import SearchResults from "./components/search-results/search-results";
+import Dashboard from "./components/dashboard/dashboard";
 
 function App() {
   const location = useLocation();
   const sidebarHiddenRoutes = [
     /^\/login$/,
     /^\/register$/,
+    /^\/$/,
     /^\/upload$/,
     /^\/settings$/,
     /^\/user\/[^/]+\/scores\/[^/]+$/,
@@ -68,14 +70,21 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/users/:username" element={<Profile />} />
-                <Route path="/users/:username/scores" element={<Scores />} />
-                <Route path="/settings" element={<Settings />} />
+                <Route path="/dashboard" element={<Dashboard />} />
                 <Route
-                  path="/user/:username/scores/:scoreId"
+                  path="/dashboard/users/:username"
+                  element={<Profile />}
+                />
+                <Route
+                  path="/dashboard/users/:username/scores"
+                  element={<Scores />}
+                />
+                <Route path="/dashboard/settings" element={<Settings />} />
+                <Route
+                  path="/dashboard/users/:username/scores/:scoreId"
                   element={<MusicSheet />}
                 />
-                <Route path="/search" element={<SearchResults />} />
+                <Route path="/dashboard/search" element={<SearchResults />} />
               </Routes>
             </div>
           </main>
