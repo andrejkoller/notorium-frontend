@@ -27,6 +27,7 @@ import type {
 import { useCurrentUserContext } from "../../../hooks/use-current-user";
 import { useSheetMusicContext } from "../../../hooks/use-sheet-music";
 import { Link } from "react-router-dom";
+import "./upload-dialog.css";
 
 function UploadDialog() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();

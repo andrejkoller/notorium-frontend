@@ -4,6 +4,7 @@ import { login } from "../../../services/auth-service";
 import { Link, useNavigate } from "react-router-dom";
 import { Toaster, toaster } from "../../ui/toaster";
 import { useCurrentUserContext } from "../../../hooks/use-current-user";
+import "./login.css";
 
 function Login() {
   const navigate = useNavigate();

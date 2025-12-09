@@ -3,6 +3,7 @@ import { getAllSheetMusic } from "../../services/sheet-music-service";
 import { Link } from "react-router-dom";
 import SelectFilter from "../select-filter/select-filter";
 import { useSheetMusicContext } from "../../hooks/use-sheet-music";
+import "./home.css";
 
 function Home() {
   const { sheetMusic, setSheetMusic } = useSheetMusicContext();

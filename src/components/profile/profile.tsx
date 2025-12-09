@@ -16,6 +16,7 @@ import SelectFilter from "../select-filter/select-filter";
 import { useSheetMusicContext } from "../../hooks/use-sheet-music";
 import { Camera, ImageIcon, UserRoundPen } from "lucide-react";
 import type { SheetMusic } from "../../models/sheet-music";
+import "./profile.css";
 
 function Profile() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();

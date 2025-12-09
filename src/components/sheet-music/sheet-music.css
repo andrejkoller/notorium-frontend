@@ -1,0 +1,326 @@
+.sheet-music-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.sheet-music-container .sheet-music-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+}
+
+.sheet-music-container .sheet-music-content .sheet-music-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
+
+.sheet-music-container .sheet-music-content .sheet-music-body .sheet-music {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: calc(100vh - 64px);
+  width: 100%;
+  max-width: 100%;
+  margin-right: 440px;
+  overflow-y: auto;
+  z-index: 0;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music
+  .sheet-music-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: var(--background-card);
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music
+  .sheet-music-details
+  img {
+  width: 100%;
+  max-width: 850px;
+  height: 1099px;
+  object-fit: cover;
+  background-color: #ffffff;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  height: 100vh;
+  width: 100%;
+  max-width: 440px;
+  position: fixed;
+  top: 64px;
+  right: 0;
+  padding: 24px;
+  background-color: var(--background);
+  box-shadow: -1px 0 0px 0px var(--border-color);
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-wrapper:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-wrapper:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-author {
+  width: 100%;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-author
+  p {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-title {
+  width: 100%;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-title
+  h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-description {
+  width: 100%;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-description
+  p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-stats {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-stats
+  .views,
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-stats
+  .downloads,
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-stats
+  .favorites {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-controls
+  .button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-controls
+  .button-group
+  button {
+  width: 100%;
+  padding: 16px;
+  border-radius: 999px;
+  border: none;
+  background-color: var(--sheet-border-color);
+  color: var(--forground);
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-controls
+  .button-group
+  button.btn-download {
+  width: 100%;
+  padding: 16px;
+  border-radius: 999px;
+  border: none;
+  background-color: var(--primary);
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-controls
+  .button-group
+  button.btn-download:hover {
+  background-color: var(--primary-hover);
+}
+
+.sheet-music-container
+  .sheet-music-content
+  .sheet-music-body
+  .sheet-music-actions
+  .sheet-music-controls
+  .button-group
+  button:hover {
+  background-color: var(--sheet-border-color-hover);
+}
+
+@media (max-width: 1250px) {
+  .sheet-music-container .sheet-music-content .sheet-music-body .sheet-music {
+    margin-right: 0;
+  }
+
+  .sheet-music-container
+    .sheet-music-content
+    .sheet-music-body
+    .sheet-music-actions {
+    flex-direction: row;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    top: unset;
+    box-shadow: 0px -1px 0px 0px var(--border-color);
+  }
+}
+
+@media (max-width: 900px) {
+  .sheet-music-container
+    .sheet-music-content
+    .sheet-music-body
+    .sheet-music-actions
+    .sheet-music-title
+    h1 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 450px) {
+  .sheet-music-container
+    .sheet-music-content
+    .sheet-music-body
+    .sheet-music-actions
+    .sheet-music-controls {
+    flex-direction: column;
+  }
+}

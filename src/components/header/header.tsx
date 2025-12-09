@@ -15,6 +15,7 @@ import { Toaster, toaster } from "../ui/toaster";
 import UploadDialog from "../dialogs/upload-dialog/upload-dialog";
 import { useCurrentUserContext } from "../../hooks/use-current-user";
 import { searchSheetMusic } from "../../services/sheet-music-service";
+import "./header.css";
 
 function Header() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();

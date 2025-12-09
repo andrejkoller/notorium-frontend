@@ -4,6 +4,7 @@ import { getCurrentUserSheetMusic } from "../../services/sheet-music-service";
 import SelectFilter from "../select-filter/select-filter";
 import { useCurrentUserContext } from "../../hooks/use-current-user";
 import { useSheetMusicContext } from "../../hooks/use-sheet-music";
+import "./scores.css";
 
 function Scores() {
   const { currentUser } = useCurrentUserContext();

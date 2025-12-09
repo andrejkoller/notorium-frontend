@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { getCurrentUser, updateUser } from "../../services/user-service";
 import { useCurrentUserContext } from "../../hooks/use-current-user";
 import type { Role } from "../../models/user";
+import "./settings.css";
 
 function Settings() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();

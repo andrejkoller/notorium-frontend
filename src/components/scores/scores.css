@@ -1,0 +1,139 @@
+.scores-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+  padding: 24px;
+}
+
+.scores-container .scores-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.scores-container .scores-content .scores-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.scores-container .scores-content .scores-header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.scores-container .scores-content .scores-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.scores-container .scores-content .scores-body .scores-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.scores-container .scores-content .scores-body .scores-list .scores-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.scores-container
+  .scores-content
+  .scores-body
+  .scores-list
+  .scores-item
+  .scores-link {
+  margin-bottom: 16px;
+}
+
+.scores-container
+  .scores-content
+  .scores-body
+  .scores-list
+  .scores-item
+  .scores-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: 1px solid var(--sheet-border-color);
+}
+
+.scores-container
+  .scores-content
+  .scores-body
+  .scores-list
+  .scores-item
+  .scores-image:hover {
+  border-color: var(--sheet-border-color-hover);
+}
+
+.scores-container
+  .scores-content
+  .scores-body
+  .scores-list
+  .scores-item
+  .scores-title {
+  color: var(--primary);
+}
+
+.scores-container
+  .scores-content
+  .scores-body
+  .scores-list
+  .scores-item
+  .scores-title:hover {
+  text-decoration: underline;
+}
+
+.scores-container
+  .scores-content
+  .scores-body
+  .scores-list
+  .scores-item
+  .scores-title,
+.scores-card .scores-body .scores-list .scores-item .scores-composer {
+  width: fit-content;
+}
+
+.scores-container
+  .scores-content
+  .scores-body
+  .scores-list
+  .scores-item
+  .scores-genre-instrument {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .scores-container .scores-content .scores-body .scores-list {
+    justify-content: center;
+  }
+
+  .scores-container .scores-content .scores-header h1 {
+    font-size: 20px;
+  }
+}

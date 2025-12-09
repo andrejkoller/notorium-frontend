@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { getCurrentUser } from "../../../services/user-service";
 import { Link } from "react-router-dom";
 import { filterSheetMusicByDifficulty } from "../../../services/sheet-music-service";
+import "./difficulty-dialog.css";
 
 function DifficultyDialog() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();

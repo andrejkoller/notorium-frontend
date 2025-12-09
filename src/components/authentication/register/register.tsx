@@ -4,6 +4,7 @@ import { PasswordInput } from "../../ui/password-input";
 import { register } from "../../../services/auth-service";
 import { Link, useNavigate } from "react-router-dom";
 import { Toaster, toaster } from "../../ui/toaster";
+import "./register.css";
 
 function Register() {
   const MIN_PASSWORD_LENGTH = 8;

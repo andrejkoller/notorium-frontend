@@ -7,6 +7,7 @@ import type { Genre } from "../../../models/sheet-music";
 import { useSheetMusicContext } from "../../../hooks/use-sheet-music";
 import { filterSheetMusicByGenre } from "../../../services/sheet-music-service";
 import { Toaster, toaster } from "../../ui/toaster";
+import "./genre-dialog.css";
 
 function GenreDialog() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();

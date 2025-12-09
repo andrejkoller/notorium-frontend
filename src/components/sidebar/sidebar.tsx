@@ -11,6 +11,7 @@ import { Tooltip } from "../ui/tooltip";
 import GenreDialog from "../dialogs/genre-dialog/genre-dialog";
 import DifficultyDialog from "../dialogs/difficulty-dialog/difficulty-dialog";
 import InstrumentDialog from "../dialogs/instrument-dialog/instrument-dialog";
+import "./sidebar.css";
 
 type SidebarProps = {
   sidebarOpen: boolean;
