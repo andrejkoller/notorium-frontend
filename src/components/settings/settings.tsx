@@ -12,6 +12,7 @@ import { getCurrentUser, updateUser } from "../../services/user-service";
 import { useCurrentUserContext } from "../../hooks/use-current-user";
 import type { Role } from "../../models/user";
 import "./settings.css";
+import DashboardHeader from "../dashboard/dashboard-header/dashboard-header";
 
 function Settings() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();
@@ -148,18 +149,16 @@ function Settings() {
         <p>Loading...</p>
       ) : (
         <div className="settings-container">
+          <DashboardHeader />
           <div className="settings-content">
             <div className="settings-header">
-              <h1>Settings</h1>
+              <h1 className="settings-title">Settings</h1>
             </div>
             <div className="settings-body">
               <form className="settings-form" onSubmit={handleSubmit}>
                 <div className="settings-field">
                   <div className="settings-info">
                     <label htmlFor="theme">Theme</label>
-                    <p className="settings-description">
-                      Choose your preferred theme for the application.
-                    </p>
                   </div>
                   <div className="settings-select">
                     <ThemeSwitcher />
@@ -168,14 +167,10 @@ function Settings() {
                 <div className="settings-field">
                   <div className="settings-info">
                     <label>Edit Profile</label>
-                    <p className="settings-description">
-                      Update your profile information.
-                    </p>
                   </div>
                 </div>
                 <div className="settings-form-group">
                   <div className="input-name-group">
-                    {/* Name Input */}
                     <Input
                       type="text"
                       id="name"
@@ -185,8 +180,6 @@ function Settings() {
                       onChange={handleInputChange}
                       required
                     />
-
-                    {/* Username Input */}
                     <Input
                       type="text"
                       id="username"
@@ -197,8 +190,6 @@ function Settings() {
                       required
                     />
                   </div>
-
-                  {/* Email Input */}
                   <Input
                     type="email"
                     id="email"
@@ -208,8 +199,6 @@ function Settings() {
                     onChange={handleInputChange}
                     required
                   />
-
-                  {/* Description Textarea */}
                   <Textarea
                     id="description"
                     name="description"
@@ -218,7 +207,6 @@ function Settings() {
                     onChange={handleTextareaChange}
                     rows={4}
                   />
-                  {/* Role Select */}
                   <Select.Root
                     size={"lg"}
                     value={formData.role ? [formData.role] : []}
