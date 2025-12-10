@@ -1,4 +1,4 @@
-.register-container {
+.signup-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-.register-content {
+.signup-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,7 +16,7 @@
   margin-bottom: 4rem;
 }
 
-.register-header {
+.signup-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,18 +24,18 @@
   width: 100%;
 }
 
-.register-title {
+.signup-title {
   font-size: 1.5rem;
   margin: 0;
 }
 
-.register-subtitle {
+.signup-subtitle {
   font-size: 1rem;
   color: var(--accent);
   text-align: center;
 }
 
-.register-form {
+.signup-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,14 +44,14 @@
   width: 100%;
 }
 
-.register-form input,
-.register-form button {
+.signup-form input,
+.signup-form button {
   padding: 1.5rem;
   border-radius: 8px;
   width: 100%;
 }
 
-.register-form button {
+.signup-form button {
   border-radius: 999px;
   border: none;
   font-size: 1rem;
@@ -64,7 +64,7 @@
   width: 100%;
 }
 
-.register-login-link {
+.signup-login-link {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,13 +72,13 @@
   width: 100%;
 }
 
-.register-login-link a {
+.signup-login-link a {
   text-decoration: underline;
   font-size: 1rem;
 }
 
 @media (max-width: 550px) {
-  .register-content {
+  .signup-content {
     width: 100%;
     padding: 0 1rem;
   }
@@ -87,7 +87,7 @@
     flex-direction: column;
   }
 
-  .register-login-link {
+  .signup-login-link {
     flex-direction: column;
     gap: 0.25rem;
   }

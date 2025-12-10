@@ -101,15 +101,15 @@ function SignUp() {
           <Text>Loading...</Text>
         </VStack>
       ) : (
-        <div className="register-container">
-          <div className="register-content">
-            <div className="register-header">
-              <h1 className="register-title">Create an Account</h1>
-              <p className="register-subtitle">
+        <div className="signup-container">
+          <div className="signup-content">
+            <div className="signup-header">
+              <h1 className="signup-title">Create an Account</h1>
+              <p className="signup-subtitle">
                 Please enter your details to sign up.
               </p>
             </div>
-            <form onSubmit={handleSubmit} className="register-form">
+            <form onSubmit={handleSubmit} className="signup-form">
               <div className="input-wrapper">
                 <Input
                   type="text"
@@ -159,9 +159,9 @@ function SignUp() {
                 Sign Up
               </Button>
             </form>
-            <p className="register-login-link">
+            <p className="signup-login-link">
               Already have an account?{" "}
-              <Link to="/login" className="register-link">
+              <Link to="/login" className="signup-link">
                 Login here
               </Link>
             </p>
