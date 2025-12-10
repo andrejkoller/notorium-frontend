@@ -6,15 +6,10 @@ function Header() {
   return (
     <div className="header-container">
       <div className="header-content">
-        <div className="header-logo">
-          <Link to={"/"} className="header-link">
-            <h1 className="header-link-text">Notorium</h1>
-          </Link>
-        </div>
         <ul className="header-navigation">
           <li className="header-navigation-item">
             <Link to={"/make-music"} className="header-link">
-              Make Music
+              Make music
             </Link>
           </li>
           <li className="header-navigation-item">

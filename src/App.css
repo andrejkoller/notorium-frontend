@@ -24,7 +24,6 @@
   align-items: center;
   justify-content: center;
   height: fit-content;
-  margin-top: 64px;
   flex: 1 1 100%;
   background-color: var(--background);
 }

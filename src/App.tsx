@@ -40,9 +40,7 @@ function App() {
     <UserProvider>
       <SheetMusicProvider>
         <Provider>
-          <nav className="header">
-            <Header />
-          </nav>
+          <Header />
           <main className="main">
             {!isSidebarHidden && (
               <div

@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "Sora-Light";
+  src: url("../public/fonts/Sora-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Sora-Regular";
+  src: url("../public/fonts/Sora-Regular.ttf") format("truetype");
+}
+
 .light {
   --background: #f9f7fa;
   --background-elevated: #ffffff;
@@ -40,7 +50,7 @@ body,
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Sora-Regular", Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   background-color: var(--background);
