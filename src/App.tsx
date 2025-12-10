@@ -7,7 +7,6 @@ import Login from "./components/authentication/login/login";
 import { UserProvider } from "./providers/user-provider";
 import Sidebar from "./components/dashboard/dashboard-sidebar/dashboard-sidebar";
 import Settings from "./components/settings/settings";
-import { useRef, useState } from "react";
 import Profile from "./components/profile/profile";
 import Scores from "./components/scores/scores";
 import MusicSheet from "./components/sheet-music/sheet-music";
@@ -34,36 +33,22 @@ function App() {
     regex.test(pathName)
   );
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const sidebarRef = useRef<HTMLDivElement>(null);
-
   return (
     <UserProvider>
       <SheetMusicProvider>
         <Provider>
           {showHeader && <Header />}
           <main className="main">
-            {!isSidebarHidden && (
-              <div
-                className={`sidebar${sidebarOpen ? " sidebar-open" : ""}`}
-                ref={sidebarRef}
-              >
-                <Sidebar
-                  sidebarOpen={sidebarOpen}
-                  setSidebarOpen={setSidebarOpen}
-                  sidebarRef={sidebarRef}
-                />
-              </div>
-            )}
+            {!isSidebarHidden && <Sidebar />}
             <div
               className="content"
               style={
                 isSidebarHidden
                   ? { width: "100%" }
-                  : sidebarOpen
-                  ? { width: "calc(100vw - 720px)", marginLeft: "300px" }
-                  : { width: "calc(100vw - 90px)", marginLeft: "90px" }
+                  : {
+                      width: `calc(100% - var(--sidebar-width))`,
+                      marginLeft: `var(--sidebar-width)`,
+                    }
               }
             >
               <Routes>
@@ -72,16 +57,16 @@ function App() {
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route
-                  path="/dashboard/users/:username"
+                  path="/dashboard/user/:username"
                   element={<Profile />}
                 />
                 <Route
-                  path="/dashboard/users/:username/scores"
+                  path="/dashboard/user/:username/scores"
                   element={<Scores />}
                 />
                 <Route path="/dashboard/settings" element={<Settings />} />
                 <Route
-                  path="/dashboard/users/:username/scores/:scoreId"
+                  path="/dashboard/user/:username/scores/:scoreId"
                   element={<MusicSheet />}
                 />
                 <Route path="/dashboard/search" element={<SearchResults />} />

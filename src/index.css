@@ -9,6 +9,9 @@
 }
 
 :root {
+  --sidebar-width: 16rem;
+  --header-height: 5.5rem;
+
   --background: #ffffff;
   --background-card: #f1f1f1;
   --foreground: #000000;

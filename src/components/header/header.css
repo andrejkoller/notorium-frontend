@@ -3,44 +3,38 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 88px;
+  height: var(--header-height);
   width: 100%;
   padding: 0 6rem;
   background-color: var(--background);
 }
 
-.header-container .header-content {
+.header-content {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   height: 100%;
   width: 100%;
 }
 
-.header-container .header-content .header-navigation {
+.header-navigation {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
   gap: 2rem;
 }
 
-.header-container .header-content .header-navigation a {
+.header-navigation a {
   text-decoration: none;
-  color: inherit;
   font-size: 1rem;
 }
 
-.header-container .header-content .button-container {
+.button-container {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
 }
 
-.header-container .header-content .button-container button {
+.button-container button {
   padding: 1.5rem;
   border-radius: 999px;
   font-size: 1rem;
@@ -48,18 +42,18 @@
 }
 
 @media (max-width: 900px) {
-  .header-container .header-content {
+  .header-content {
     height: auto;
     gap: 8px;
   }
 }
 
 @media (max-width: 600px) {
-  .header-container .header-content {
+  .header-content {
     gap: 8px;
   }
 
-  .header-container .header-content .button-container button {
+  .button-container button {
     padding: 10px 8px;
     font-size: 14px;
   }

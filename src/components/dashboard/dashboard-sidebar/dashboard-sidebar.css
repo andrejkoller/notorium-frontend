@@ -1,138 +1,67 @@
-.main .sidebar {
+.sidebar-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  gap: 1rem;
+  width: var(--sidebar-width);
   height: 100%;
-  width: 90px;
   position: fixed;
   top: 0;
   left: 0;
   background-color: var(--secondary);
+  padding: 0 2rem;
 }
 
-.sidebar .sidebar-container {
+.sidebar-header {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 100%;
-  height: 100%;
-  padding: 24px;
-}
-
-.sidebar .sidebar-wide {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 32px;
-  width: 100%;
-}
-
-.sidebar .sidebar-wide .sidebar-header {
-  display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  gap: 16px;
+  gap: 1rem;
+  height: var(--header-height);
   width: 100%;
 }
 
-.sidebar .sidebar-wide .sidebar-header h1 {
-  font-size: 24px;
+.sidebar-header h1 {
+  font-size: 1.5rem;
   font-weight: bold;
   margin: 0;
 }
 
-.sidebar .sidebar-wide .sidebar-header svg {
-  cursor: pointer;
-  height: 32px;
-  width: 32px;
-}
-
-.sidebar .sidebar-wide .sidebar-body {
+.sidebar-body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
-  gap: 32px;
+  gap: 2rem;
+  height: 100%;
   width: 100%;
 }
 
-.sidebar .sidebar-wide .sidebar-body button {
-  width: 100%;
-  padding: 24px 18px;
-  border-radius: 999px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.sidebar .sidebar-narrow {
+.sidebar-menu {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 32px;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
   width: 100%;
 }
 
-.sidebar .sidebar-narrow .sidebar-header {
+.sidebar-menu-item {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
   width: 100%;
 }
 
-.sidebar .sidebar-narrow .sidebar-header svg {
-  cursor: pointer;
-}
-
-.sidebar .sidebar-narrow .sidebar-body {
+.sidebar-menu-link {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  gap: 32px;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-size: 1rem;
   width: 100%;
 }
 
-.sidebar .sidebar-narrow .sidebar-body button {
-  width: 100%;
-  padding: 24px;
-  border-radius: 999px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-@media (max-width: 900px) {
-  .main .sidebar {
-    position: relative;
-    align-items: center;
-    height: 64px;
-    width: 100%;
-    box-shadow: 0px 1px 0px 0px var(--border);
-  }
-
-  .sidebar .sidebar-wide {
-    display: none !important;
-  }
-
-  .sidebar .sidebar-narrow {
-    display: flex !important;
-  }
-
-  .sidebar .sidebar-container {
-    flex-direction: row;
-    padding: 8px;
-  }
-
-  .sidebar .sidebar-narrow .sidebar-header {
-    display: none;
-  }
-
-  .sidebar .sidebar-narrow .sidebar-body button {
-    padding: 12px;
-  }
+.sidebar-menu-item:last-child {
+  margin-top: auto;
+  margin-bottom: 1.5rem;
 }

@@ -5,48 +5,62 @@
   justify-content: center;
   height: 100%;
   width: 100%;
-  padding: 24px;
 }
 
-.dashboard-container .dashboard-content {
+.dashboard-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
   height: 100%;
   width: 100%;
+  padding: 0 6rem;
 }
 
-.dashboard-container .dashboard-content .dashboard-header {
+.dashboard-header {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  height: var(--header-height);
   width: 100%;
 }
 
-.dashboard-container .dashboard-content .dashboard-header h1 {
-  font-size: 24px;
-  font-weight: bold;
+.dashboard-title {
+  font-size: 2.5rem;
+  font-weight: 600;
   margin: 0;
 }
 
-.dashboard-container .dashboard-content .dashboard-header .dashboard-filters {
+.dashboard-wrapper {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  gap: 1rem;
 }
 
-.dashboard-container .dashboard-content .dashboard-body {
+.dashboard-searchbar input {
+  border-radius: 999px;
+  padding: 1.5rem 2.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.dashboard-button-container button {
+  padding: 1.5rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  background-color: var(--primary);
+  color: black;
+  font-weight: 600;
+}
+
+.dashboard-body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
   width: 100%;
 }
 
-.dashboard-container .dashboard-content .dashboard-body .sheet-music-list {
+.sheet-music-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 16px;
@@ -54,32 +68,18 @@
   margin-top: 16px;
 }
 
-.dashboard-container
-  .dashboard-content
-  .dashboard-body
-  .sheet-music-list
-  .sheet-music-item {
+.sheet-music-item {
   display: flex;
   flex-direction: column;
   width: 100%;
   border-radius: 8px;
 }
 
-.dashboard-container
-  .dashboard-content
-  .dashboard-body
-  .sheet-music-list
-  .sheet-music-item
-  .sheet-music-link {
+.sheet-music-link {
   margin-bottom: 16px;
 }
 
-.dashboard-container
-  .dashboard-content
-  .dashboard-body
-  .sheet-music-list
-  .sheet-music-item
-  .sheet-music-image {
+.sheet-music-image {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,66 +91,35 @@
   border: 1px solid var(--border);
 }
 
-.dashboard-container
-  .dashboard-content
-  .dashboard-body
-  .sheet-music-list
-  .sheet-music-item
-  .sheet-music-image:hover {
+.sheet-music-image:hover {
   border-color: var(--border);
 }
 
-.dashboard-container
-  .dashboard-content
-  .dashboard-body
-  .sheet-music-list
-  .sheet-music-item
-  .sheet-music-title {
+.sheet-music-title {
   color: var(--primary);
 }
 
-.dashboard-container
-  .dashboard-content
-  .dashboard-body
-  .sheet-music-list
-  .sheet-music-item
-  .sheet-music-title:hover {
+.sheet-music-title:hover {
   text-decoration: underline;
 }
 
-.dashboard-container
-  .dashboard-content
-  .dashboard-body
-  .sheet-music-list
-  .sheet-music-item
-  .sheet-music-title,
-.dashboard-container
-  .dashboard-content
-  .dashboard-body
-  .sheet-music-list
-  .sheet-music-item
-  .sheet-music-composer {
+.sheet-music-title,
+.sheet-music-composer {
   width: fit-content;
 }
 
-.dashboard-container
-  .dashboard-content
-  .dashboard-body
-  .sheet-music-list
-  .sheet-music-item
-  .sheet-music-genre-instrument {
+.sheet-music-genre-instrument {
   display: flex;
-  flex-direction: row;
   gap: 8px;
   width: 100%;
 }
 
 @media (max-width: 600px) {
-  .dashboard-container .dashboard-content .dashboard-header h1 {
+  .dashboard-header h1 {
     font-size: 20px;
   }
 
-  .dashboard-container .dashboard-content .dashboard-body .sheet-music-list {
+  .sheet-music-list {
     justify-content: center;
   }
 }
