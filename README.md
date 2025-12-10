@@ -84,3 +84,8 @@ The app uses JWT-based authentication:
 - Backend Repository: [Notorium API](https://github.com/andrejkoller/NotoriumAPI)
 
 ## 📸 Screenshots
+
+<img width="1920" height="1080" alt="Screenshot 1" src="https://github.com/user-attachments/assets/b8f4a1d1-7d5f-4617-9361-3c9c0df4b45e" />
+<img width="1920" height="1080" alt="Screenshot 2" src="https://github.com/user-attachments/assets/496e65cd-236d-4151-98b8-0b44b17f915b" />
+<img width="1920" height="1080" alt="Screenshot 3" src="https://github.com/user-attachments/assets/fa2e95b1-ea49-421d-bd22-cb9e5e05fb0b" />
+<img width="1920" height="1080" alt="Screenshot 4" src="https://github.com/user-attachments/assets/26ce6b95-174a-4f6d-aa28-a72e2ebc97ce" />
