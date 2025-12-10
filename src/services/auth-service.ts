@@ -12,7 +12,7 @@ export const register = async (
 ): Promise<User> => {
   try {
     const response = await axiosInstance.post(
-      `${BASE_URL}/register`,
+      `${BASE_URL}/signup`,
       {
         name,
         email,

@@ -7,11 +7,11 @@ import {
   Theater,
 } from "lucide-react";
 import { useCallback, useEffect, type RefObject } from "react";
-import { Tooltip } from "../ui/tooltip";
-import GenreDialog from "../dialogs/genre-dialog/genre-dialog";
-import DifficultyDialog from "../dialogs/difficulty-dialog/difficulty-dialog";
-import InstrumentDialog from "../dialogs/instrument-dialog/instrument-dialog";
-import "./sidebar.css";
+import { Tooltip } from "../../ui/tooltip";
+import GenreDialog from "../../dialogs/genre-dialog/genre-dialog";
+import DifficultyDialog from "../../dialogs/difficulty-dialog/difficulty-dialog";
+import InstrumentDialog from "../../dialogs/instrument-dialog/instrument-dialog";
+import "./dashboard-sidebar.css";
 
 type SidebarProps = {
   sidebarOpen: boolean;

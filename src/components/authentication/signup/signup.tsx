@@ -3,10 +3,10 @@ import { useState } from "react";
 import { PasswordInput } from "../../ui/password-input";
 import { register } from "../../../services/auth-service";
 import { Link, useNavigate } from "react-router-dom";
-import { Toaster, toaster } from "../../ui/toaster";
-import "./register.css";
+import { toaster } from "../../ui/toaster";
+import "./signup.css";
 
-function Register() {
+function SignUp() {
   const MIN_PASSWORD_LENGTH = 8;
 
   const navigate = useNavigate();
@@ -104,15 +104,18 @@ function Register() {
         <div className="register-container">
           <div className="register-content">
             <div className="register-header">
-              <h1 className="register-title">Register</h1>
+              <h1 className="register-title">Create an Account</h1>
+              <p className="register-subtitle">
+                Please enter your details to sign up.
+              </p>
             </div>
-            <div className="register-body">
-              <form onSubmit={handleSubmit} className="register-form">
+            <form onSubmit={handleSubmit} className="register-form">
+              <div className="input-wrapper">
                 <Input
                   type="text"
                   id="name"
                   name="name"
-                  placeholder="Name"
+                  placeholder="Full Name"
                   value={formData.name}
                   onChange={handleInputChange}
                   required
@@ -126,48 +129,47 @@ function Register() {
                   onChange={handleInputChange}
                   required
                 />
-                <Input
-                  type="text"
-                  id="username"
-                  name="username"
-                  placeholder="Username"
-                  value={formData.username}
-                  onChange={handleInputChange}
-                  required
-                />
-                <PasswordInput
-                  id="password"
-                  name="password"
-                  placeholder="Password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  required
-                />
-                <PasswordInput
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  placeholder="Confirm Password"
-                  value={formData.confirmPassword}
-                  onChange={handleInputChange}
-                  required
-                />
-                <Button type="submit" disabled={!isFormValid}>
-                  Register
-                </Button>
-              </form>
-              <p className="register-login-link">
-                Already have an account?{" "}
-                <Link to="/login" className="register-link">
-                  Login here
-                </Link>
-              </p>
-            </div>
+              </div>
+              <Input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Username"
+                value={formData.username}
+                onChange={handleInputChange}
+                required
+              />
+              <PasswordInput
+                id="password"
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleInputChange}
+                required
+              />
+              <PasswordInput
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                value={formData.confirmPassword}
+                onChange={handleInputChange}
+                required
+              />
+              <Button variant={"solid"} type="submit" disabled={!isFormValid}>
+                Sign Up
+              </Button>
+            </form>
+            <p className="register-login-link">
+              Already have an account?{" "}
+              <Link to="/login" className="register-link">
+                Login here
+              </Link>
+            </p>
           </div>
         </div>
       )}
-      <Toaster />
     </>
   );
 }
 
-export default Register;
+export default SignUp;

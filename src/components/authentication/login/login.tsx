@@ -2,7 +2,7 @@ import { Button, Input, Spinner, Text, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 import { login } from "../../../services/auth-service";
 import { Link, useNavigate } from "react-router-dom";
-import { Toaster, toaster } from "../../ui/toaster";
+import { toaster } from "../../ui/toaster";
 import { useCurrentUserContext } from "../../../hooks/use-current-user";
 import "./login.css";
 
@@ -38,7 +38,7 @@ function Login() {
       localStorage.setItem("user", JSON.stringify(data.user));
       setCurrentUser(data.user);
       setLoading(false);
-      navigate("/");
+      navigate("/dashboard");
       toaster.success({
         title: "Login successful",
         description: "You are now logged in.",
@@ -68,44 +68,48 @@ function Login() {
           <div className="login-content">
             <div className="login-header">
               <h1 className="login-title">Login</h1>
-            </div>
-            <div className="login-body">
-              <form onSubmit={handleSubmit} className="login-form">
-                <Input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  autoComplete="email"
-                  required
-                />
-                <Input
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="Password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  autoComplete="current-password"
-                  required
-                />
-                <Button type="submit" disabled={!isFormValid || loading}>
-                  Login
-                </Button>
-              </form>
-              <p className="login-register-link">
-                Don't have an account?{" "}
-                <Link to="/register" className="login-link">
-                  Register here
-                </Link>
+              <p className="login-subtitle">
+                Welcome back! Please enter your credentials to log in.
               </p>
             </div>
+            <form onSubmit={handleSubmit} className="login-form">
+              <Input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleInputChange}
+                autoComplete="email"
+                required
+              />
+              <Input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleInputChange}
+                autoComplete="current-password"
+                required
+              />
+              <Button
+                variant={"solid"}
+                type="submit"
+                disabled={!isFormValid || loading}
+              >
+                Login
+              </Button>
+            </form>
+            <p className="login-register-link">
+              Don't have an account?{" "}
+              <Link to="/signup" className="login-link">
+                Create an account
+              </Link>
+            </p>
           </div>
         </div>
       )}
-      <Toaster />
     </>
   );
 }

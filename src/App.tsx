@@ -4,9 +4,8 @@ import Header from "./components/header/header";
 import { Provider } from "./components/ui/provider";
 import Home from "./components/home/home";
 import Login from "./components/authentication/login/login";
-import Register from "./components/authentication/register/register";
 import { UserProvider } from "./providers/user-provider";
-import Sidebar from "./components/sidebar/sidebar";
+import Sidebar from "./components/dashboard/dashboard-sidebar/dashboard-sidebar";
 import Settings from "./components/settings/settings";
 import { useRef, useState } from "react";
 import Profile from "./components/profile/profile";
@@ -15,18 +14,21 @@ import MusicSheet from "./components/sheet-music/sheet-music";
 import { SheetMusicProvider } from "./providers/sheet-music-provider";
 import SearchResults from "./components/search-results/search-results";
 import Dashboard from "./components/dashboard/dashboard";
+import SignUp from "./components/authentication/signup/signup";
 
 function App() {
   const location = useLocation();
   const sidebarHiddenRoutes = [
     /^\/login$/,
-    /^\/register$/,
+    /^\/signup$/,
     /^\/$/,
     /^\/upload$/,
     /^\/settings$/,
     /^\/user\/[^/]+\/scores\/[^/]+$/,
   ];
   const pathName = location.pathname;
+
+  const showHeader = pathName === "/";
 
   const isSidebarHidden = sidebarHiddenRoutes.some((regex) =>
     regex.test(pathName)
@@ -40,7 +42,7 @@ function App() {
     <UserProvider>
       <SheetMusicProvider>
         <Provider>
-          <Header />
+          {showHeader && <Header />}
           <main className="main">
             {!isSidebarHidden && (
               <div
@@ -67,7 +69,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                <Route path="/signup" element={<SignUp />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route
                   path="/dashboard/users/:username"

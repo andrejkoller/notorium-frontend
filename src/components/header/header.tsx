@@ -34,9 +34,9 @@ function Header() {
               Log in
             </Button>
           </Link>
-          <Link to={"/register"} className="header-link">
+          <Link to={"/signup"} className="header-link">
             <Button variant={"solid"} className="header-register-button">
-              Register
+              Sign up
             </Button>
           </Link>
         </div>

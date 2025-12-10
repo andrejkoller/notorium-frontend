@@ -1,4 +1,4 @@
-.login-container {
+.register-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-.login-content {
+.register-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,7 +16,7 @@
   margin-bottom: 4rem;
 }
 
-.login-header {
+.register-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,18 +24,18 @@
   width: 100%;
 }
 
-.login-title {
+.register-title {
   font-size: 1.5rem;
   margin: 0;
 }
 
-.login-subtitle {
+.register-subtitle {
   font-size: 1rem;
   color: var(--accent);
   text-align: center;
 }
 
-.login-form {
+.register-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,21 +44,27 @@
   width: 100%;
 }
 
-.login-form input,
-.login-form button {
+.register-form input,
+.register-form button {
   padding: 1.5rem;
   border-radius: 8px;
   width: 100%;
 }
 
-.login-form button {
+.register-form button {
   border-radius: 999px;
   border: none;
   font-size: 1rem;
   cursor: pointer;
 }
 
-.login-register-link {
+.input-wrapper {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.register-login-link {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,18 +72,22 @@
   width: 100%;
 }
 
-.login-register-link a {
+.register-login-link a {
   text-decoration: underline;
   font-size: 1rem;
 }
 
 @media (max-width: 550px) {
-  .login-content {
+  .register-content {
     width: 100%;
     padding: 0 1rem;
   }
 
-  .login-register-link {
+  .input-wrapper {
+    flex-direction: column;
+  }
+
+  .register-login-link {
     flex-direction: column;
     gap: 0.25rem;
   }

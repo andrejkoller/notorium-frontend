@@ -145,7 +145,7 @@
   height: 64px;
   width: 100%;
   padding: 0 24px;
-  box-shadow: 0 1px 0 0 var(--border-color);
+  box-shadow: 0 1px 0 0 var(--border);
 }
 
 .profile-container
@@ -280,7 +280,7 @@
   width: 100%;
   border-radius: 8px;
   background-color: #ffffff;
-  border: 1px solid var(--sheet-border-color);
+  border: 1px solid var(--border);
 }
 
 .profile-container
@@ -289,7 +289,7 @@
   .profile-scores-list
   .profile-scores-item
   .profile-scores-image:hover {
-  border-color: var(--sheet-border-color-hover);
+  border-color: var(--border);
 }
 
 .profile-container
@@ -415,7 +415,7 @@
   width: 100%;
   border-radius: 8px;
   background-color: #ffffff;
-  border: 1px solid var(--sheet-border-color);
+  border: 1px solid var(--border);
 }
 
 .profile-container
@@ -424,7 +424,7 @@
   .profile-favorite-scores-list
   .profile-favorite-scores-item
   .profile-favorite-scores-image:hover {
-  border-color: var(--sheet-border-color-hover);
+  border-color: var(--border);
 }
 
 .profile-container

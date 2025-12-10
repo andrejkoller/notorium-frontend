@@ -76,7 +76,7 @@
   width: 100%;
   border-radius: 8px;
   background-color: #ffffff;
-  border: 1px solid var(--sheet-border-color);
+  border: 1px solid var(--border);
 }
 
 .scores-container
@@ -85,7 +85,7 @@
   .scores-list
   .scores-item
   .scores-image:hover {
-  border-color: var(--sheet-border-color-hover);
+  border-color: var(--border);
 }
 
 .scores-container
