@@ -97,28 +97,28 @@
   cursor: not-allowed;
 }
 
-.button-container {
+.settings-container .button-container {
   display: flex;
   align-items: center;
   width: 100%;
 }
 
-.button-container button {
+.settings-container .button-container button {
   width: 100%;
   padding: 1.5rem;
   border-radius: 999px;
   border: none;
   background-color: var(--primary);
-  color: #ffffff;
+  color: black;
   font-size: 1rem;
   cursor: pointer;
 }
 
-.button-container button:hover {
+.settings-container .button-container button:hover {
   background-color: var(--primary-hover);
 }
 
-.button-container button:disabled {
+.settings-container .button-container button:disabled {
   background-color: var(--disabled);
   cursor: not-allowed;
 }
