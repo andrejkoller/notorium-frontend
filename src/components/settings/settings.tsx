@@ -151,111 +151,106 @@ function Settings() {
         <div className="settings-container">
           <DashboardHeader />
           <div className="settings-content">
-            <div className="settings-header">
-              <h1 className="settings-title">Settings</h1>
-            </div>
-            <div className="settings-body">
-              <form className="settings-form" onSubmit={handleSubmit}>
-                <div className="settings-field">
-                  <div className="settings-info">
-                    <label htmlFor="theme">Theme</label>
-                  </div>
-                  <div className="settings-select">
-                    <ThemeSwitcher />
-                  </div>
+            <form className="settings-form" onSubmit={handleSubmit}>
+              <div className="settings-field">
+                <div className="settings-info">
+                  <label htmlFor="theme">Theme</label>
                 </div>
-                <div className="settings-field">
-                  <div className="settings-info">
-                    <label>Edit Profile</label>
-                  </div>
+                <div className="settings-select">
+                  <ThemeSwitcher />
                 </div>
-                <div className="settings-form-group">
-                  <div className="input-name-group">
-                    <Input
-                      type="text"
-                      id="name"
-                      name="name"
-                      placeholder="Name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                    />
-                    <Input
-                      type="text"
-                      id="username"
-                      name="username"
-                      placeholder="Username"
-                      value={formData.username}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
+              </div>
+              <div className="settings-field">
+                <div className="settings-info">
+                  <label>Edit Profile</label>
+                </div>
+              </div>
+              <div className="settings-form-group">
+                <div className="input-name-group">
                   <Input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Email"
-                    value={formData.email}
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Name"
+                    value={formData.name}
                     onChange={handleInputChange}
                     required
                   />
-                  <Textarea
-                    id="description"
-                    name="description"
-                    placeholder="Description"
-                    value={formData.description}
-                    onChange={handleTextareaChange}
-                    rows={4}
+                  <Input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Username"
+                    value={formData.username}
+                    onChange={handleInputChange}
+                    required
                   />
-                  <Select.Root
-                    size={"lg"}
-                    value={formData.role ? [formData.role] : []}
-                    onValueChange={(e) =>
-                      handleSelectChange(
-                        "role",
-                        (e as { items: { value: string }[] }).items[0].value
-                      )
-                    }
-                    collection={createListCollection({
-                      items: roleOptions.map((role) => ({
-                        label: role,
-                        value: role,
-                      })),
-                    })}
-                    disabled={!currentUser || currentUser.role !== "Admin"}
-                    className="settings-role-select"
-                  >
-                    <Select.HiddenSelect />
-                    <Select.Control>
-                      <Select.Trigger>
-                        <Select.ValueText placeholder={currentUser?.role} />
-                      </Select.Trigger>
-                      <Select.IndicatorGroup>
-                        <Select.Indicator />
-                      </Select.IndicatorGroup>
-                    </Select.Control>
-                    <Select.Positioner>
-                      <Select.Content>
-                        {roleOptions.map((role) => (
-                          <Select.Item
-                            item={{ label: role, value: role }}
-                            key={role}
-                          >
-                            {role}
-                            <Select.ItemIndicator />
-                          </Select.Item>
-                        ))}
-                      </Select.Content>
-                    </Select.Positioner>
-                  </Select.Root>
                 </div>
-                <div className="button-container">
-                  <Button type="submit" disabled={!isFormValid}>
-                    Update Profile
-                  </Button>
-                </div>
-              </form>
-            </div>
+                <Input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
+                <Textarea
+                  id="description"
+                  name="description"
+                  placeholder="Description"
+                  value={formData.description}
+                  onChange={handleTextareaChange}
+                  rows={4}
+                />
+                <Select.Root
+                  size={"lg"}
+                  value={formData.role ? [formData.role] : []}
+                  onValueChange={(e) =>
+                    handleSelectChange(
+                      "role",
+                      (e as { items: { value: string }[] }).items[0].value
+                    )
+                  }
+                  collection={createListCollection({
+                    items: roleOptions.map((role) => ({
+                      label: role,
+                      value: role,
+                    })),
+                  })}
+                  disabled={!currentUser || currentUser.role !== "Admin"}
+                  className="settings-role-select"
+                >
+                  <Select.HiddenSelect />
+                  <Select.Control>
+                    <Select.Trigger>
+                      <Select.ValueText placeholder={currentUser?.role} />
+                    </Select.Trigger>
+                    <Select.IndicatorGroup>
+                      <Select.Indicator />
+                    </Select.IndicatorGroup>
+                  </Select.Control>
+                  <Select.Positioner>
+                    <Select.Content>
+                      {roleOptions.map((role) => (
+                        <Select.Item
+                          item={{ label: role, value: role }}
+                          key={role}
+                        >
+                          {role}
+                          <Select.ItemIndicator />
+                        </Select.Item>
+                      ))}
+                    </Select.Content>
+                  </Select.Positioner>
+                </Select.Root>
+              </div>
+              <div className="button-container">
+                <Button type="submit" disabled={!isFormValid}>
+                  Update Profile
+                </Button>
+              </div>
+            </form>
           </div>
         </div>
       )}
