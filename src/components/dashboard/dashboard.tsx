@@ -1,22 +1,15 @@
 import { useEffect } from "react";
-import {
-  getAllSheetMusic,
-  searchSheetMusic,
-} from "../../services/sheet-music-service";
+import { getAllSheetMusic } from "../../services/sheet-music-service";
 import { Link } from "react-router-dom";
 import { useSheetMusicContext } from "../../hooks/use-sheet-music";
 import "./dashboard.css";
 import DashboardHeader from "./dashboard-header/dashboard-header";
-import { PlusIcon, SearchIcon } from "lucide-react";
-import { Button, Input, InputGroup } from "@chakra-ui/react";
-import { toaster } from "../ui/toaster";
-import { useCurrentUserContext } from "../../hooks/use-current-user";
-import { useNavigate } from "react-router-dom";
+import { PlusIcon } from "lucide-react";
+import { Button } from "@chakra-ui/react";
+import SearchBar from "../searchbar/searchbar";
 
 function Dashboard() {
   const { sheetMusic, setSheetMusic } = useSheetMusicContext();
-  const { currentUser } = useCurrentUserContext();
-  const navigate = useNavigate();
 
   function formatGenre(genre: string) {
     return genre.replace(/([a-z])([A-Z])/g, "$1 $2");
@@ -35,35 +28,6 @@ function Dashboard() {
     fetchSheetMusic();
   }, [setSheetMusic]);
 
-  const handleSearch = (query: string) => {
-    if (query.trim() === "") {
-      toaster.error({
-        title: "Search Error",
-        description: "Please enter a search term.",
-      });
-      return;
-    }
-
-    searchSheetMusic(query)
-      .then((results) => {
-        if (results.length > 0) {
-          navigate(`/search?query=${encodeURIComponent(query)}`);
-        } else {
-          toaster.info({
-            title: "No Results",
-            description: "No sheet music found for your search.",
-          });
-        }
-      })
-      .catch((error) => {
-        console.error("Error searching sheet music:", error);
-        toaster.error({
-          title: "Search Error",
-          description: "An error occurred while searching for sheet music.",
-        });
-      });
-  };
-
   return (
     <div className="dashboard-container">
       <DashboardHeader />
@@ -71,19 +35,7 @@ function Dashboard() {
         <div className="dashboard-header">
           <h1 className="dashboard-title">My Library</h1>
           <div className="dashboard-wrapper">
-            <div className="dashboard-searchbar">
-              <InputGroup flex={1} startElement={<SearchIcon size={20} />}>
-                <Input
-                  placeholder="Search library"
-                  disabled={!currentUser}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      handleSearch(e.currentTarget.value);
-                    }
-                  }}
-                />
-              </InputGroup>
-            </div>
+            <SearchBar />
             <div className="dashboard-button-container">
               <Link to="/dashboard/upload" className="dashboard-upload-button">
                 <Button variant={"solid"}>

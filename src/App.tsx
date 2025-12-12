@@ -14,6 +14,7 @@ import { SheetMusicProvider } from "./providers/sheet-music-provider";
 import SearchResults from "./components/search-results/search-results";
 import Dashboard from "./components/dashboard/dashboard";
 import SignUp from "./components/authentication/signup/signup";
+import Upload from "./components/upload/upload";
 
 function App() {
   const location = useLocation();
@@ -56,10 +57,8 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/dashboard" element={<Dashboard />} />
-                <Route
-                  path="/dashboard/user/:username"
-                  element={<Profile />}
-                />
+                <Route path="/dashboard/upload" element={<Upload />} />
+                <Route path="/dashboard/user/:username" element={<Profile />} />
                 <Route
                   path="/dashboard/user/:username/scores"
                   element={<Scores />}

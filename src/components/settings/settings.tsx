@@ -246,8 +246,8 @@ function Settings() {
                 </Select.Root>
               </div>
               <div className="button-container">
-                <Button type="submit" disabled={!isFormValid}>
-                  Update Profile
+                <Button variant={"solid"} type="submit" disabled={!isFormValid}>
+                  {loading ? "Saving..." : "Save Changes"}
                 </Button>
               </div>
             </form>
