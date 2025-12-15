@@ -3,7 +3,6 @@ import { getAllSheetMusic } from "../../services/sheet-music-service";
 import { Link } from "react-router-dom";
 import { useSheetMusicContext } from "../../hooks/use-sheet-music";
 import "./dashboard.css";
-import DashboardHeader from "./dashboard-header/dashboard-header";
 import { PlusIcon } from "lucide-react";
 import { Button } from "@chakra-ui/react";
 import SearchBar from "../searchbar/searchbar";
@@ -30,7 +29,6 @@ function Dashboard() {
 
   return (
     <div className="dashboard-container">
-      <DashboardHeader />
       <div className="dashboard-content">
         <div className="dashboard-header">
           <h1 className="dashboard-title">My Library</h1>

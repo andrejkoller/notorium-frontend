@@ -1,25 +1,18 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Button, Input } from "@chakra-ui/react";
+import { useEffect, useState, useRef } from "react";
 import { useCurrentUserContext } from "../../hooks/use-current-user";
 import {
   getCurrentUserSheetMusic,
   getSheetMusicFavorites,
 } from "../../services/sheet-music-service";
 import { Link } from "react-router-dom";
-import { Tooltip } from "../ui/tooltip";
-import {
-  uploadBannerImage,
-  uploadProfileImage,
-} from "../../services/user-service";
-import { Toaster, toaster } from "../ui/toaster";
+import { Toaster } from "../ui/toaster";
 import SelectFilter from "../select-filter/select-filter";
 import { useSheetMusicContext } from "../../hooks/use-sheet-music";
-import { Camera, ImageIcon, UserRoundPen } from "lucide-react";
 import type { SheetMusic } from "../../models/sheet-music";
 import "./profile.css";
 
 function Profile() {
-  const { currentUser, setCurrentUser } = useCurrentUserContext();
+  const { currentUser } = useCurrentUserContext();
   const { sheetMusic, setSheetMusic } = useSheetMusicContext();
   const [loadingScores, setLoadingScores] = useState(true);
 
@@ -28,7 +21,7 @@ function Profile() {
   );
 
   const profileImageInputRef = useRef<HTMLInputElement | null>(null);
-  const bannerImageInputRef = useRef<HTMLInputElement | null>(null);
+  //const bannerImageInputRef = useRef<HTMLInputElement | null>(null);
 
   function formatGenre(genre: string) {
     return genre.replace(/([a-z])([A-Z])/g, "$1 $2");
@@ -38,7 +31,7 @@ function Profile() {
     profileImageInputRef.current?.click();
   };
 
-  const handleProfileImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  /*const handleProfileImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (currentUser && e.target.files?.length) {
       const file = e.target.files[0];
       const formData = new FormData();
@@ -88,7 +81,7 @@ function Profile() {
           });
         });
     }
-  };
+  };*/
 
   useEffect(() => {
     if (!currentUser?.id) return;
@@ -119,84 +112,36 @@ function Profile() {
       <div className="profile-container">
         <div className="profile-content">
           <div className="profile-header">
-            <div
-              className="profile-banner"
-              style={
-                currentUser?.bannerImage
-                  ? {
-                      backgroundImage: `url(https://localhost:7189/${currentUser.bannerImage})`,
-                    }
-                  : { backgroundColor: "var(--primary)" }
-              }
-              onClick={handleBannerImageClick}
-            >
-              <div className="profile-account-info">
-                {currentUser ? (
-                  <div className="profile-details">
-                    <Tooltip content="Click to change profile image">
-                      <div
-                        className="profile-image"
-                        onClick={handleProfileImageClick}
-                      >
-                        {currentUser.profileImage ? (
-                          <img
-                            src={`https://localhost:7189/${currentUser.profileImage}`}
-                            alt="Profile"
-                            className="profile-image"
-                          />
-                        ) : (
-                          <div className="profile-image-placeholder">
-                            <span>{currentUser.name?.charAt(0)}</span>
-                          </div>
-                        )}
-                      </div>
-                    </Tooltip>
-                    <div className="profile-username-description">
-                      <h2>{currentUser?.name}</h2>
-                      <p>{currentUser?.description}</p>
+            {currentUser ? (
+              <div className="profile-details">
+                <div
+                  className="profile-image"
+                  onClick={handleProfileImageClick}
+                >
+                  {currentUser.profileImage ? (
+                    <img
+                      src={`https://localhost:7189/${currentUser.profileImage}`}
+                      alt="Profile"
+                      className="profile-image"
+                    />
+                  ) : (
+                    <div className="profile-image-placeholder">
+                      <span>{currentUser.name?.charAt(0)}</span>
                     </div>
-                  </div>
-                ) : (
-                  <p>Loading user information...</p>
-                )}
+                  )}
+                </div>
+                <div className="profile-username">
+                  <p>Profile</p>
+                  <h2>{currentUser.username}</h2>
+                </div>
               </div>
-            </div>
-            <div className="profile-nav-actions">
-              <Button variant={"outline"} onClick={handleProfileImageClick}>
-                <Camera className="profile-edit-icon" />
-                <span>Change Profile Image</span>
-                <Input
-                  type="file"
-                  accept="image/*"
-                  className="profile-image-input"
-                  ref={profileImageInputRef}
-                  style={{ display: "none" }}
-                  onChange={handleProfileImageChange}
-                />
-              </Button>
-              <Button variant={"outline"} onClick={handleBannerImageClick}>
-                <ImageIcon className="profile-edit-icon" />
-                <span>Change Banner</span>
-                <Input
-                  type="file"
-                  accept="image/*"
-                  className="profile-banner-input"
-                  style={{ display: "none" }}
-                  ref={bannerImageInputRef}
-                  onChange={handleBannerImageChange}
-                />
-              </Button>
-              <Button variant={"outline"}>
-                <Link to={"/dashboard/settings"} className="profile-edit-link">
-                  <UserRoundPen className="profile-edit-icon" />
-                  <span>Edit Profile</span>
-                </Link>
-              </Button>
-            </div>
+            ) : (
+              <p>Loading user information...</p>
+            )}
           </div>
           <div className="profile-body">
             <div className="profile-scores">
-              <div className="profile-scores-title-filter-wrapper">
+              <div className="profile-scores-wrapper">
                 <h3>Sheet music</h3>
                 <div className="profile-scores-filter">
                   <SelectFilter />
@@ -258,7 +203,9 @@ function Profile() {
                   )}
                 </ul>
               ) : (
-                <p>No scores published yet.</p>
+                <p className="profile-scores-no-scores">
+                  No scores published yet.
+                </p>
               )}
             </div>
             <div className="profile-favorite-scores">
@@ -316,7 +263,9 @@ function Profile() {
                   ))}
                 </ul>
               ) : (
-                <p>You haven't added any scores to your favourites yet.</p>
+                <p className="profile-favorite-scores-no-scores">
+                  You haven't added any scores to your favourites yet.
+                </p>
               )}
             </div>
           </div>

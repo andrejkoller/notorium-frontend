@@ -15,22 +15,21 @@ import SearchResults from "./components/search-results/search-results";
 import Dashboard from "./components/dashboard/dashboard";
 import SignUp from "./components/authentication/signup/signup";
 import Upload from "./components/upload/upload";
+import DashboardHeader from "./components/dashboard/dashboard-header/dashboard-header";
 
 function App() {
   const location = useLocation();
-  const sidebarHiddenRoutes = [
-    /^\/login$/,
-    /^\/signup$/,
-    /^\/$/,
-    /^\/upload$/,
-    /^\/settings$/,
-    /^\/user\/[^/]+\/scores\/[^/]+$/,
-  ];
+  const sidebarHiddenRoutes = [/^\/login$/, /^\/signup$/, /^\/$/];
+  const dashboardHeaderHiddenRoutes = [/^\/login$/, /^\/signup$/, /^\/$/];
   const pathName = location.pathname;
 
   const showHeader = pathName === "/";
 
   const isSidebarHidden = sidebarHiddenRoutes.some((regex) =>
+    regex.test(pathName)
+  );
+
+  const isDashboardHeaderHidden = dashboardHeaderHiddenRoutes.some((regex) =>
     regex.test(pathName)
   );
 
@@ -52,6 +51,7 @@ function App() {
                     }
               }
             >
+              {!isDashboardHeaderHidden && <DashboardHeader />}
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />

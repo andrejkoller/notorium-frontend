@@ -9,7 +9,7 @@ function DashboardHeader() {
     <div className="dashboard-header-container">
       <div className="dashboard-header-content">
         <Link
-          to={`/user/${currentUser?.username}`}
+          to={`/dashboard/user/${currentUser?.username}`}
           className="dashboard-header-profile-link"
         >
           {currentUser?.profileImage ? (

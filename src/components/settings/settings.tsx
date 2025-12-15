@@ -12,7 +12,6 @@ import { getCurrentUser, updateUser } from "../../services/user-service";
 import { useCurrentUserContext } from "../../hooks/use-current-user";
 import type { Role } from "../../models/user";
 import "./settings.css";
-import DashboardHeader from "../dashboard/dashboard-header/dashboard-header";
 
 function Settings() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();
@@ -149,7 +148,6 @@ function Settings() {
         <p>Loading...</p>
       ) : (
         <div className="settings-container">
-          <DashboardHeader />
           <div className="settings-content">
             <form className="settings-form" onSubmit={handleSubmit}>
               <div className="settings-field">

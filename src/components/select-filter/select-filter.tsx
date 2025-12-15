@@ -2,7 +2,6 @@ import { createListCollection, Portal, Select } from "@chakra-ui/react";
 import { useState } from "react";
 import { useSheetMusicContext } from "../../hooks/use-sheet-music";
 import { filterSheetMusicByUploadDate } from "../../services/sheet-music-service";
-import { Toaster, toaster } from "../ui/toaster";
 
 const SelectFilter = () => {
   const { setSheetMusic } = useSheetMusicContext();
@@ -22,21 +21,9 @@ const SelectFilter = () => {
     filterSheetMusicByUploadDate(descending)
       .then((music) => {
         setSheetMusic(music);
-        toaster.success({
-          title: "Sheet music filtered",
-          description: `Sheet music has been sorted by upload date in ${
-            descending ? "descending" : "ascending"
-          } order.`,
-          duration: 3000,
-        });
       })
       .catch((error) => {
         console.error("Error filtering sheet music by upload date:", error);
-        toaster.error({
-          title: "Error",
-          description: "Failed to filter sheet music by upload date.",
-          duration: 3000,
-        });
       });
   };
 
@@ -52,7 +39,7 @@ const SelectFilter = () => {
         <Select.HiddenSelect />
         <Select.Control>
           <Select.Trigger>
-            <Select.ValueText placeholder="Sort music sheet" />
+            <Select.ValueText placeholder="Sort" />
           </Select.Trigger>
           <Select.IndicatorGroup>
             <Select.Indicator />
@@ -80,7 +67,6 @@ const SelectFilter = () => {
           </Select.Positioner>
         </Portal>
       </Select.Root>
-      <Toaster />
     </>
   );
 };

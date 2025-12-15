@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import "./dashboard-sidebar.css";
-import { FolderOpenIcon, HelpCircleIcon, SettingsIcon } from "lucide-react";
+import {
+  FolderOpenIcon,
+  HelpCircleIcon,
+  LogOutIcon,
+  SettingsIcon,
+} from "lucide-react";
 
 function Sidebar() {
   return (
@@ -31,6 +36,12 @@ function Sidebar() {
             <Link to={"/help"} className="dashboard-sidebar-menu-link">
               <HelpCircleIcon className="dashboard-sidebar-menu-icon" />
               <span className="dashboard-sidebar-menu-text">Help</span>
+            </Link>
+          </li>
+          <li className="dashboard-sidebar-menu-item">
+            <Link to={"/logout"} className="dashboard-sidebar-menu-link">
+              <LogOutIcon className="dashboard-sidebar-menu-icon" />
+              <span className="dashboard-sidebar-menu-text">Logout</span>
             </Link>
           </li>
         </ul>

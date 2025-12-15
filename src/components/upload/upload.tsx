@@ -22,7 +22,6 @@ import type { Difficulty, Genre, Instrument } from "../../models/sheet-music";
 import { useCurrentUserContext } from "../../hooks/use-current-user";
 import { useSheetMusicContext } from "../../hooks/use-sheet-music";
 import "./upload.css";
-import DashboardHeader from "../dashboard/dashboard-header/dashboard-header";
 
 function Upload() {
   const { currentUser, setCurrentUser } = useCurrentUserContext();
@@ -200,7 +199,6 @@ function Upload() {
 
   return (
     <div className="upload-container">
-      <DashboardHeader />
       <div className="upload-content">
         <form onSubmit={handleUpload} className="upload-form">
           <div className="upload-info">

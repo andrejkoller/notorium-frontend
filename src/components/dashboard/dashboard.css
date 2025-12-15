@@ -86,10 +86,6 @@
   border-color: var(--border);
 }
 
-.sheet-music-title {
-  color: var(--primary);
-}
-
 .sheet-music-title:hover {
   text-decoration: underline;
 }
