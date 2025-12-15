@@ -2,6 +2,7 @@ import { createListCollection, Portal, Select } from "@chakra-ui/react";
 import { useState } from "react";
 import { useSheetMusicContext } from "../../hooks/use-sheet-music";
 import { filterSheetMusicByUploadDate } from "../../services/sheet-music-service";
+import "./select-filter.css";
 
 const SelectFilter = () => {
   const { setSheetMusic } = useSheetMusicContext();
@@ -28,7 +29,7 @@ const SelectFilter = () => {
   };
 
   return (
-    <>
+    <div className="select-filter">
       <Select.Root
         collection={sheetMusicCollectionFilter}
         size="lg"
@@ -67,7 +68,7 @@ const SelectFilter = () => {
           </Select.Positioner>
         </Portal>
       </Select.Root>
-    </>
+    </div>
   );
 };
 

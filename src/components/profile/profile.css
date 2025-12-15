@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 2rem;
   width: 100%;
 }
 
@@ -60,8 +61,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 4rem;
   width: 100%;
-  padding: 1.5rem;
 }
 
 .profile-scores {
@@ -94,7 +95,7 @@
 
 .profile-scores-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   width: 100%;
   margin-top: 1rem;
@@ -104,7 +105,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
 }
 
 .profile-scores-link {
@@ -117,7 +118,7 @@
   align-items: center;
   height: 25rem;
   width: 100%;
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
   background-color: #ffffff;
   border: 1px solid var(--border);
 }
@@ -140,7 +141,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 2rem;
 }
 
 .profile-favorite-scores-no-scores {
@@ -151,18 +151,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
 }
 
 .profile-favorite-scores-title h3 {
   font-size: 2.5rem;
   font-weight: bold;
-  margin: 0;
 }
 
 .profile-favorite-scores-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   width: 100%;
   margin-top: 1rem;
@@ -172,7 +170,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
 }
 
 .profile-favorite-scores-link {
@@ -185,17 +183,13 @@
   align-items: center;
   height: 25rem;
   width: 100%;
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
   background-color: #ffffff;
   border: 1px solid var(--border);
 }
 
 .profile-favorite-scores-image:hover {
   border-color: var(--border);
-}
-
-.profile-favorite-scores-title:hover {
-  text-decoration: underline;
 }
 
 .profile-favorite-scores-genre-instrument {

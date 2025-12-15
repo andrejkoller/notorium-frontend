@@ -13,8 +13,10 @@
   --header-height: 5.5rem;
 
   --background: #ffffff;
+  --background-elevated: #f9f9f9;
   --background-card: #f1f1f1;
   --foreground: #000000;
+  --foreground-hover: #333333;
   --accent: #999999;
   --primary: #fccfff;
   --primary-hover: #e6b3cc;
@@ -24,8 +26,10 @@
 
 [data-theme="dark"] {
   --background: #0a0a0a;
+  --background-elevated: #1a1a1a;
   --background-card: #000000;
   --foreground: #ffffff;
+  --foreground-hover: #cccccc;
   --accent: #666666;
   --primary: #fccfff;
   --primary-hover: #e6b3cc;

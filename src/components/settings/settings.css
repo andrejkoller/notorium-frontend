@@ -58,17 +58,33 @@
 
 .input-name-group input {
   width: 100%;
-  padding: 1.5rem;
+  padding: 1.5rem 1rem;
   border-radius: 0.5rem;
   font-size: 1rem;
+}
+
+.settings-form-group input {
+  padding: 1.5rem 1rem;
+}
+
+.settings-form-group textarea {
+  padding: 1rem;
 }
 
 .settings-form-group input,
 .settings-form-group textarea {
   width: 100%;
-  padding: 1.5rem;
   border-radius: 0.5rem;
   font-size: 1rem;
+  border: 1px solid var(--border);
+}
+
+.settings-role-select button {
+  width: 100%;
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--border);
 }
 
 .settings-role-select:disabled {
@@ -90,6 +106,7 @@
   cursor: pointer;
   background-color: var(--primary);
   color: black;
+  border: none;
 }
 
 .settings-container .button-container button:hover {

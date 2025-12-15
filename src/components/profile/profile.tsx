@@ -142,7 +142,7 @@ function Profile() {
           <div className="profile-body">
             <div className="profile-scores">
               <div className="profile-scores-wrapper">
-                <h3>Sheet music</h3>
+                <h3>Published Scores ({sheetMusic ? sheetMusic.length : 0})</h3>
                 <div className="profile-scores-filter">
                   <SelectFilter />
                 </div>
@@ -210,7 +210,10 @@ function Profile() {
             </div>
             <div className="profile-favorite-scores">
               <div className="profile-favorite-scores-title">
-                <h3>Favourites</h3>
+                <h3>
+                  Favourite Scores (
+                  {favoriteSheetMusic ? favoriteSheetMusic.length : 0})
+                </h3>
               </div>
               {favoriteSheetMusic && favoriteSheetMusic.length > 0 ? (
                 <ul className="profile-favorite-scores-list">

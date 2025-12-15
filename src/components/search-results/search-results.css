@@ -57,7 +57,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 1.5rem;
 }
 
 .search-results-container
@@ -81,7 +81,7 @@
   justify-content: center;
   height: 400px;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 1.5rem;
   background-color: #ffffff;
   border: 1px solid var(--border);
 }

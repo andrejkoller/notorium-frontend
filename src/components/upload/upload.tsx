@@ -306,6 +306,7 @@ function Upload() {
           </div>
 
           <Select.Root
+            className="select-difficulty"
             size={"lg"}
             value={formData.difficulty ? [formData.difficulty] : []}
             onValueChange={(e) =>
@@ -386,8 +387,8 @@ function Upload() {
             }}
           >
             <FileUpload.HiddenInput />
-            <FileUpload.Dropzone>
-              <Icon size="md" color="fg.muted">
+            <FileUpload.Dropzone className="file-upload-dropzone">
+              <Icon size="md">
                 <LuUpload />
               </Icon>
               <FileUpload.DropzoneContent>

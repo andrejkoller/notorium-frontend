@@ -15,7 +15,6 @@
   flex: 1 1 100%;
   background-color: var(--background);
   padding: 0 6rem;
-  min-height: 100vh;
 }
 
 @media (max-width: 900px) {

@@ -25,13 +25,16 @@ function Scores() {
         setSheetMusic([]);
       })
       .finally(() => setLoadingScores(false));
-  }, [currentUser?.id, setSheetMusic]);
+  }, [currentUser, setSheetMusic]);
 
   return (
     <div className="scores-container">
       <div className="scores-content">
         <div className="scores-header">
-          <h1>All sheet music</h1>
+          <h1 className="scores-title">
+            {currentUser ? currentUser.username + "'s Scores" : "User's Scores"}{" "}
+            ({sheetMusic ? sheetMusic.length : 0})
+          </h1>
           <div className="scores-filter">
             <SelectFilter />
           </div>

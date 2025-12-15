@@ -34,10 +34,14 @@ const ThemeSwitcher = () => {
       checked={isChecked}
       onCheckedChange={() => handleThemeChange(!isChecked)}
       size="lg"
-      colorScheme="primary"
+      colorPalette="primary"
     >
       <Switch.HiddenInput />
-      <Switch.Control />
+      <Switch.Control
+        style={{
+          backgroundColor: isChecked ? "#505050" : undefined,
+        }}
+      />
       <Switch.Label />
     </Switch.Root>
   );

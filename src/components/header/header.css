@@ -58,3 +58,22 @@
     font-size: 14px;
   }
 }
+
+.css-kcj133 {
+  border: none;
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.css-kcj133:hover {
+  background-color: var(--foreground-hover);
+}
+
+.css-1ocnt5x {
+  border: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+.css-1ocnt5x:hover {
+  background-color: var(--background-elevated);
+}

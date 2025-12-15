@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  border-radius: 8px;
   height: 100%;
   width: 100%;
 }
@@ -36,9 +35,34 @@
   width: 100%;
 }
 
+.input-wrapper button {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
 .upload-form input {
   width: 100%;
   padding: 24px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 1.5rem 1rem;
+}
+
+.upload-textarea {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+.file-upload-dropzone {
+  background-color: var(--background);
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+}
+
+.select-difficulty button {
+  border: 1px solid var(--border);
   border-radius: 8px;
 }
 
@@ -56,6 +80,7 @@
   cursor: pointer;
   background-color: var(--primary);
   color: black;
+  border: none;
 }
 
 .upload-form button.upload-button:hover {
@@ -72,4 +97,12 @@
   .upload-form {
     width: 100%;
   }
+}
+
+.css-u9aq0z {
+  border: 1px solid var(--border);
+}
+
+.css-ojlf6 {
+  background-color: var(--background);
 }

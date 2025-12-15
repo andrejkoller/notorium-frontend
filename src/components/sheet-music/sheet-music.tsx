@@ -19,7 +19,6 @@ import {
   Printer,
   Trash2,
 } from "lucide-react";
-import { Toaster, toaster } from "../ui/toaster";
 import { useCurrentUserContext } from "../../hooks/use-current-user";
 import { Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
@@ -62,24 +61,12 @@ function MusicSheet() {
               ],
             });
           }
-          toaster.success({
-            title: "Added to Favorites",
-            description: `${score.title} has been added to your favorites.`,
-          });
         })
         .catch((error) => {
           console.error("Error adding sheet music to favorites:", error);
-          toaster.error({
-            title: "Error",
-            description: "Failed to add sheet music to favorites.",
-          });
         });
     } catch (error) {
       console.error("Error preparing sheet music for favoriting:", error);
-      toaster.error({
-        title: "Favorite Error",
-        description: "Failed to prepare sheet music for favoriting.",
-      });
     }
   };
 
@@ -96,24 +83,12 @@ function MusicSheet() {
               ),
             });
           }
-          toaster.success({
-            title: "Removed from Favorites",
-            description: `${score.title} has been removed from your favorites.`,
-          });
         })
         .catch((error) => {
           console.error("Error removing sheet music from favorites:", error);
-          toaster.error({
-            title: "Error",
-            description: "Failed to remove sheet music from favorites.",
-          });
         });
     } catch (error) {
       console.error("Error preparing sheet music for unfavoriting:", error);
-      toaster.error({
-        title: "Unfavorite Error",
-        description: "Failed to prepare sheet music for unfavoriting.",
-      });
     }
   };
 
@@ -122,26 +97,14 @@ function MusicSheet() {
     try {
       deleteSheetMusic(Number(scoreId))
         .then(() => {
-          toaster.success({
-            title: "Deleted",
-            description: `${score.title} has been deleted successfully.`,
-          });
           setScore(null);
           navigate("/");
         })
         .catch((error) => {
           console.error("Error deleting sheet music:", error);
-          toaster.error({
-            title: "Error",
-            description: "Failed to delete sheet music.",
-          });
         });
     } catch (error) {
       console.error("Error preparing sheet music for deletion:", error);
-      toaster.error({
-        title: "Delete Error",
-        description: "Failed to prepare sheet music for deletion.",
-      });
     }
   };
 
@@ -157,24 +120,12 @@ function MusicSheet() {
           document.body.appendChild(link);
           link.click();
           link.remove();
-          toaster.success({
-            title: "Download Successful",
-            description: `${score.title} has been downloaded.`,
-          });
         })
         .catch((error) => {
           console.error("Error downloading sheet music:", error);
-          toaster.error({
-            title: "Download Error",
-            description: "Failed to download sheet music.",
-          });
         });
     } catch (error) {
       console.error("Error preparing sheet music for download:", error);
-      toaster.error({
-        title: "Download Error",
-        description: "Failed to prepare sheet music for download.",
-      });
     }
   };
 
@@ -203,10 +154,6 @@ function MusicSheet() {
       }
     } catch (error) {
       console.error("Error preparing sheet music for printing:", error);
-      toaster.error({
-        title: "Print Error",
-        description: "Failed to prepare sheet music for printing.",
-      });
     }
   };
 
@@ -234,10 +181,7 @@ function MusicSheet() {
                   file={pdfUrl}
                   onLoadSuccess={({ numPages }) => setNumPages(numPages)}
                   onLoadError={(error) =>
-                    toaster.error({
-                      title: "PDF Load Error",
-                      description: `Failed to load PDF: ${error.message}`,
-                    })
+                    console.error("Error loading PDF document:", error)
                   }
                 >
                   {Array.from({ length: numPages }, (_, i) => (
@@ -336,7 +280,6 @@ function MusicSheet() {
           </div>
         </div>
       </div>
-      <Toaster />
     </>
   );
 }

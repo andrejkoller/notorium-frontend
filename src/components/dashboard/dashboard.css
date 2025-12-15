@@ -11,6 +11,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 2rem;
   height: 100%;
   width: 100%;
 }
@@ -53,21 +54,20 @@
 
 .sheet-music-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
   width: 100%;
-  margin-top: 16px;
 }
 
 .sheet-music-item {
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 1.5rem;
 }
 
 .sheet-music-link {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .sheet-music-image {
@@ -75,9 +75,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 400px;
+  height: 25rem;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 1.5rem;
   background-color: #ffffff;
   border: 1px solid var(--border);
 }

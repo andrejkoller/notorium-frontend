@@ -51,6 +51,10 @@
   width: 100%;
 }
 
+.signup-form input {
+  border: 1px solid var(--border);
+}
+
 .signup-form button {
   border-radius: 999px;
   border: none;
