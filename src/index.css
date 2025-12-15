@@ -23,13 +23,13 @@
 }
 
 [data-theme="dark"] {
-  --background: #000000;
+  --background: #0a0a0a;
   --background-card: #000000;
   --foreground: #ffffff;
   --accent: #666666;
   --primary: #fccfff;
   --primary-hover: #e6b3cc;
-  --secondary: #1a1a1a;
+  --secondary: #0a0a0a;
   --border: #333333;
 }
 
