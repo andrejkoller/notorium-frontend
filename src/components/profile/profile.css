@@ -105,7 +105,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-radius: 1.5rem;
 }
 
 .profile-scores-link {
@@ -118,7 +117,6 @@
   align-items: center;
   height: 25rem;
   width: 100%;
-  border-radius: 1.5rem;
   background-color: #ffffff;
   border: 1px solid var(--border);
 }
@@ -170,7 +168,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-radius: 1.5rem;
 }
 
 .profile-favorite-scores-link {
@@ -183,7 +180,6 @@
   align-items: center;
   height: 25rem;
   width: 100%;
-  border-radius: 1.5rem;
   background-color: #ffffff;
   border: 1px solid var(--border);
 }

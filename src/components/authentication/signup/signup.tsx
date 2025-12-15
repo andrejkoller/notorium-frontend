@@ -1,4 +1,4 @@
-import { Button, Input, Spinner, Text, VStack } from "@chakra-ui/react";
+import { Button, Input, Spinner } from "@chakra-ui/react";
 import { useState } from "react";
 import { PasswordInput } from "../../ui/password-input";
 import { register } from "../../../services/auth-service";
@@ -94,81 +94,72 @@ function SignUp() {
   };
 
   return (
-    <>
-      {loading ? (
-        <VStack colorPalette="teal">
-          <Spinner color="colorPalette.600" />
-          <Text>Loading...</Text>
-        </VStack>
-      ) : (
-        <div className="signup-container">
-          <div className="signup-content">
-            <div className="signup-header">
-              <h1 className="signup-title">Create an Account</h1>
-              <p className="signup-subtitle">
-                Please enter your details to sign up.
-              </p>
-            </div>
-            <form onSubmit={handleSubmit} className="signup-form">
-              <div className="input-wrapper">
-                <Input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Full Name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                />
-                <Input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <Input
-                type="text"
-                id="username"
-                name="username"
-                placeholder="Username"
-                value={formData.username}
-                onChange={handleInputChange}
-                required
-              />
-              <PasswordInput
-                id="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleInputChange}
-                required
-              />
-              <PasswordInput
-                id="confirmPassword"
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                value={formData.confirmPassword}
-                onChange={handleInputChange}
-                required
-              />
-              <Button variant={"solid"} type="submit" disabled={!isFormValid}>
-                Sign Up
-              </Button>
-            </form>
-            <p className="signup-login-link">
-              Already have an account?{" "}
-              <Link to="/login" className="signup-link">
-                Login here
-              </Link>
-            </p>
-          </div>
+    <div className="signup-container">
+      <div className="signup-content">
+        <div className="signup-header">
+          <h1 className="signup-title">Create an Account</h1>
+          <p className="signup-subtitle">
+            Please enter your details to sign up.
+          </p>
         </div>
-      )}
-    </>
+        <form onSubmit={handleSubmit} className="signup-form">
+          <div className="input-wrapper">
+            <Input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Full Name"
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+            />
+            <Input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <Input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Username"
+            value={formData.username}
+            onChange={handleInputChange}
+            required
+          />
+          <PasswordInput
+            id="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleInputChange}
+            required
+          />
+          <PasswordInput
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            value={formData.confirmPassword}
+            onChange={handleInputChange}
+            required
+          />
+          <Button variant={"solid"} type="submit" disabled={!isFormValid}>
+            {loading ? <Spinner size="sm" /> : "Sign Up"}
+          </Button>
+        </form>
+        <p className="signup-login-link">
+          Already have an account?{" "}
+          <Link to="/login" className="signup-link">
+            Login here
+          </Link>
+        </p>
+      </div>
+    </div>
   );
 }
 
