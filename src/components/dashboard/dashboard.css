@@ -36,6 +36,12 @@
   gap: 1rem;
 }
 
+.dashboard-button-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .dashboard-button-container button {
   padding: 1.5rem;
   border-radius: 999px;
