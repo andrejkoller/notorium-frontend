@@ -153,7 +153,7 @@ function Profile() {
                     music.isPublic && (
                       <li key={music.id} className="profile-scores-item">
                         <Link
-                          to={`/dashboard/users/${music.user?.username}/scores/${music.id}`}
+                          to={`/dashboard/user/${music.user?.username}/scores/${music.id}`}
                           className="profile-scores-link"
                         >
                           <img
@@ -163,7 +163,7 @@ function Profile() {
                           />
                         </Link>
                         <Link
-                          to={`/dashboard/users/${music.user?.username}/scores/${music.id}`}
+                          to={`/dashboard/user/${music.user?.username}/scores/${music.id}`}
                           className="profile-scores-title"
                         >
                           <h2 className="profile-scores-title">
@@ -217,7 +217,7 @@ function Profile() {
                 {favoriteSheetMusic.map((music) => (
                   <li key={music.id} className="profile-favorite-scores-item">
                     <Link
-                      to={`/dashboard/users/${music.user?.username}/scores/${music.id}`}
+                      to={`/dashboard/user/${music.user?.username}/scores/${music.id}`}
                       className="profile-favorite-scores-link"
                     >
                       <img
@@ -227,7 +227,7 @@ function Profile() {
                       />
                     </Link>
                     <Link
-                      to={`/dashboard/users/${music.user?.username}/scores/${music.id}`}
+                      to={`/dashboard/user/${music.user?.username}/scores/${music.id}`}
                       className="profile-favorite-scores-title"
                     >
                       <h2 className="profile-favorite-scores-title">

@@ -8,6 +8,12 @@ import {
 } from "lucide-react";
 
 function Sidebar() {
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    window.location.href = "/login";
+  };
+
   return (
     <div className="dashboard-sidebar-container">
       <div className="dashboard-sidebar-header">
@@ -39,7 +45,11 @@ function Sidebar() {
             </Link>
           </li>
           <li className="dashboard-sidebar-menu-item">
-            <Link to={"/logout"} className="dashboard-sidebar-menu-link">
+            <Link
+              to={"#"}
+              onClick={handleLogout}
+              className="dashboard-sidebar-menu-link"
+            >
               <LogOutIcon className="dashboard-sidebar-menu-icon" />
               <span className="dashboard-sidebar-menu-text">Logout</span>
             </Link>

@@ -155,6 +155,10 @@
   font-weight: bold;
 }
 
+.profile-favorite-scores-title:hover {
+  text-decoration: underline;
+}
+
 .profile-favorite-scores-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
