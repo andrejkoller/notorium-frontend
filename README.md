@@ -92,7 +92,7 @@ The app uses JWT-based authentication:
 <img width="1920" height="1080" alt="Screenshot 5" src="https://github.com/user-attachments/assets/30992bdf-6bb2-4f65-9062-ebd757f6d57c" />
 <img width="1920" height="1080" alt="Screenshot 6" src="https://github.com/user-attachments/assets/64ef07e0-d35b-455a-9869-911ddd9567ad" />
 <img width="1920" height="1080" alt="Screenshot 7" src="https://github.com/user-attachments/assets/a965636e-11c9-4017-befb-ba47c67fb217" />
-<img width="1920" height="1080" alt="Screenshot 8" src="https://github.com/user-attachments/assets/e5941b2b-cc73-4ad8-b0dc-e26c98a676ba" />
+<img width="1920" height="1080" alt="Screenshot 8" src="https://github.com/user-attachments/assets/63c5b66e-cf73-4624-bced-58a78abeb9e5" />
 <img width="1920" height="1080" alt="Screenshot 9" src="https://github.com/user-attachments/assets/b77c1d73-958c-4fb5-aa5d-f7cd7db699f8" />
 <img width="1920" height="1080" alt="Screenshot 10" src="https://github.com/user-attachments/assets/fe6e5e23-d82f-4213-9cd1-9602d9162813" />
 <img width="1920" height="1080" alt="Screenshot 11" src="https://github.com/user-attachments/assets/8f33fa1f-7f58-4b20-be5b-0f8faa2caa79" />
@@ -100,4 +100,4 @@ The app uses JWT-based authentication:
 <img width="1920" height="1080" alt="Screenshot 13" src="https://github.com/user-attachments/assets/f077609d-8aa9-4bb6-8d8d-375497aafa08" />
 <img width="1920" height="1080" alt="Screenshot 14" src="https://github.com/user-attachments/assets/c08d95ba-abc2-4d4e-9f1c-b5480adb7f1f" />
 <img width="1920" height="1080" alt="Screenshot 15" src="https://github.com/user-attachments/assets/74345630-7d03-4dc6-a933-ad08ffdf51b5" />
-<img width="1920" height="1080" alt="Screenshot 16" src="https://github.com/user-attachments/assets/170538ff-eab9-4e91-b3a9-6b029f84fefa" />
+<img width="1920" height="1080" alt="Screenshot 16" src="https://github.com/user-attachments/assets/07e37e45-3a53-432f-9180-75bbe6e8542a" />
