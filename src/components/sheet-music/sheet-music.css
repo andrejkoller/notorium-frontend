@@ -32,6 +32,36 @@
   z-index: 0;
 }
 
+.sheet-music-container .button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  order: 1;
+  position: fixed;
+  bottom: 2rem;
+  right: 6rem;
+  z-index: 10;
+}
+
+.sheet-music-container .dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sheet-music-container .button-container .options-button,
+.sheet-music-container .dropdown-menu button {
+  height: 40px;
+  width: 40px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  background-color: var(--primary);
+  color: black;
+  order: 2;
+}
+
 @media (max-width: 1250px) {
   .sheet-music {
     margin-right: 0;

@@ -118,7 +118,6 @@
   height: 25rem;
   width: 100%;
   background-color: #ffffff;
-  border: 1px solid var(--border);
 }
 
 .profile-scores-image:hover {
@@ -181,7 +180,6 @@
   height: 25rem;
   width: 100%;
   background-color: #ffffff;
-  border: 1px solid var(--border);
 }
 
 .profile-favorite-scores-image:hover {
