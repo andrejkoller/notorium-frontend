@@ -43,7 +43,7 @@ function SearchResults() {
                     music.isPublic && (
                       <li key={music.id} className="search-results-item">
                         <Link
-                          to={`/dashboard/users/${music.user?.username}/scores/${music.id}`}
+                          to={`/dashboard/user/${music.user?.username}/scores/${music.id}`}
                           className="search-results-link"
                         >
                           <img
@@ -53,7 +53,7 @@ function SearchResults() {
                           />
                         </Link>
                         <Link
-                          to={`/dashboard/users/${music.user?.username}/scores/${music.id}`}
+                          to={`/dashboard/user/${music.user?.username}/scores/${music.id}`}
                           className="search-results-title"
                         >
                           <h2 className="search-results-title">

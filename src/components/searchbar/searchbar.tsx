@@ -22,7 +22,7 @@ function SearchBar() {
     searchSheetMusic(query)
       .then((results) => {
         if (results.length > 0) {
-          navigate(`/search?query=${encodeURIComponent(query)}`);
+          navigate(`/dashboard/search?query=${encodeURIComponent(query)}`);
         } else {
           toaster.info({
             title: "No Results",

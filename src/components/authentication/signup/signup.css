@@ -46,7 +46,7 @@
 
 .signup-form input,
 .signup-form button {
-  padding: 1.5rem;
+  padding: 1.5rem 1rem;
   border-radius: 8px;
   width: 100%;
 }
