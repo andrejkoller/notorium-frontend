@@ -17,15 +17,8 @@
   padding: 0 6rem;
 }
 
-@media (max-width: 900px) {
-  .main {
-    flex-direction: column;
-    gap: 0;
-  }
-
+@media (max-width: 768px) {
   .content {
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-top: 0;
+    padding: 0 2rem;
   }
 }
