@@ -1,6 +1,7 @@
 import { Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import "./header.css";
+import { MenuIcon } from "lucide-react";
 
 function Header() {
   return (
@@ -27,6 +28,7 @@ function Header() {
               Grow
             </Link>
           </li>
+          <MenuIcon className="header-menu-icon" />
         </ul>
         <div className="button-container">
           <Link to={"/login"} className="header-link">

@@ -17,6 +17,11 @@
   width: 100%;
 }
 
+.header-menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
 .header-navigation {
   display: flex;
   align-items: center;
@@ -41,6 +46,16 @@
   cursor: pointer;
 }
 
+@media (max-width: 1024px) {
+  .header-menu-icon {
+    display: block;
+  }
+
+  .header-navigation-item {
+    display: none;
+  }
+}
+
 @media (max-width: 900px) {
   .header-content {
     height: auto;
@@ -52,10 +67,11 @@
   .header-content {
     gap: 8px;
   }
+}
 
-  .button-container button {
-    padding: 10px 8px;
-    font-size: 14px;
+@media (max-width: 425px) {
+  .header-container {
+    padding: 0 1rem;
   }
 }
 
