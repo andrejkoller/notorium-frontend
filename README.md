@@ -4,27 +4,27 @@ A modern web application for browsing, uploading, and managing sheet music. Buil
 
 ## ✨ Features
 
-- **User Authentication** - Secure registration and login system
-- **Sheet Music Library** - Browse, upload, and manage your personal collection
-- **Advanced Filtering** - Search by genre, difficulty level, and instrument
-- **PDF Viewer** - Integrated PDF viewing with react-pdf
-- **User Profiles** - Manage your account and favorites
-- **Theme Support** - Light and dark mode with seamless switching
-- **Responsive Design** - Optimized for all screen sizes
-- **Favorites System** - Save and organize your favorite sheet music
+- User Authentication - Secure registration and login system
+- Sheet Music Library - Browse, upload, and manage your personal collection
+- Advanced Filtering - Search by genre, difficulty level, and instrument
+- PDF Viewer - Integrated PDF viewing with react-pdf
+- User Profiles - Manage your account and favorites
+- Theme Support - Light and dark mode with seamless switching
+- Responsive Design - Optimized for all screen sizes
+- Favorites System - Save and organize your favorite sheet music
 
 ## 🛠️ Technologies Used
 
-- **Framework:** React 19 with TypeScript
-- **Build Tool:** Vite 6
-- **UI Library:** Chakra UI v3
-- **Routing:** React Router v7
-- **HTTP Client:** Axios
-- **PDF Rendering:** react-pdf & pdfjs-dist
-- **Icons:** Lucide React
-- **Animations:** Framer Motion
-- **State Management:** React Context API
-- **Theming:** next-themes
+- Framework: React 19 with TypeScript
+- Build Tool: Vite 6
+- UI Library: Chakra UI v3
+- Routing: React Router v7
+- HTTP Client: Axios
+- PDF Rendering: react-pdf & pdfjs-dist
+- Icons: Lucide React
+- Animations: Framer Motion
+- State Management: React Context API
+- Theming: next-themes
 
 ## 📋 Prerequisites
 
